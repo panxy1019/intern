@@ -326,3 +326,9 @@ python test_npu.py
 4. 确认 worker 启动脚本中加载了 conda、driver、CANN 和 ATB 环境变量。
 5. 确认 Ray 中已经注册 `NPU` 资源，可以通过 Ray dashboard 或 Ray API 查看资源。
 6. 如果 `torch_npu` 导入失败，优先检查 conda 环境、CANN 版本、`LD_LIBRARY_PATH` 和镜像内依赖是否一致。
+
+## 8. TODO
+
+1. Ray 提交任务时，目前仍然需要手动注入昇腾相关环境变量，尤其是 `LD_LIBRARY_PATH`。后续需要把这部分环境变量固化到镜像、Ray runtime environment 或 worker 启动脚本中，减少每次提交任务时的手工配置。
+2. 增加多 worker 场景测试，将 `npu-workers` 扩展到多个副本，验证 Ray task 是否能按 `NPU` 资源正确分发到不同 worker 节点，并观察调度、资源占用和任务执行结果。
+3. 精简最开始的 worker 镜像，去掉无关依赖、缓存和临时文件，降低镜像体积，提升镜像分发、导入和 worker 启动速度。
