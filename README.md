@@ -1,7 +1,7 @@
 # K8s/K3s 集群启动昇腾 NPU Ray Worker 记录
 
 本文记录如何在 K8s/K3s 集群中为 `RayCluster` 启动昇腾 NPU worker 节点。内容覆盖 worker 镜像准备、镜像分发、KubeRay 配置、任务提交验证，以及常见问题排查。
-
+<img width="1024" height="1536" alt="ChatGPT Image 2026年6月8日 19_24_34" src="https://github.com/user-attachments/assets/75990451-1405-4d0e-92ec-8d0476376a78" />
 这套流程要解决两个层面的调度问题：
 
 1. Kubernetes 要知道哪些节点有 Ascend 910B3 NPU，并把 worker Pod 调度到这些节点。
