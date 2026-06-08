@@ -158,6 +158,8 @@ RayCluster 的优点是把 Ray 集群的生命周期和 Kubernetes 的资源管�
 - 适合异构硬件管理：对于 NPU/GPU 混合集群，可以把不同 worker group 绑定到不同节点标签和资源类型，避免任务落到错误硬件上。
 
 对于 NPU 场景，最容易混淆的是“Pod 拿到 NPU”和“Ray task 使用 NPU”不是同一件事。前者依赖 Kubernetes 扩展资源，后者依赖 Ray 自定义资源。两层资源声明都正确，任务才能稳定落到 NPU worker 上。
+<img width="1536" height="1024" alt="ChatGPT Image 2026年6月8日 19_16_21" src="https://github.com/user-attachments/assets/43ec9340-4b5f-483a-8771-bd83da315aed" />
+
 
 ## 8. 常用命令
 
@@ -186,15 +188,3 @@ kubectl get raycluster -A
 kubectl get pods -n ray-demo -o wide
 kubectl logs -n ray-demo -l ray.io/node-type=head --tail=100
 ```
-
-## 9. 学习路径建议
-
-建议按下面顺序理解 Ray：
-
-1. 先在单机上掌握 `ray.init()`、task、actor、`ray.get()`。
-2. 再理解 `ObjectRef` 和 object store，避免把大对象反复复制回 driver。
-3. 学习资源声明，明确 CPU、GPU、NPU、自定义资源分别由谁提供、由谁调度。
-4. 使用 `runtime_env` 分发轻量代码和依赖，把系统级依赖放进镜像。
-5. 最后再上 KubeRay，把 RayCluster、Pod 调度、镜像分发和硬件设备管理串起来。
-
-掌握这条链路后，回到 NPU worker 部署时就会更清楚：镜像解决运行环境一致性，Kubernetes 解决容器和设备，Ray 解决分布式任务调度。
