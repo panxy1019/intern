@@ -18,6 +18,15 @@ Ray 是一个面向 Python 的分布式计算框架。它的核心价值是：�
 
 换句话说，Ray 不只是负责“把代码跑起来”，还负责把分布式程序中最容易出错的调度、对象传递、资源标记和运行状态管理统一起来。
 
+Ray 的优势主要体现在以下几个方面：
+
+- 编程模型简单：开发者可以用普通 Python 函数和类扩展出分布式 task/actor，不需要从一开始就手写复杂的 RPC、队列或多进程通信逻辑。
+- 资源调度统一：同一套程序可以同时声明 CPU、GPU、NPU、内存和自定义资源需求，由 Ray 根据资源约束选择合适 worker。
+- 适合异构集群：在同时存在 CPU 节点、GPU 节点、NPU 节点的场景中，可以通过自定义资源把不同任务准确投放到不同硬件上。
+- 异步执行效率高：远程调用会先返回 `ObjectRef`，程序可以继续提交后续任务，再统一等待结果，从而更容易把集群资源跑满。
+- 生态完整：Ray Core 负责分布式执行，Ray Data、Ray Train、Ray Tune、Ray Serve 等库继续覆盖数据处理、训练、调参和在线服务。
+- 迁移成本低：很多本地 Python 代码只需要在关键函数或类上增加 `@ray.remote`，就可以逐步改造成分布式程序。
+
 ## 2. 核心概念
 
 | 概念 | 含义 | 为什么重要 |
@@ -137,6 +146,16 @@ Kubernetes 负责容器生命周期和硬件设备分配，Ray 负责 Python 分
 - Device plugin 决定容器能看到哪些硬件设备。
 - KubeRay 决定 Ray head 和 worker 如何创建。
 - Ray 决定 task/actor 在哪些 worker 进程上执行。
+
+RayCluster 的优点是把 Ray 集群的生命周期和 Kubernetes 的资源管理能力结合起来，适合长期运行、可复现、可扩缩的生产环境：
+
+- 资源自动分配：在 `workerGroupSpecs` 中声明 CPU、内存、GPU/NPU 等资源后，Kubernetes 会根据请求为 worker Pod 分配节点和设备，Ray 再根据 `rayStartParams.resources` 把这些资源注册到 Ray 调度器中。
+- 调度更准确：Kubernetes 的 `nodeSelector`、taint/toleration、device plugin 负责把 Pod 放到真实具备硬件的节点上，Ray 的自定义资源负责把 task/actor 放到具备对应资源的 worker 上。
+- 弹性扩缩容：RayCluster 可以配置 `minReplicas`、`maxReplicas` 和 autoscaling 选项，在任务压力变化时增加或减少 worker，减少人工扩容和空闲资源浪费。
+- 环境可复现：head 和 worker 都由镜像、启动命令、挂载路径和资源声明描述，集群重建时不依赖手工登录节点逐项配置。
+- 运维入口统一：通过 Kubernetes 查看 Pod、Service、日志和事件，通过 Ray Dashboard 查看任务、actor、对象和 Ray 资源，两层状态可以互相定位问题。
+- 故障恢复更方便：当 worker Pod 异常退出时，Kubernetes 可以重新拉起 Pod；Ray 也能感知 worker 状态变化，并继续调度后续任务。
+- 适合异构硬件管理：对于 NPU/GPU 混合集群，可以把不同 worker group 绑定到不同节点标签和资源类型，避免任务落到错误硬件上。
 
 对于 NPU 场景，最容易混淆的是“Pod 拿到 NPU”和“Ray task 使用 NPU”不是同一件事。前者依赖 Kubernetes 扩展资源，后者依赖 Ray 自定义资源。两层资源声明都正确，任务才能稳定落到 NPU worker 上。
 

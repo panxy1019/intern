@@ -1,9 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-labelledby="title desc">
   <title id="title">Ray 集群架构图</title>
-  <desc id="desc">Driver 连接 Ray Head，Head 管理调度和元数据，多个 Worker 节点执行任务并通过 Object Store 交换数据。</desc>
+  <desc id="desc">Driver 连接 Ray Head，Client API 与 Head 双向交互，多个 Worker 节点执行任务并通过 Object Store 交换数据，Worker 内包含 NPU 资源。</desc>
   <defs>
     <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
       <path d="M2,2 L10,6 L2,10 Z" fill="#2563eb" />
+    </marker>
+    <marker id="arrow-start" markerWidth="12" markerHeight="12" refX="2" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M10,2 L2,6 L10,10 Z" fill="#2563eb" />
     </marker>
     <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
       <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.12" />
@@ -15,10 +18,12 @@
       .worker { fill: #f0fdf4; stroke: #16a34a; stroke-width: 2; }
       .store { fill: #fff7ed; stroke: #f97316; stroke-width: 2; }
       .task { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; }
+      .npu-resource { fill: #ecfeff; stroke: #0891b2; stroke-width: 2; }
       .label { font-family: Arial, "Microsoft YaHei", sans-serif; fill: #0f172a; font-size: 24px; font-weight: 700; }
       .text { font-family: Arial, "Microsoft YaHei", sans-serif; fill: #334155; font-size: 18px; }
       .small { font-family: Arial, "Microsoft YaHei", sans-serif; fill: #475569; font-size: 15px; }
       .arrow { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .bi-arrow { stroke: #2563eb; stroke-width: 3; fill: none; marker-start: url(#arrow-start); marker-end: url(#arrow); }
       .soft-arrow { stroke: #64748b; stroke-width: 2.5; fill: none; stroke-dasharray: 8 8; marker-end: url(#arrow); }
     </style>
   </defs>
@@ -54,6 +59,8 @@
   <text x="212" y="532" text-anchor="middle" class="small">Task / Actor</text>
   <rect x="295" y="500" width="125" height="52" rx="12" class="store" />
   <text x="357" y="532" text-anchor="middle" class="small">Object Store</text>
+  <rect x="150" y="562" width="270" height="28" rx="10" class="npu-resource" />
+  <text x="285" y="581" text-anchor="middle" class="small">NPU: 8 x Ascend 910</text>
 
   <rect x="650" y="430" width="330" height="170" rx="18" class="worker" />
   <text x="815" y="475" text-anchor="middle" class="label">Worker Node B</text>
@@ -61,15 +68,17 @@
   <text x="742" y="532" text-anchor="middle" class="small">Task / Actor</text>
   <rect x="825" y="500" width="125" height="52" rx="12" class="store" />
   <text x="887" y="532" text-anchor="middle" class="small">Object Store</text>
+  <rect x="680" y="562" width="270" height="28" rx="10" class="npu-resource" />
+  <text x="815" y="581" text-anchor="middle" class="small">NPU: 8 x Ascend 910</text>
 
   <path class="arrow" d="M276 238 C335 226, 352 220, 407 218" />
-  <path class="arrow" d="M710 218 C755 220, 776 225, 808 238" />
+  <path class="bi-arrow" d="M710 218 C755 220, 776 225, 808 238" />
   <path class="arrow" d="M505 356 C450 392, 390 405, 318 430" />
   <path class="arrow" d="M615 356 C676 394, 735 408, 782 430" />
   <path class="soft-arrow" d="M421 552 C520 620, 610 620, 702 552" />
 
   <text x="340" y="214" class="small">提交 task/actor</text>
-  <text x="733" y="214" class="small">查看任务与资源</text>
+  <text x="733" y="214" class="small">API 提交 / 状态返回</text>
   <text x="405" y="405" class="small">按资源调度</text>
   <text x="655" y="405" class="small">按资源调度</text>
   <text x="550" y="622" text-anchor="middle" class="small">ObjectRef 让不同任务之间通过对象引用传递结果</text>
