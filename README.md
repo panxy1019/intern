@@ -16,57 +16,23 @@ ENV PATH="${MS_VENV}/bin:${PATH}"
 
 # 确保安装到 ms conda 环境里
 RUN ${MS_VENV}/bin/python -m pip install daft -i https://mirrors.aliyun.com/pypi/simple/
-
-# 只对交互式 bash 有帮助，不作为核心依赖
-RUN echo 'source /usr/local/Ascend/cann/ascend-toolkit/set_env.sh' >> /etc/bash.bashrc && \
-    echo 'source /usr/local/Ascend/cann/nnal/atb/set_env.sh' >> /etc/bash.bashrc
-
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/bin/bash"]
 ```
 
-### entrypoint.sh
 
-```bash
-#!/bin/bash
-set -e
-
-# 激活昇腾环境
-source /usr/local/Ascend/cann/ascend-toolkit/set_env.sh
-source /usr/local/Ascend/cann/nnal/atb/set_env.sh
-
-# 传递并执行主程序命令
-exec "$@"
-```
-
-但目前这一过程fail
 
 
 ### 构建镜像
 
 ```bash
-docker build -t ms_worker_daft:v2 .
+docker build -t demo:v2 .
 docker images
 ```
 
-确认镜像存在：
+如果 Ray worker 使用的是本地镜像，需要把镜像导入到 K3s 使用的 containerd 中。
 
-```bash
-docker images | grep ms_worker_daft
-```
 
-## 2. 将镜像导入 K3s
 
-如果 Ray worker 使用的是本地镜像，并且 `imagePullPolicy` 配置为 `IfNotPresent`，需要把镜像导入到 K3s 使用的 containerd 中。
-
-```bash
-docker save ms_worker_daft:v2 | k3s ctr images import -
-```
-
-如果有多个 NPU worker 节点，需要在每个可能调度 worker pod 的节点上执行导入操作。
 
 ## 3. 导出 RayCluster 配置
 
