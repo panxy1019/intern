@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="680" viewBox="0 0 1100 680" role="img" aria-labelledby="title desc">
+  <title id="title">Ray on Kubernetes 架构图</title>
+  <desc id="desc">KubeRay Operator 根据 RayCluster 创建 Head Pod 和 Worker Pod，Kubernetes 负责节点调度和 NPU 设备分配。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#0f766e" />
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.12" />
+    </filter>
+    <style>
+      .bg { fill: #f8fafc; }
+      .cluster { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; filter: url(#shadow); }
+      .control { fill: #ecfeff; stroke: #0891b2; stroke-width: 2; }
+      .operator { fill: #fef9c3; stroke: #ca8a04; stroke-width: 2; }
+      .head { fill: #eef6ff; stroke: #2563eb; stroke-width: 2; }
+      .worker { fill: #f0fdf4; stroke: #16a34a; stroke-width: 2; }
+      .npu { fill: #fff7ed; stroke: #f97316; stroke-width: 2; }
+      .label { font-family: Arial, "Microsoft YaHei", sans-serif; fill: #0f172a; font-size: 24px; font-weight: 700; }
+      .text { font-family: Arial, "Microsoft YaHei", sans-serif; fill: #334155; font-size: 18px; }
+      .small { font-family: Arial, "Microsoft YaHei", sans-serif; fill: #475569; font-size: 15px; }
+      .arrow { stroke: #0f766e; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .soft-arrow { stroke: #64748b; stroke-width: 2.5; fill: none; stroke-dasharray: 8 8; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1100" height="680" rx="28" />
+  <text x="550" y="58" text-anchor="middle" class="label" font-size="30">Ray on Kubernetes / KubeRay</text>
+  <text x="550" y="88" text-anchor="middle" class="text">Kubernetes 管 Pod 与设备，Ray 管分布式任务调度</text>
+
+  <rect x="60" y="125" width="980" height="505" rx="22" class="cluster" />
+  <text x="105" y="168" class="label">Kubernetes Cluster</text>
+
+  <rect x="110" y="210" width="250" height="150" rx="18" class="control" />
+  <text x="235" y="250" text-anchor="middle" class="label">RayCluster CRD</text>
+  <text x="235" y="285" text-anchor="middle" class="small">声明 headGroupSpec</text>
+  <text x="235" y="313" text-anchor="middle" class="small">声明 workerGroupSpecs</text>
+  <text x="235" y="341" text-anchor="middle" class="small">声明资源与镜像</text>
+
+  <rect x="430" y="210" width="250" height="150" rx="18" class="operator" />
+  <text x="555" y="250" text-anchor="middle" class="label">KubeRay Operator</text>
+  <text x="555" y="285" text-anchor="middle" class="small">监听 RayCluster</text>
+  <text x="555" y="313" text-anchor="middle" class="small">创建 Service / Pod</text>
+  <text x="555" y="341" text-anchor="middle" class="small">协调扩缩容</text>
+
+  <rect x="750" y="210" width="240" height="150" rx="18" class="head" />
+  <text x="870" y="250" text-anchor="middle" class="label">Ray Head Pod</text>
+  <text x="870" y="285" text-anchor="middle" class="small">GCS / Scheduler</text>
+  <text x="870" y="313" text-anchor="middle" class="small">Dashboard :8265</text>
+  <text x="870" y="341" text-anchor="middle" class="small">Job Submission</text>
+
+  <rect x="155" y="445" width="310" height="140" rx="18" class="worker" />
+  <text x="310" y="485" text-anchor="middle" class="label">Worker Pod</text>
+  <text x="310" y="520" text-anchor="middle" class="small">Ray worker process</text>
+  <text x="310" y="548" text-anchor="middle" class="small">resources: {"NPU": 8}</text>
+
+  <rect x="635" y="445" width="310" height="140" rx="18" class="npu" />
+  <text x="790" y="485" text-anchor="middle" class="label">NPU Node</text>
+  <text x="790" y="520" text-anchor="middle" class="small">Ascend Driver / CANN / ATB</text>
+  <text x="790" y="548" text-anchor="middle" class="small">huawei.com/Ascend910</text>
+
+  <path class="arrow" d="M360 285 L427 285" />
+  <path class="arrow" d="M680 285 L747 285" />
+  <path class="arrow" d="M555 360 C500 404, 420 418, 334 445" />
+  <path class="soft-arrow" d="M465 515 C535 515, 560 515, 632 515" />
+  <path class="soft-arrow" d="M790 445 C820 410, 845 385, 865 360" />
+
+  <text x="382" y="266" class="small">watch</text>
+  <text x="700" y="266" class="small">create</text>
+  <text x="424" y="418" class="small">创建 worker</text>
+  <text x="505" y="500" class="small">Pod 申请设备</text>
+  <text x="815" y="412" class="small">注册资源给 Ray</text>
+
+  <rect x="110" y="390" width="880" height="1" fill="#cbd5e1" />
+  <text x="550" y="638" text-anchor="middle" class="small">部署 NPU Ray worker 时，需要同时打通 Kubernetes 设备分配和 Ray 自定义资源调度</text>
+</svg>
