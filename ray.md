@@ -3,7 +3,7 @@
 Ray 是一个面向 Python 的分布式计算框架。它的核心价值是：尽量保留本地 Python 编程体验，同时把函数、类、数据处理、训练和在线服务扩展到多机集群。
 
 ![Ray 集群架构](images/ray-architecture.svg)
-![Uploading ChatGPT Image 2026年6月8日 18_55_31.png…]()
+<img width="1536" height="1024" alt="ChatGPT Image 2026年6月8日 18_55_31" src="https://github.com/user-attachments/assets/25cdf9d7-1cac-4a39-98ed-95d563c08597" />
 
 
 ## 1. Ray 解决什么问题
@@ -129,7 +129,9 @@ Ray 的生态可以分为两层：
 Kubernetes 负责容器生命周期和硬件设备分配，Ray 负责 Python 分布式任务调度。KubeRay 把两者连接起来：用户提交 `RayCluster` 资源后，KubeRay Operator 会创建 head Pod、worker Pod、Service，并在需要时协助扩缩容。
 
 ![Ray on Kubernetes](images/ray-kubernetes.svg)
-images/ChatGPT Image 2026年6月8日 18_55_31.png
+
+<img width="1536" height="1024" alt="ChatGPT Image 2026年6月8日 18_55_31" src="https://github.com/user-attachments/assets/25cdf9d7-1cac-4a39-98ed-95d563c08597" />
+
 在 Kubernetes 中使用 Ray 时，可以把责任边界理解为：
 
 - Kubernetes 决定 Pod 在哪台机器上运行。
