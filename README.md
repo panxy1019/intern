@@ -65,7 +65,7 @@ chmod +x shareimages.sh
 
 
 
-## 3. RayCluster 核心配置示例
+## 2 RayCluster 核心配置示例
 
 下面是整理后的关键配置。核心点包括：
 
