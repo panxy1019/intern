@@ -3,6 +3,8 @@
 Ray 是一个面向 Python 的分布式计算框架。它的核心价值是：尽量保留本地 Python 编程体验，同时把函数、类、数据处理、训练和在线服务扩展到多机集群。
 
 ![Ray 集群架构](images/ray-architecture.svg)
+![Uploading ChatGPT Image 2026年6月8日 18_55_31.png…]()
+
 
 ## 1. Ray 解决什么问题
 
