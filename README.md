@@ -42,6 +42,9 @@ source /usr/local/Ascend/cann/nnal/atb/set_env.sh
 exec "$@"
 ```
 
+但目前这一过程fail
+
+
 ### 构建镜像
 
 ```bash
@@ -63,40 +66,7 @@ docker images | grep ms_worker_daft
 docker save ms_worker_daft:v2 | k3s ctr images import -
 ```
 
-如果有多个 NPU worker 节点，需要在每个可能调度 worker pod 的节点上执行导入操作。多个NPU worker 的话只需要在一个上构建好了images，即可分发到各个worker所在服务器上
-```
-#!/bin/bash
-
-
-
-# 私有仓库的镜像地址
-IMAGE="110.120.0.3:8889/demo:v1"
-
-# 目标节点列表
-NODES=("110.129.0.12" "110.129.0.14" "110.129.0.5")
-
-# 统一密码
-PASS=""
-
-# SSH 附加参数
-SSH_OPTS="-o StrictHostKeyChecking=no"
-
-echo "=== 开始通知所有节点并发拉取镜像 ==="
-
-for NODE in "${NODES[@]}"; do
-  echo "正在触发节点 $NODE 的下载任务..."
-  
-  sshpass -p "$PASS" ssh $SSH_OPTS root@$NODE "k3s ctr images pull --plain-http $IMAGE" &
-done
-wait
-
-echo "=== 所有节点的镜像拉取任务均已成功完成！ ==="
-```
-chmod +x pullimages.sh
-./pullimages.sh
-也可以直接拉去仓库里面的镜像，不过最后先拉到本地服务器以防止在新建worker的时候因为拉取镜像网络问题导致失败
-
-
+如果有多个 NPU worker 节点，需要在每个可能调度 worker pod 的节点上执行导入操作。
 
 ## 3. 导出 RayCluster 配置
 
@@ -243,12 +213,115 @@ spec:
 kubectl apply -f raycluster-npu-pipeline.yaml
 ```
 
-可以在serve00上使用k9s查看 RayCluster 和 Pod 状态，或者也可以在使用 SSH 本地端口转发进入head节点的dashboard查看相关信息（下文有详细介绍）
+查看 RayCluster 和 Pod 状态：
+
+```bash
+kubectl get raycluster raycluster-npu-pipeline -n ray-testfieldv2
+kubectl get pods -n ray-testfieldv2 -o wide
+```
+
+## 5. 进入 Worker 验证环境
+
+找到 NPU worker pod：
+
+```bash
+kubectl get pods -n ray-testfieldv2 | grep npu-workers
+```
+
+进入 worker：
+
+```bash
+kubectl exec -it raycluster-npu-pipeline-npu-workers-worker-shkmc -n ray-testfieldv2 -- bash
+```
+
+加载 CANN 环境并检查动态库路径：
+
+```bash
+source /usr/local/Ascend/cann/ascend-toolkit/set_env.sh
+echo "$LD_LIBRARY_PATH"
+```
+
+如果路径不存在，可以先查找：
+
+```bash
+find /usr/local/Ascend -name set_env.sh
+```
+
+## 6. 在 Head 节点提交 NPU 测试任务
+
+进入 head pod：
+
+```bash
+kubectl get pods -n ray-testfieldv2 | grep head
+kubectl exec -it raycluster-npu-pipeline-head-2nchk -n ray-testfieldv2 -- bash
+```
+
+创建测试脚本：
+
+```bash
+cat << 'EOF' > test_npu.py
+import socket
+
+import ray
 
 
+ray.init(
+    address="auto",
+    runtime_env={
+        "env_vars": {
+            "LD_LIBRARY_PATH": "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/tools/aml/lib64:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/tools/aml/lib64/plugin:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64/plugin/opskernel:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64/plugin/nnengine:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/cann/nnal/atb/8.3.RC1/atb/cxx_abi_1/lib:/usr/local/lib"
+        }
+    },
+)
 
 
-## 5. 常见检查点
+@ray.remote(resources={"NPU": 1})
+def npu_smoke(i: int):
+    # 在 worker 进程内部导入，避免 head 节点缺失依赖
+    import torch
+    import torch_npu
+
+    torch_npu.npu.set_device(0)
+
+    dev_id = torch_npu.npu.current_device()
+    host = socket.gethostname()
+
+    a = torch.randn(1024, 1024, device="npu:0")
+    b = torch.randn(1024, 1024, device="npu:0")
+    c = torch.matmul(a, b)
+
+    return {
+        "task_id": i,
+        "host": host,
+        "npu_id": int(dev_id),
+        "shape": tuple(c.shape),
+    }
+
+
+if __name__ == "__main__":
+    print("开始向集群投递任务...")
+    futures = [npu_smoke.remote(i) for i in range(4)]
+    results = ray.get(futures)
+
+    for res in results:
+        print(
+            f"任务 {res['task_id']} 完成 | "
+            f"节点: {res['host']} | "
+            f"NPU设备ID: {res['npu_id']} | "
+            f"维度: {res['shape']}"
+        )
+EOF
+```
+
+运行测试：
+
+```bash
+python test_npu.py
+```
+
+如果任务成功，会看到多个 Ray task 在 worker 节点上完成矩阵乘法，并返回节点名、NPU 设备 ID 和输出矩阵维度。
+
+## 7. 常见检查点
 
 1. 确认 worker 镜像已经导入到 K3s containerd。
 2. 确认 worker pod 调度到了带 910B3 NPU 的节点。
@@ -257,127 +330,8 @@ kubectl apply -f raycluster-npu-pipeline.yaml
 5. 确认 Ray 中已经注册 `NPU` 资源，可以通过 Ray dashboard 或 Ray API 查看资源。
 6. 如果 `torch_npu` 导入失败，优先检查 conda 环境、CANN 版本、`LD_LIBRARY_PATH` 和镜像内依赖是否一致。
 
-
-
-## 6. 使用 Ray Jobs API提交任务
-只需要把脚本“打包”扔给 Head 节点，Head 节点会自己去执行，你随时可以断开连接或查询状态。
-提交的任务
-```
-import os
-import socket
-import ray
-from collections import Counter
-
-ray.init(
-    runtime_env={
-        "env_vars": {
-            # 保持你的底层依赖路径不变
-            "LD_LIBRARY_PATH": "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/tools/aml/lib64:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/tools/aml/lib64/plugin:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64/plugin/opskernel:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64/plugin/nnengine:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/cann/nnal/atb/8.3.RC1/atb/cxx_abi_1/lib:/usr/local/lib"
-        }
-    }
-)
-
-@ray.remote(resources={"NPU": 1})
-def npu_smoke(i: int):
-    import torch_npu
-    import torch
-
-    # 1. 获取 Ray 分配给当前 Task 的物理 NPU 资源 ID
-    assigned_npus = ray.get_runtime_context().get_resource_ids().get("NPU", [])
-    if assigned_npus:
-        # Ray 返回格式通常是 [('0', 1.0)], 取出卡号
-        ray_npu_id = int(assigned_npus[0][0])
-    else:
-        ray_npu_id = 0
-
-    # 2. 判断 Ray 是否做了环境变量隔离
-    # 如果系统环境变量中已经被 Ray 注入了隔离变量，逻辑设备号固定为 0
-    # 否则，我们使用 Ray 分配的物理 ID 作为当前设备的 ID
-    if "ASCEND_RT_VISIBLE_DEVICES" in os.environ:
-        local_dev_id = 0
-    else:
-        local_dev_id = ray_npu_id
-
-    # 3. 昇腾设备设置
-    torch_npu.npu.set_device(local_dev_id)
-    dev_id = torch_npu.npu.current_device()
-    host = socket.gethostname()
-
-    # 4. 在正确绑定的 NPU 上进行矩阵运算验证
-    a = torch.randn(1024, 1024, device=f"npu:{local_dev_id}")
-    b = torch.randn(1024, 1024, device=f"npu:{local_dev_id}")
-    c = torch.matmul(a, b)
-
-    return {
-        "task_id": i,
-        "host": host,
-        "ray_npu_id": ray_npu_id,
-        "shape": tuple(c.shape)
-    }
-
-if __name__ == "__main__":
-    # 总共有 2台机器 * 8张卡 = 16张 NPU。
-    # 我们投递 32 个任务，这样可以确保每张卡分到 2 个任务，完整测试集群的调度和计算能力。
-    TOTAL_TASKS = 32
-    print(f"🚀 开始向集群投递 {TOTAL_TASKS} 个分布式 NPU 任务...")
-
-    futures = [npu_smoke.remote(i) for i in range(TOTAL_TASKS)]
-    results = ray.get(futures)
-
-    # 统计数据
-    host_counter = Counter()
-    npu_usage = Counter()
-
-    print("\n" + "="*60)
-    print("📊 任务执行明细:")
-    for res in results:
-        host = res['host']
-        npu_id = res['ray_npu_id']
-        host_counter[host] += 1
-        npu_usage[f"{host} -> NPU:{npu_id}"] += 1
-        print(f"✅ 任务 {res['task_id']:>2d} 完成 | 节点: {host:<30} | 物理NPU ID: {npu_id} | 维度: {res['shape']}")
-
-    print("\n" + "="*60)
-    print("📈 节点负载统计:")
-    for host, count in host_counter.items():
-        print(f"  - 机器 [{host}]: 执行了 {count} 个任务")
-
-    print("\n📈 每张 NPU 卡负载统计:")
-    for key, count in sorted(npu_usage.items()):
-        print(f"  - {key}: 执行了 {count} 个任务")
-    print("="*60 + "\n")
-```
-通过python执行
-```
-from ray.job_submission import JobSubmissionClient
-
-# 1. 连接到 Head 节点的 Dashboard 端口 (不是 6379 也不是 10001)
-client = JobSubmissionClient("http://10.42.0.21:8265")
-
-# 2. 提交任务python submit_job.py
-job_id = client.submit_job(
-    # entrypoint 是集群将要执行的命令
-    entrypoint="python test_npu.py",
-    # runtime_env 的 working_dir 会自动把 serve00 上的代码文件打包传到集群上
-    runtime_env={
-        "working_dir": "./",  # 假设 test_npu.py 和提交脚本在同一个目录
-    }
-)
-
-print(f"✅ 任务已成功提交！Job ID: {job_id}")
-```
-
-
-使用 SSH 本地端口转发
-ssh -L 8265:10.42.0.21:8265 root@110.120.0.3
-
-输入密码登录成功后，保持这个终端窗口不要关闭。在地址栏输入：http://localhost:8265 或者 http://127.0.0.1:8265
-即可打开Ray Dashboard 查看或监控已提交的任务。
-
-## 7 TODO
+## 8. TODO
 
 1. Ray 提交任务时，目前仍然需要手动注入昇腾相关环境变量，尤其是 `LD_LIBRARY_PATH`。后续需要把这部分环境变量固化到镜像、Ray runtime environment 或 worker 启动脚本中，减少每次提交任务时的手工配置。
-
-
-
-
+2. 增加多 worker 场景测试，将 `npu-workers` 扩展到多个副本，验证 Ray task 是否能按 `NPU` 资源正确分发到不同 worker 节点，并观察调度、资源占用和任务执行结果。
+3. 精简最开始的 worker 镜像，去掉无关依赖、缓存和临时文件，降低镜像体积，提升镜像分发、导入和 worker 启动速度。
