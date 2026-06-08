@@ -129,7 +129,7 @@ Ray 的生态可以分为两层：
 Kubernetes 负责容器生命周期和硬件设备分配，Ray 负责 Python 分布式任务调度。KubeRay 把两者连接起来：用户提交 `RayCluster` 资源后，KubeRay Operator 会创建 head Pod、worker Pod、Service，并在需要时协助扩缩容。
 
 ![Ray on Kubernetes](images/ray-kubernetes.svg)
-
+images/ChatGPT Image 2026年6月8日 18_55_31.png
 在 Kubernetes 中使用 Ray 时，可以把责任边界理解为：
 
 - Kubernetes 决定 Pod 在哪台机器上运行。
