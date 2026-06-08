@@ -63,38 +63,37 @@ docker images | grep ms_worker_daft
 docker save ms_worker_daft:v2 | k3s ctr images import -
 ```
 
-如果有多个 NPU worker 节点，需要在每个可能调度 worker pod 的节点上执行导入操作。多个NPU worker 的话只需要在一个上构建好了images，即可并行分发到各个worker所在服务器上
+如果有多个 NPU worker 节点，需要在每个可能调度 worker pod 的节点上执行导入操作。多个NPU worker 的话只需要在一个上构建好了images，即可分发到各个worker所在服务器上
 ```
 #!/bin/bash
 
-# 填写你要传输的镜像名
-IMAGE="demo:v1"
 
-# 填写目标节点 IP
-NODE1="110.129.0.12"
-NODE2="110.129.0.14"
-NODE3="110.129.0.5"
 
-# 填写对应的密码 
-PASS1=''
-PASS2=''
-PASS3=''
+# 私有仓库的镜像地址
+IMAGE="110.120.0.3:8889/demo:v1"
 
-# ssh 附加参数：禁止主机指纹验证
+# 目标节点列表
+NODES=("110.129.0.12" "110.129.0.14" "110.129.0.5")
+
+# 统一密码
+PASS=""
+
+# SSH 附加参数
 SSH_OPTS="-o StrictHostKeyChecking=no"
 
-echo "=== 开始从 Docker 单次读取磁盘，并行向 3 个 K3s 节点传输镜像 ==="
+echo "=== 开始通知所有节点并发拉取镜像 ==="
 
-# 【核心修改点】增加了一个 >(...) 分支。
-# pv 监控 21G -> tee 复制给 NODE1 -> tee 复制给 NODE2 -> 主管道直连 NODE3
-docker save $IMAGE | \
-  pv -s 21G | \
-  tee >(sshpass -p "$PASS1" ssh $SSH_OPTS root@$NODE1 "k3s ctr images import -") \
-      >(sshpass -p "$PASS2" ssh $SSH_OPTS root@$NODE2 "k3s ctr images import -") \
-      | sshpass -p "$PASS3" ssh $SSH_OPTS root@$NODE3 "k3s ctr images import -"
+for NODE in "${NODES[@]}"; do
+  echo "正在触发节点 $NODE 的下载任务..."
+  
+  sshpass -p "$PASS" ssh $SSH_OPTS root@$NODE "k3s ctr images pull --plain-http $IMAGE" &
+done
+wait
 
-echo "=== 所有节点并行传输完成 ==="
+echo "=== 所有节点的镜像拉取任务均已成功完成！ ==="
 ```
+chmod +x pullimages.sh
+./pullimages.sh
 也可以直接拉去仓库里面的镜像，不过最后先拉到本地服务器以防止在新建worker的时候因为拉取镜像网络问题导致失败
 
 
