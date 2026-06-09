@@ -258,57 +258,137 @@ http://127.0.0.1:8265
 提交任务前，可以准备一个简单的 `test_daft_env.py`，用来确认 Ray 能把任务调度到带 NPU 资源的 worker 上，并且容器内可以导入 `daft`。
 
 ```python
-import subprocess
-
+import os
+import socket
 import ray
+from collections import Counter
 
+ray.init(
+    runtime_env={
+        "env_vars": {
+            # 保持你的底层依赖路径不变
+            "LD_LIBRARY_PATH": "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/tools/aml/lib64:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/tools/aml/lib64/plugin:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64/plugin/opskernel:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64/plugin/nnengine:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/cann/nnal/atb/8.3.RC1/atb/cxx_abi_1/lib:/usr/local/lib"
+        }
+    }
+)
 
 @ray.remote(resources={"NPU": 1})
-def check_worker_env():
-    import daft
+def npu_smoke(i: int):
+    import torch_npu
+    import torch
 
-    result = subprocess.run(
-        ["bash", "-lc", "npu-smi info | head -40"],
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    # 1. 获取 Ray 分配给当前 Task 的物理 NPU 资源 ID
+    assigned_npus = ray.get_runtime_context().get_resource_ids().get("NPU", [])
+    if assigned_npus:
+        # Ray 返回格式通常是 [('0', 1.0)], 取出卡号
+        ray_npu_id = int(assigned_npus[0][0])
+    else:
+        ray_npu_id = 0
+
+    # 2. 判断 Ray 是否做了环境变量隔离
+    # 如果系统环境变量中已经被 Ray 注入了隔离变量，逻辑设备号固定为 0
+    # 否则，我们使用 Ray 分配的物理 ID 作为当前设备的 ID
+    if "ASCEND_RT_VISIBLE_DEVICES" in os.environ:
+        local_dev_id = 0
+    else:
+        local_dev_id = ray_npu_id
+
+    # 3. 昇腾设备
+    torch_npu.npu.set_device(local_dev_id)
+    dev_id = torch_npu.npu.current_device()
+    host = socket.gethostname()
+
+    # 4. 在正确绑定的 NPU 上进行矩阵运算验证
+    a = torch.randn(1024, 1024, device=f"npu:{local_dev_id}")
+    b = torch.randn(1024, 1024, device=f"npu:{local_dev_id}")
+    c = torch.matmul(a, b)
+
     return {
-        "daft_version": getattr(daft, "__version__", "unknown"),
-        "npu_smi": result.stdout or result.stderr,
+        "task_id": i,
+        "host": host,
+        "ray_npu_id": ray_npu_id,
+        "shape": tuple(c.shape)
     }
 
+if __name__ == "__main__":
+    # 总共有 2台机器 * 8张卡 = 16张 NPU。
+    # 我们投递 32 个任务，这样可以确保每张卡分到 2 个任务，完整测试集群的调度和计算能力。
+    TOTAL_TASKS = 32
+    print(f"🚀 开始向集群投递 {TOTAL_TASKS} 个分布式 NPU 任务...")
 
-ray.init()
-print(ray.get(check_worker_env.remote()))
+    futures = [npu_smoke.remote(i) for i in range(TOTAL_TASKS)]
+    results = ray.get(futures)
+
+    # 统计数据
+    host_counter = Counter()
+    npu_usage = Counter()
+
+    print("\n" + "="*60)
+    print("📊 任务执行明细:")
+    for res in results:
+        host = res['host']
+        npu_id = res['ray_npu_id']
+        host_counter[host] += 1
+        npu_usage[f"{host} -> NPU:{npu_id}"] += 1
+        print(f"✅ 任务 {res['task_id']:>2d} 完成 | 节点: {host:<30} | 物理NPU ID: {npu_id} | 维度: {res['shape']}")
+
+    print("\n" + "="*60)
+    print("📈 节点负载统计:")
+    for host, count in host_counter.items():
+        print(f"  - 机器 [{host}]: 执行了 {count} 个任务")
+
+    print("\n📈 每张 NPU 卡负载统计:")
+    for key, count in sorted(npu_usage.items()):
+        print(f"  - {key}: 执行了 {count} 个任务")
+    print("="*60 + "\n")
+
+
+
+
 ```
 
 再通过 Ray Job Submission API 提交：
 
 ```python
+import time
 from ray.job_submission import JobSubmissionClient
 
+# 1. 连接到 Head 节点的 Dashboard 端口
+client = JobSubmissionClient("http://10.42.0.23:8265")
 
-client = JobSubmissionClient("http://127.0.0.1:8265")
+print("🔄 正在打包并提交任务到 Ray 集群...")
 
+# 2. 提交任务
 job_id = client.submit_job(
+    # 集群执行的命令
     entrypoint="python test_daft_env.py",
-    runtime_env={"working_dir": "./"},
+    # runtime_env 的 working_dir 会把当前目录 (包括 test_npu.py) 打包传给集群
+    runtime_env={
+        "working_dir": "./"
+    }
 )
 
-print(f"Job ID: {job_id}")
-print("Streaming logs:")
+print(f"✅ 任务已成功提交！")
+print(f"🆔 Job ID: {job_id}")
+print("-" * 50)
+print("📜 以下是集群实时传回的运行日志：\n")
 
+# 3. 实时跟踪并打印集群的日志输出
 try:
     for line in client.tail_job_logs(job_id):
         print(line, end="")
 except KeyboardInterrupt:
-    print()
-    print("Local log streaming stopped. The Ray job may still be running in the cluster.")
-    print(f"Stop it with: ray job stop {job_id} --address http://127.0.0.1:8265")
+    print("\n\n⚠️ 你在本地按下了 Ctrl+C。")
+    print("ℹ️ 任务仍然在集群上继续运行。如果想停止它，请使用：")
+    print(f"    ray job stop {job_id} --address http://10.42.0.21:8265")
 
+# 4. 获取最终状态
 status = client.get_job_status(job_id)
-print(f"Final status: {status}")
+print("\n" + "-" * 50)
+print(f"🏁 任务最终状态: {status}")
+
+
+
 ```
 
 如果测试成功，通常能同时看到三类信息：
