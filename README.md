@@ -19,7 +19,6 @@ Ray 的基础概念可以参考 [Ray 基础知识整理](ray.md)。
 - NPU 节点已经安装 Ascend 驱动、CANN/ATB 运行环境和 NPU device plugin。
 - NPU 节点带有可用于调度的标签，例如 `node.kubernetes.io/npu.chip.name=910B3`。
 - 私有镜像仓库 `110.120.0.3:8889` 能被所有 K3s server/agent 节点访问。
-- worker 基础镜像 `ms_verl_ful:v1` 中已经包含 `ms` conda 环境。
 
 可以先检查节点标签和 NPU 扩展资源：
 
