@@ -258,89 +258,126 @@ http://127.0.0.1:8265
 提交任务前，可以准备一个简单的 `test_daft_env.py`，用来确认 Ray 能把任务调度到带 NPU 资源的 worker 上，并且容器内可以导入 `daft`。
 
 ```python
-import os
-import socket
+import time
+from typing import Any, Dict
+
 import ray
-from collections import Counter
 
-ray.init(
-    runtime_env={
-        "env_vars": {
-            # 保持你的底层依赖路径不变
-            "LD_LIBRARY_PATH": "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/tools/aml/lib64:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/tools/aml/lib64/plugin:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64/plugin/opskernel:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64/plugin/nnengine:/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/cann/nnal/atb/8.3.RC1/atb/cxx_abi_1/lib:/usr/local/lib"
-        }
-    }
-)
 
-@ray.remote(resources={"NPU": 1})
-def npu_smoke(i: int):
-    import torch_npu
-    import torch
+# ======================================================
+# 每个 Actor 持有一个 vLLM Engine
+# ======================================================
+class VLLMEmbeddingPredictor:
 
-    # 1. 获取 Ray 分配给当前 Task 的物理 NPU 资源 ID
-    assigned_npus = ray.get_runtime_context().get_resource_ids().get("NPU", [])
-    if assigned_npus:
-        # Ray 返回格式通常是 [('0', 1.0)], 取出卡号
-        ray_npu_id = int(assigned_npus[0][0])
-    else:
-        ray_npu_id = 0
+    def __init__(self):
+        from vllm import LLM
 
-    # 2. 判断 Ray 是否做了环境变量隔离
-    # 如果系统环境变量中已经被 Ray 注入了隔离变量，逻辑设备号固定为 0
-    # 否则，我们使用 Ray 分配的物理 ID 作为当前设备的 ID
-    if "ASCEND_RT_VISIBLE_DEVICES" in os.environ:
-        local_dev_id = 0
-    else:
-        local_dev_id = ray_npu_id
+        print("🚀 初始化 vLLM Engine...")
 
-    # 3. 昇腾设备
-    torch_npu.npu.set_device(local_dev_id)
-    dev_id = torch_npu.npu.current_device()
-    host = socket.gethostname()
+        self.llm = LLM(
+            model="/tmp/ms_cache/qwen/Qwen2-0___5B",
+            task="embed",
+            trust_remote_code=True,
+            enforce_eager=True,
+            max_model_len=512,
+            gpu_memory_utilization=0.9,
+        )
 
-    # 4. 在正确绑定的 NPU 上进行矩阵运算验证
-    a = torch.randn(1024, 1024, device=f"npu:{local_dev_id}")
-    b = torch.randn(1024, 1024, device=f"npu:{local_dev_id}")
-    c = torch.matmul(a, b)
+    def __call__(self, batch: Any) -> Dict[str, list]:
+        import numpy as np
+        texts = batch["text"].tolist()
 
-    return {
-        "task_id": i,
-        "host": host,
-        "ray_npu_id": ray_npu_id,
-        "shape": tuple(c.shape)
-    }
+        outputs = self.llm.embed(texts)
+
+        # vLLM embed 输出
+        embeddings = [x.outputs.embedding for x in outputs]
+        return {
+    "text": texts,
+    "embedding": np.array(embeddings, dtype=np.float32), # 强制类型转换
+}
+
+# ======================================================
+# Main
+# ======================================================
+def main():
+
+    ray.init(
+        address="auto",
+        runtime_env={
+            "env_vars": {
+                "LD_LIBRARY_PATH": (
+                    "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/hccl/lib64:"
+                    "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/aarch64-linux/lib64:"
+                    "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/fwkacllib/lib64:"
+                    "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/tools/aml/lib64:"
+                    "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/tools/aml/lib64/plugin:"
+                    "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64:"
+                    "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64/plugin/opskernel:"
+                    "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/lib64/plugin/nnengine:"
+                    "/usr/local/Ascend/cann/ascend-toolkit/8.3.RC1/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:"
+                    "/usr/local/Ascend/driver/lib64/driver:"
+                    "/usr/local/Ascend/driver/lib64/common:"
+                    "/usr/local/Ascend/driver/lib64:"
+                    "/usr/local/Ascend/cann/nnal/atb/8.3.RC1/atb/cxx_abi_1/lib:"
+                    "/usr/local/lib"
+                )
+            }
+        },
+    )
+
+    print("=" * 60)
+    print("Connected!")
+    print(ray.available_resources())
+    print("=" * 60)
+
+    # --------------------------------------------------
+    # 生成测试数据
+    # --------------------------------------------------
+
+    num_records = 100000
+
+    dataset = ray.data.from_items(
+        [{"text": f"这是第{i}条测试文本"} for i in range(num_records)],
+        override_num_blocks=24,
+    )
+
+    print("Dataset Ready.")
+
+    start = time.time()
+
+    # --------------------------------------------------
+    # 分布式 Embedding
+    # --------------------------------------------------
+
+    embedded = dataset.map_batches(
+        VLLMEmbeddingPredictor,
+        batch_format="pandas",
+
+        # 每张卡一个 Actor
+        concurrency=16,
+
+        # 每批大小
+        batch_size=128,
+
+        # 每个 Actor 占一个 NPU
+        resources={
+            "NPU": 1
+        },
+    )
+
+    total = embedded.count()
+
+    elapsed = time.time() - start
+
+    print("=" * 60)
+    print(f"Total Rows : {total}")
+    print(f"Elapsed    : {elapsed:.2f}s")
+    print(f"Throughput : {total/elapsed:.2f} req/s")
+    print("=" * 60)
+
 
 if __name__ == "__main__":
-    # 总共有 2台机器 * 8张卡 = 16张 NPU。
-    # 我们投递 32 个任务，这样可以确保每张卡分到 2 个任务，完整测试集群的调度和计算能力。
-    TOTAL_TASKS = 32
-    print(f"🚀 开始向集群投递 {TOTAL_TASKS} 个分布式 NPU 任务...")
-
-    futures = [npu_smoke.remote(i) for i in range(TOTAL_TASKS)]
-    results = ray.get(futures)
-
-    # 统计数据
-    host_counter = Counter()
-    npu_usage = Counter()
-
-    print("\n" + "="*60)
-    print("📊 任务执行明细:")
-    for res in results:
-        host = res['host']
-        npu_id = res['ray_npu_id']
-        host_counter[host] += 1
-        npu_usage[f"{host} -> NPU:{npu_id}"] += 1
-        print(f"✅ 任务 {res['task_id']:>2d} 完成 | 节点: {host:<30} | 物理NPU ID: {npu_id} | 维度: {res['shape']}")
-
-    print("\n" + "="*60)
-    print("📈 节点负载统计:")
-    for host, count in host_counter.items():
-        print(f"  - 机器 [{host}]: 执行了 {count} 个任务")
-
-    print("\n📈 每张 NPU 卡负载统计:")
-    for key, count in sorted(npu_usage.items()):
-        print(f"  - {key}: 执行了 {count} 个任务")
-    print("="*60 + "\n")
+    main()
 
 
 
