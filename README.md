@@ -364,7 +364,22 @@ def main():
             "NPU": 1
         },
     )
+    results = embedded.take_all()
 
+    # 保存路径：改成你提交端机器上你想放的位置
+    output_dir = "/ray_job_test/vllm"
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, "embeddings.jsonl")
+
+    df = pd.DataFrame(results)
+
+    # embedding 可能是 numpy array，转成纯 Python list，避免 JSON 序列化失败
+    if "embedding" in df.columns:
+        df["embedding"] = df["embedding"].apply(
+            lambda x: x.tolist() if hasattr(x, "tolist") else x
+        )
+
+    df.to_json(output_file, orient="records", lines=True, force_ascii=False)
     total = embedded.count()
 
     elapsed = time.time() - start
