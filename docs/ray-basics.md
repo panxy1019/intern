@@ -2,7 +2,7 @@
 
 Ray 是一个面向 Python 的分布式计算框架。它的核心价值是：尽量保留本地 Python 编程体验，同时把函数、类、数据处理、训练和在线服务扩展到多机集群。
 
-<img width="1620" height="971" alt="ChatGPT Image 2026年6月8日 19_02_00" src="https://github.com/user-attachments/assets/668a62f2-e6aa-42d1-9ca1-d17579f05fed" />
+![Ray 核心能力总览](../assets/images/ray-core-overview.png)
 
 
 
@@ -138,7 +138,7 @@ Ray 的生态可以分为两层：
 Kubernetes 负责容器生命周期和硬件设备分配，Ray 负责 Python 分布式任务调度。KubeRay 把两者连接起来：用户提交 `RayCluster` 资源后，KubeRay Operator 会创建 head Pod、worker Pod、Service，并在需要时协助扩缩容。
 
 
-<img width="1536" height="1024" alt="ChatGPT Image 2026年6月8日 18_55_31" src="https://github.com/user-attachments/assets/25cdf9d7-1cac-4a39-98ed-95d563c08597" />
+![Ray 与 Kubernetes 的职责边界](../assets/images/ray-kubernetes-overview.png)
 
 在 Kubernetes 中使用 Ray 时，可以把责任边界理解为：
 
@@ -158,7 +158,8 @@ RayCluster 的优点是把 Ray 集群的生命周期和 Kubernetes 的资源管�
 - 适合异构硬件管理：对于 NPU/GPU 混合集群，可以把不同 worker group 绑定到不同节点标签和资源类型，避免任务落到错误硬件上。
 
 对于 NPU 场景，最容易混淆的是“Pod 拿到 NPU”和“Ray task 使用 NPU”不是同一件事。前者依赖 Kubernetes 扩展资源，后者依赖 Ray 自定义资源。两层资源声明都正确，任务才能稳定落到 NPU worker 上。
-<img width="1536" height="1024" alt="ChatGPT Image 2026年6月8日 19_16_21" src="https://github.com/user-attachments/assets/43ec9340-4b5f-483a-8771-bd83da315aed" />
+
+![Ray 自定义资源调度示意](../assets/images/ray-resource-scheduling.png)
 
 
 ## 8. 常用命令

@@ -1,8 +1,7 @@
 import time
 from typing import Any, Dict
-import os
+
 import ray
-import pandas as pd
 
 # ======================================================
 # 每个 Actor 持有一个 vLLM Engine
@@ -11,8 +10,8 @@ class VLLMEmbeddingPredictor:
 
     def __init__(self):
         from vllm import LLM
-        import os
-        print("🚀 初始化 vLLM Engine...")
+
+        print("初始化 vLLM Engine...")
 
         self.llm = LLM(
             model="/tmp/ms_cache/qwen/Qwen2-0___5B",
@@ -105,13 +104,10 @@ def main():
     embedded = dataset.map_batches(
         VLLMEmbeddingPredictor,
         batch_format="pandas",
-        concurrency=23,       # 每张卡一个 Actor
-        batch_size=1024,      # 每批大小，保持大 Batch 以打满 NPU
+        concurrency=23,  # 每张卡一个 Actor
+        batch_size=1024,  # 每批大小，保持大 Batch 以打满 NPU
         resources={"NPU": 1},
     )
-
-
-
 
     total = embedded.count()
     elapsed = time.time() - start

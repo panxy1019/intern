@@ -1,7 +1,9 @@
 # K8s/K3s 集群启动昇腾 NPU Ray Worker 记录
 
 本文记录如何在 K8s/K3s 集群中为 `RayCluster` 启动昇腾 NPU worker 节点。内容覆盖 worker 镜像准备、镜像分发、KubeRay 配置、任务提交验证，以及常见问题排查。
-<img width="1024" height="1536" alt="ChatGPT Image 2026年6月8日 19_24_34" src="https://github.com/user-attachments/assets/75990451-1405-4d0e-92ec-8d0476376a78" />
+
+![NPU Ray Worker 部署流程](assets/images/npu-ray-worker-overview.png)
+
 这套流程要解决两个层面的调度问题：
 
 1. Kubernetes 要知道哪些节点有 Ascend 910B3 NPU，并把 worker Pod 调度到这些节点。
@@ -9,7 +11,17 @@
 
 如果只完成其中一个层面，集群通常会出现两类问题：Pod 能启动但 Ray 不会分配 NPU 任务，或者 Ray 配置了 NPU 资源但 Kubernetes 没有真正把容器放到 NPU 节点上。
 
-Ray 的基础概念可以参考 [Ray 基础知识整理](ray.md)。
+Ray 的基础概念可以参考 [Ray 基础知识整理](docs/ray-basics.md)。
+
+## 仓库结构
+
+- `README.md`：K8s/K3s 集群启动昇腾 NPU Ray worker 的主流程文档。
+- `docs/ray-basics.md`：Ray 基础概念、资源模型和 Kubernetes 集成说明。
+- `manifests/raycluster-npu-pipeline.yaml`：KubeRay `RayCluster` 配置示例，已去除导出快照中的运行时状态字段。
+- `examples/submit_ray_job.py`：通过 Ray Job Submission API 提交任务的脚本。
+- `examples/vllm_embedding_benchmark.py`：基于 Ray Data + vLLM 的 NPU embedding 测试脚本。
+- `assets/images/`：Markdown 文档使用的 PNG 图片。
+- `assets/diagrams/`：可继续编辑或复用的 SVG 架构图。
 
 ## 0. 环境假设
 
@@ -103,11 +115,11 @@ chmod +x shareimages.sh
 
 ## 3. 配置 RayCluster
 
-下面是整理后的核心配置。这里保留了最关键的字段，方便后续根据集群实际情况继续拆分成独立 YAML 文件。
+下面是整理后的核心配置。仓库中对应文件位于 `manifests/raycluster-npu-pipeline.yaml`，可以根据集群实际情况继续调整。
 
 配置重点如下：
 
-- `metadata.namespace` 使用 `ray-demo`，后续 `kubectl` 命令需要保持一致。
+- `metadata.namespace` 需要和实际命名空间保持一致。本文内联示例使用 `ray-demo`，仓库中的 pipeline 示例文件使用 `ray-testfieldv2`。
 - head 节点通过 `nodeSelector` 固定调度到 `server-00`，方便访问 Dashboard 和 Job Submission 服务。
 - worker 节点通过 `nodeSelector` 调度到 910B3 NPU 节点。
 - worker Pod 通过 `requests/limits` 申请 `huawei.com/Ascend910: "8"`，这是 Kubernetes 层面的设备分配。
@@ -228,8 +240,13 @@ spec:
 应用配置：
 
 ```bash
+# 使用本文内联示例时，可以保存为自己的 YAML 文件后应用。
 kubectl create namespace ray-demo
-kubectl apply -f raycluster-npu-demo.yaml
+kubectl apply -f <your-raycluster-yaml>
+
+# 使用仓库中的 pipeline 示例文件时，注意它的 namespace 是 ray-testfieldv2。
+kubectl create namespace ray-testfieldv2
+kubectl apply -f manifests/raycluster-npu-pipeline.yaml
 ```
 
 查看启动状态：
@@ -255,7 +272,7 @@ ssh -L 8265:10.42.0.23:8265 admin@110.120.0.3
 http://127.0.0.1:8265
 ```
 
-提交任务前，可以准备一个简单的 `test_daft_env.py`，用来确认 Ray 能把任务调度到带 NPU 资源的 worker 上，并且容器内可以导入 `daft`。
+提交任务前，可以准备一个简单的测试脚本。仓库中的 `examples/vllm_embedding_benchmark.py` 用来确认 Ray 能把任务调度到带 NPU 资源的 worker 上，并执行 vLLM embedding 测试。
 
 ```python
 import time
@@ -399,7 +416,7 @@ if __name__ == "__main__":
 
 ```
 
-再通过 Ray Job Submission API 提交：
+再通过 Ray Job Submission API 提交。仓库中对应脚本为 `examples/submit_ray_job.py`：
 
 ```python
 import time
@@ -413,8 +430,8 @@ print("🔄 正在打包并提交任务到 Ray 集群...")
 # 2. 提交任务
 job_id = client.submit_job(
     # 集群执行的命令
-    entrypoint="python test_daft_env.py",
-    # runtime_env 的 working_dir 会把当前目录 (包括 test_npu.py) 打包传给集群
+    entrypoint="python examples/vllm_embedding_benchmark.py",
+    # runtime_env 的 working_dir 会把当前目录和 examples/ 一起打包传给集群
     runtime_env={
         "working_dir": "./"
     }
@@ -446,8 +463,8 @@ print(f"🏁 任务最终状态: {status}")
 如果测试成功，通常能同时看到三类信息：
 
 - Ray job 状态为 `SUCCEEDED`。
-- 任务日志中能打印 `daft_version`。
-- `npu-smi info` 能在 worker 容器内返回 NPU 信息。
+- 任务日志中能打印 Ray 可用资源、处理总量和吞吐。
+- NPU worker 能正常加载 vLLM、模型路径和 Ascend 运行时环境。
 
 ## 5. 常见问题排查
 

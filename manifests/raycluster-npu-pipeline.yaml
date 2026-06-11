@@ -1,15 +1,10 @@
 apiVersion: ray.io/v1
 kind: RayCluster
 metadata:
-  annotations:
-  creationTimestamp: "2026-06-04T06:14:04Z"
-  generation: 36
   labels:
     app.kubernetes.io/instance: raycluster-npu
   name: raycluster-npu-pipeline
   namespace: ray-testfieldv2
-  resourceVersion: "3946931"
-  uid: 21742ff2-81c1-40b4-92b3-84a346db69e8
 spec:
   autoscalerOptions:
     idleTimeoutSeconds: 60
@@ -118,50 +113,3 @@ spec:
         - hostPath:
             path: /usr/local/dcmi
           name: ascend-dcmi
-status:
-  availableWorkerReplicas: 1
-  conditions:
-  - lastTransitionTime: "2026-06-04T09:03:38Z"
-    message: ""
-    reason: HeadPodRunningAndReady
-    status: "True"
-    type: HeadPodReady
-  - lastTransitionTime: "2026-06-04T06:20:50Z"
-    message: All Ray Pods are ready for the first time
-    reason: AllPodRunningAndReadyFirstTime
-    status: "True"
-    type: RayClusterProvisioned
-  - lastTransitionTime: "2026-06-04T06:14:06Z"
-    message: ""
-    reason: RayClusterSuspended
-    status: "False"
-    type: RayClusterSuspended
-  - lastTransitionTime: "2026-06-04T06:14:06Z"
-    message: ""
-    reason: RayClusterSuspending
-    status: "False"
-    type: RayClusterSuspending
-  desiredCPU: "10"
-  desiredGPU: "0"
-  desiredMemory: 40Gi
-  desiredTPU: "0"
-  desiredWorkerReplicas: 1
-  endpoints:
-    client: "10001"
-    dashboard: "8265"
-    gcs-server: "6379"
-    metrics: "8080"
-    serve: "8000"
-  head:
-    podIP: 10.42.0.21
-    podName: raycluster-npu-pipeline-head-2nchk
-    serviceIP: 10.42.0.21
-    serviceName: raycluster-npu-pipeline-head-svc
-  lastUpdateTime: "2026-06-05T02:33:31Z"
-  maxWorkerReplicas: 4
-  minWorkerReplicas: 1
-  observedGeneration: 36
-  readyWorkerReplicas: 1
-  state: ready
-  stateTransitionTimes:
-    ready: "2026-06-04T06:22:19Z"
