@@ -1,0 +1,268 @@
+# DEPRECATED: KubeRay Operator forces Volcano; this is not a deployment entrypoint.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: infra-learning
+---
+apiVersion: ray.io/v1
+kind: RayCluster
+metadata:
+  name: vllm-interactive-lab
+  namespace: infra-learning
+  labels:
+    app.kubernetes.io/name: vllm-interactive-lab
+    app.kubernetes.io/part-of: infra-learning
+spec:
+  rayVersion: "2.48.0"
+  enableInTreeAutoscaling: false
+  headGroupSpec:
+    serviceType: ClusterIP
+    rayStartParams:
+      dashboard-host: "0.0.0.0"
+      num-cpus: "0"
+    template:
+      metadata:
+        labels:
+          app.kubernetes.io/name: vllm-interactive-lab-head
+      spec:
+        nodeSelector:
+          kubernetes.io/arch: amd64
+          kubernetes.io/hostname: server-00
+        tolerations:
+          - key: node-role.kubernetes.io/control-plane
+            operator: Exists
+            effect: NoSchedule
+        containers:
+          - name: ray-head
+            image: 110.120.0.3:8889/mineru/ray-data:py3.11.13-ray2.48.0-daft0.7.19-dagster1.13.13-s3-compress-20260716
+            imagePullPolicy: IfNotPresent
+            resources:
+              requests:
+                cpu: "2"
+                memory: 4Gi
+              limits:
+                cpu: "2"
+                memory: 8Gi
+            volumeMounts:
+              - name: ray-logs
+                mountPath: /tmp/ray
+        volumes:
+          - name: ray-logs
+            emptyDir: {}
+  workerGroupSpecs:
+    # Initial mode: one TP=4 + EP worker on physical NPU 8-11.
+    - groupName: npu-4a
+      replicas: 1
+      minReplicas: 0
+      maxReplicas: 1
+      rayStartParams:
+        num-cpus: "64"
+        resources: '"{\"NPU\": 4, \"VLLM_LAB_4A\": 1}"'
+      template:
+        metadata:
+          annotations:
+            huawei.com/Ascend910: Ascend910-8,Ascend910-9,Ascend910-10,Ascend910-11
+            predicate-time: "1"
+            ray.io/overwrite-container-cmd: "true"
+          labels:
+            infra.learning/npu-group: "8-11"
+        spec:
+          schedulerName: default-scheduler
+          nodeSelector:
+            kubernetes.io/arch: arm64
+            kubernetes.io/hostname: a3-server-00
+            node.kubernetes.io/npu.chip.name: Ascend910
+          containers:
+            - name: ray-worker
+              image: 110.120.0.3:8889/mineru/vllm-ascend-worker:v0.21.0rc1-a3-20260713-s3
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/bash", "-lc", "--"]
+              args:
+                - |
+                  set -euo pipefail
+                  if [ -f /usr/local/Ascend/driver/bin/setenv.bash ]; then
+                    source /usr/local/Ascend/driver/bin/setenv.bash
+                  fi
+                  ulimit -n 65536
+                  export LD_LIBRARY_PATH="/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:${LD_LIBRARY_PATH:-}"
+                  eval "$KUBERAY_GEN_RAY_START_CMD"
+              env:
+                - name: ASCEND_VISIBLE_DEVICES
+                  value: "8,9,10,11"
+                - name: ASCEND_RT_VISIBLE_DEVICES
+                  value: "8,9,10,11"
+              resources:
+                requests:
+                  cpu: "64"
+                  memory: 256Gi
+                  huawei.com/Ascend910: "4"
+                limits:
+                  cpu: "64"
+                  memory: 256Gi
+                  huawei.com/Ascend910: "4"
+              securityContext:
+                privileged: true
+              volumeMounts:
+                - name: model-weights
+                  mountPath: /models/Qwen3.6-35B-A3B-w8a8
+                  readOnly: true
+                - name: ray-logs
+                  mountPath: /tmp/ray
+                - name: shared-mem
+                  mountPath: /dev/shm
+                - name: ascend-driver
+                  mountPath: /usr/local/Ascend/driver
+                  readOnly: true
+                - name: ascend-dcmi
+                  mountPath: /usr/local/dcmi
+                  readOnly: true
+                - name: npu-smi
+                  mountPath: /usr/local/bin/npu-smi
+                  readOnly: true
+          volumes:
+            - name: model-weights
+              hostPath: {path: /home/admin/models/Qwen3.6-35B-A3B-w8a8, type: Directory}
+            - name: ray-logs
+              emptyDir: {}
+            - name: shared-mem
+              emptyDir: {medium: Memory, sizeLimit: 64Gi}
+            - name: ascend-driver
+              hostPath: {path: /usr/local/Ascend/driver}
+            - name: ascend-dcmi
+              hostPath: {path: /usr/local/dcmi}
+            - name: npu-smi
+              hostPath: {path: /usr/local/bin/npu-smi, type: File}
+    # Disabled initially. It can run together with npu-4a as a second TP=4 instance.
+    - groupName: npu-4b
+      replicas: 0
+      minReplicas: 0
+      maxReplicas: 1
+      rayStartParams:
+        num-cpus: "64"
+        resources: '"{\"NPU\": 4, \"VLLM_LAB_4B\": 1}"'
+      template:
+        metadata:
+          annotations:
+            huawei.com/Ascend910: Ascend910-12,Ascend910-13,Ascend910-14,Ascend910-15
+            predicate-time: "1"
+            ray.io/overwrite-container-cmd: "true"
+          labels:
+            infra.learning/npu-group: "12-15"
+        spec:
+          schedulerName: default-scheduler
+          nodeSelector: {kubernetes.io/arch: arm64, kubernetes.io/hostname: a3-server-00, node.kubernetes.io/npu.chip.name: Ascend910}
+          containers:
+            - name: ray-worker
+              image: 110.120.0.3:8889/mineru/vllm-ascend-worker:v0.21.0rc1-a3-20260713-s3
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/bash", "-lc", "--"]
+              args:
+                - |
+                  set -euo pipefail
+                  source /usr/local/Ascend/driver/bin/setenv.bash
+                  ulimit -n 65536
+                  export LD_LIBRARY_PATH="/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:${LD_LIBRARY_PATH:-}"
+                  eval "$KUBERAY_GEN_RAY_START_CMD"
+              env:
+                - {name: ASCEND_VISIBLE_DEVICES, value: "12,13,14,15"}
+                - {name: ASCEND_RT_VISIBLE_DEVICES, value: "12,13,14,15"}
+              resources:
+                requests: {cpu: "64", memory: 256Gi, huawei.com/Ascend910: "4"}
+                limits: {cpu: "64", memory: 256Gi, huawei.com/Ascend910: "4"}
+              securityContext: {privileged: true}
+              volumeMounts:
+                - {name: model-weights, mountPath: /models/Qwen3.6-35B-A3B-w8a8, readOnly: true}
+                - {name: ray-logs, mountPath: /tmp/ray}
+                - {name: shared-mem, mountPath: /dev/shm}
+                - {name: ascend-driver, mountPath: /usr/local/Ascend/driver, readOnly: true}
+                - {name: ascend-dcmi, mountPath: /usr/local/dcmi, readOnly: true}
+                - {name: npu-smi, mountPath: /usr/local/bin/npu-smi, readOnly: true}
+          volumes:
+            - {name: model-weights, hostPath: {path: /home/admin/models/Qwen3.6-35B-A3B-w8a8, type: Directory}}
+            - {name: ray-logs, emptyDir: {}}
+            - {name: shared-mem, emptyDir: {medium: Memory, sizeLimit: 64Gi}}
+            - {name: ascend-driver, hostPath: {path: /usr/local/Ascend/driver}}
+            - {name: ascend-dcmi, hostPath: {path: /usr/local/dcmi}}
+            - {name: npu-smi, hostPath: {path: /usr/local/bin/npu-smi, type: File}}
+    # Disabled initially. It overlaps both four-card groups and is only for one TP=8 instance.
+    - groupName: npu-8
+      replicas: 0
+      minReplicas: 0
+      maxReplicas: 1
+      rayStartParams:
+        num-cpus: "96"
+        resources: '"{\"NPU\": 8, \"VLLM_LAB_8\": 1}"'
+      template:
+        metadata:
+          annotations:
+            huawei.com/Ascend910: Ascend910-8,Ascend910-9,Ascend910-10,Ascend910-11,Ascend910-12,Ascend910-13,Ascend910-14,Ascend910-15
+            predicate-time: "1"
+            ray.io/overwrite-container-cmd: "true"
+          labels:
+            infra.learning/npu-group: "8-15"
+        spec:
+          schedulerName: default-scheduler
+          nodeSelector: {kubernetes.io/arch: arm64, kubernetes.io/hostname: a3-server-00, node.kubernetes.io/npu.chip.name: Ascend910}
+          containers:
+            - name: ray-worker
+              image: 110.120.0.3:8889/mineru/vllm-ascend-worker:v0.21.0rc1-a3-20260713-s3
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/bash", "-lc", "--"]
+              args:
+                - |
+                  set -euo pipefail
+                  source /usr/local/Ascend/driver/bin/setenv.bash
+                  ulimit -n 65536
+                  export LD_LIBRARY_PATH="/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:${LD_LIBRARY_PATH:-}"
+                  eval "$KUBERAY_GEN_RAY_START_CMD"
+              env:
+                - {name: ASCEND_VISIBLE_DEVICES, value: "8,9,10,11,12,13,14,15"}
+                - {name: ASCEND_RT_VISIBLE_DEVICES, value: "8,9,10,11,12,13,14,15"}
+              resources:
+                requests: {cpu: "96", memory: 512Gi, huawei.com/Ascend910: "8"}
+                limits: {cpu: "96", memory: 512Gi, huawei.com/Ascend910: "8"}
+              securityContext: {privileged: true}
+              volumeMounts:
+                - {name: model-weights, mountPath: /models/Qwen3.6-35B-A3B-w8a8, readOnly: true}
+                - {name: ray-logs, mountPath: /tmp/ray}
+                - {name: shared-mem, mountPath: /dev/shm}
+                - {name: ascend-driver, mountPath: /usr/local/Ascend/driver, readOnly: true}
+                - {name: ascend-dcmi, mountPath: /usr/local/dcmi, readOnly: true}
+                - {name: npu-smi, mountPath: /usr/local/bin/npu-smi, readOnly: true}
+          volumes:
+            - {name: model-weights, hostPath: {path: /home/admin/models/Qwen3.6-35B-A3B-w8a8, type: Directory}}
+            - {name: ray-logs, emptyDir: {}}
+            - {name: shared-mem, emptyDir: {medium: Memory, sizeLimit: 128Gi}}
+            - {name: ascend-driver, hostPath: {path: /usr/local/Ascend/driver}}
+            - {name: ascend-dcmi, hostPath: {path: /usr/local/dcmi}}
+            - {name: npu-smi, hostPath: {path: /usr/local/bin/npu-smi, type: File}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vllm-interactive-lab-4a
+  namespace: infra-learning
+spec:
+  type: ClusterIP
+  selector: {infra.learning/npu-group: "8-11"}
+  ports: [{name: http, port: 8000, targetPort: 8000}]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vllm-interactive-lab-4b
+  namespace: infra-learning
+spec:
+  type: ClusterIP
+  selector: {infra.learning/npu-group: "12-15"}
+  ports: [{name: http, port: 8000, targetPort: 8000}]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vllm-interactive-lab-8
+  namespace: infra-learning
+spec:
+  type: ClusterIP
+  selector: {infra.learning/npu-group: "8-15"}
+  ports: [{name: http, port: 8000, targetPort: 8000}]

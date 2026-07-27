@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ray-vllm-lab-worker-4a
+  namespace: infra-learning
+spec:
+  replicas: 1
+  strategy: {type: Recreate}
+  selector:
+    matchLabels: {app: ray-vllm-lab-worker-4a}
+  template:
+    metadata:
+      labels: {app: ray-vllm-lab-worker-4a}
+      annotations:
+        huawei.com/Ascend910: Ascend910-8,Ascend910-9,Ascend910-10,Ascend910-11
+        predicate-time: "1"
+    spec:
+      schedulerName: default-scheduler
+      nodeSelector:
+        kubernetes.io/arch: arm64
+        kubernetes.io/hostname: a3-server-00
+        node.kubernetes.io/npu.chip.name: Ascend910
+      containers:
+        - name: ray-worker
+          image: 110.120.0.3:8889/mineru/vllm-ascend-worker:v0.21.0rc1-a3-20260713-s3
+          imagePullPolicy: IfNotPresent
+          terminationMessagePolicy: FallbackToLogsOnError
+          command: ["/bin/bash", "-lc", "--"]
+          args:
+            - |
+              set -e
+              source /usr/local/Ascend/driver/bin/setenv.bash
+              ulimit -n 65536
+              python3 /opt/vllm-lab/discover_npu_mapping.py \
+                --physical-ids "${VLLM_LAB_PHYSICAL_IDS}" \
+                --output /tmp/vllm-lab/npu-mapping.json
+              exec env ASCEND_VISIBLE_DEVICES="" ASCEND_RT_VISIBLE_DEVICES="" ray start \
+                --address=ray-vllm-lab-head.infra-learning.svc.cluster.local:6379 \
+                --node-ip-address="${POD_IP}" \
+                --num-cpus=64 \
+                --resources='{"VLLM_LAB_NODE":1,"VLLM_LAB_4A":1}' \
+                --block
+          env:
+            - {name: VLLM_LAB_PHYSICAL_IDS, value: "8,9,10,11"}
+            - {name: ASCEND_VISIBLE_DEVICES, value: "8,9,10,11"}
+            - {name: ASCEND_RT_VISIBLE_DEVICES, value: "8,9,10,11"}
+            - name: POD_IP
+              valueFrom: {fieldRef: {fieldPath: status.podIP}}
+          ports:
+            - {name: vllm, containerPort: 8000}
+          resources:
+            requests: {cpu: "64", memory: 256Gi, huawei.com/Ascend910: "4"}
+            limits: {cpu: "64", memory: 256Gi, huawei.com/Ascend910: "4"}
+          securityContext: {privileged: true}
+          volumeMounts:
+            - {name: model, mountPath: /models/Qwen3.6-35B-A3B-w8a8, readOnly: true}
+            - {name: scripts, mountPath: /opt/vllm-lab, readOnly: true}
+            - {name: ray-logs, mountPath: /tmp/ray}
+            - {name: shm, mountPath: /dev/shm}
+            - {name: driver, mountPath: /usr/local/Ascend/driver, readOnly: true}
+            - {name: dcmi, mountPath: /usr/local/dcmi, readOnly: true}
+            - {name: npu-smi, mountPath: /usr/local/bin/npu-smi, readOnly: true}
+      volumes:
+        - {name: model, hostPath: {path: /home/admin/models/Qwen3.6-35B-A3B-w8a8, type: Directory}}
+        - {name: scripts, configMap: {name: vllm-lab-scripts, defaultMode: 0555}}
+        - {name: ray-logs, emptyDir: {}}
+        - {name: shm, emptyDir: {medium: Memory, sizeLimit: 64Gi}}
+        - {name: driver, hostPath: {path: /usr/local/Ascend/driver}}
+        - {name: dcmi, hostPath: {path: /usr/local/dcmi}}
+        - {name: npu-smi, hostPath: {path: /usr/local/bin/npu-smi, type: File}}
