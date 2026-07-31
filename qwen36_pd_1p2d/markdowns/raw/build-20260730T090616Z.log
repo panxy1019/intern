@@ -1,0 +1,41 @@
+Sending build context to Docker daemon  32.77kB
+Step 1/5 : FROM quay.io/ascend/vllm-ascend:v0.22.1rc1-a3
+v0.22.1rc1-a3: Pulling from ascend/vllm-ascend
+99267111abcc: Already exists
+f48a52126fa4: Already exists
+61b425d2421b: Already exists
+c77262564620: Already exists
+bdfa0bae128b: Already exists
+7661f5bd5978: Already exists
+cc044c860f1f: Already exists
+5b472d918057: Already exists
+f4e85cc34e25: Already exists
+c23b26b97cc8: Already exists
+385050fdce75: Pulling fs layer
+1e43eb0ddf11: Pulling fs layer
+b14532a067f9: Pulling fs layer
+086b0120f2ec: Pulling fs layer
+f155d8ad7b11: Pulling fs layer
+c7ca8c75b92e: Pulling fs layer
+086b0120f2ec: Waiting
+c7ca8c75b92e: Waiting
+f155d8ad7b11: Waiting
+b14532a067f9: Verifying Checksum
+b14532a067f9: Download complete
+385050fdce75: Verifying Checksum
+385050fdce75: Download complete
+385050fdce75: Pull complete
+f155d8ad7b11: Verifying Checksum
+f155d8ad7b11: Download complete
+c7ca8c75b92e: Verifying Checksum
+c7ca8c75b92e: Download complete
+1e43eb0ddf11: Retrying in 5 seconds
+1e43eb0ddf11: Retrying in 4 seconds
+1e43eb0ddf11: Retrying in 3 seconds
+1e43eb0ddf11: Retrying in 2 seconds
+1e43eb0ddf11: Retrying in 1 second
+086b0120f2ec: Retrying in 5 seconds
+086b0120f2ec: Retrying in 4 seconds
+086b0120f2ec: Retrying in 3 seconds
+086b0120f2ec: Retrying in 2 seconds
+086b0120f2ec: Retrying in 1 second
