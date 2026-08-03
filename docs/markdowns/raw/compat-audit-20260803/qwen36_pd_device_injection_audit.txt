@@ -1,0 +1,13 @@
+captured_at_utc=2026-08-03T02:42:12+00:00
+DEVICE_NODES
+crw-rw-rw-. 1 root root 234, 2 Jul 11 08:40 /dev/davinci2
+crw-rw-rw-. 1 root root 234, 3 Jul 11 08:40 /dev/davinci3
+crw-rw-rw-. 1 root root 234, 4 Jul 11 08:40 /dev/davinci4
+crw-rw-rw-. 1 root root 234, 5 Jul 11 08:40 /dev/davinci5
+crw-rw-rw-. 1 root root 234, 6 Jul 11 08:40 /dev/davinci6
+crw-rw-rw-. 1 root root 234, 7 Jul 11 08:40 /dev/davinci7
+crw-rw-rw-. 1 root root 235, 0 Jul 11 08:40 /dev/davinci_manager
+crw-rw-rw-. 1 root root 511, 0 Jul 11 08:40 /dev/devmm_svm
+KUBELET_CHECKPOINT
+entries 1
+DeviceIDs {'-1': ['Ascend910-11', 'Ascend910-1', 'Ascend910-3', 'Ascend910-7', 'Ascend910-0', 'Ascend910-6']} InjectedPaths ['/dev/davinci_manager', '/dev/davinci_manager', '/dev/hisi_hdc', '/dev/hisi_hdc', '/dev/devmm_svm', '/dev/devmm_svm', '/dev/dvpp_cmdlist', '/dev/dvpp_cmdlist', '/dev/davinci2', '/dev/davinci2', '/dev/davinci3', '/dev/davinci3', '/dev/davinci4', '/dev/davinci4', '/dev/davinci5', '/dev/davinci5', '/dev/davinci6', '/dev/davinci6', '/dev/davinci7', '/dev/davinci7']

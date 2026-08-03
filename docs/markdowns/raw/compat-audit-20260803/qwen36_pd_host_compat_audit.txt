@@ -1,0 +1,279 @@
+captured_at_utc=2026-08-03T02:36:42+00:00
+hostname=a3-server-00
+timezone=Asia/Shanghai
+
+=== PROC CMDLINE ===
+BOOT_IMAGE=/vmlinuz-6.6.0-72.0.0.76.oe2403sp1.aarch64 root=UUID=56460f0a-7c42-47b7-b517-52b3723dc73f ro video=VGA-1:640x480-32@60me cgroup_disable=files apparmor=0 crashkernel=1024M,high smmu.bypassdev=0x1000:0x17 smmu.bypassdev=0x1000:0x15 arm64.nopauth console=tty0
+
+=== CMDLINE FLAG CHECK ===
+smmu.bypassdev: PRESENT
+iommu.passthrough: ABSENT
+iommu=pt: ABSENT
+iommu=off: ABSENT
+
+=== ASCEND DEVICE NODES ===
+crw-rw-rw-. 1 root root 234,  0 Jul 11 08:40 /dev/davinci0
+crw-rw-rw-. 1 root root 234,  1 Jul 11 08:40 /dev/davinci1
+crw-rw-rw-. 1 root root 234, 10 Jul 11 08:40 /dev/davinci10
+crw-rw-rw-. 1 root root 234, 11 Jul 11 08:40 /dev/davinci11
+crw-rw-rw-. 1 root root 234, 12 Jul 11 08:40 /dev/davinci12
+crw-rw-rw-. 1 root root 234, 13 Jul 11 08:40 /dev/davinci13
+crw-rw-rw-. 1 root root 234, 14 Jul 11 08:40 /dev/davinci14
+crw-rw-rw-. 1 root root 234, 15 Jul 11 08:40 /dev/davinci15
+crw-rw-rw-. 1 root root 234,  2 Jul 11 08:40 /dev/davinci2
+crw-rw-rw-. 1 root root 234,  3 Jul 11 08:40 /dev/davinci3
+crw-rw-rw-. 1 root root 234,  4 Jul 11 08:40 /dev/davinci4
+crw-rw-rw-. 1 root root 234,  5 Jul 11 08:40 /dev/davinci5
+crw-rw-rw-. 1 root root 234,  6 Jul 11 08:40 /dev/davinci6
+crw-rw-rw-. 1 root root 234,  7 Jul 11 08:40 /dev/davinci7
+crw-rw-rw-. 1 root root 234,  8 Jul 11 08:40 /dev/davinci8
+crw-rw-rw-. 1 root root 234,  9 Jul 11 08:40 /dev/davinci9
+crw-rw-rw-. 1 root root 235,  0 Jul 11 08:40 /dev/davinci_manager
+crw-rw-rw-. 1 root root 235,  0 Jul 11 08:40 /dev/davinci_manager
+crw-rw-rw-. 1 root root 511,  0 Jul 11 08:40 /dev/devmm_svm
+
+=== SVM DEVICE CHECK ===
+/dev/devmm_svm: PRESENT_CHAR_DEVICE
+
+=== KERNEL SMMU/IOMMU/DEVMM/SVM/BYPASS ===
+[    0.000000] Kernel command line: BOOT_IMAGE=/vmlinuz-6.6.0-72.0.0.76.oe2403sp1.aarch64 root=UUID=56460f0a-7c42-47b7-b517-52b3723dc73f ro video=VGA-1:640x480-32@60me cgroup_disable=files apparmor=0 crashkernel=1024M,high smmu.bypassdev=0x1000:0x17 smmu.bypassdev=0x1000:0x15 arm64.nopauth console=tty0
+[    1.714269] CPU features: detected: Speculative Store Bypassing Safe (SSBS)
+[   51.639772] iommu: Default domain type: Translated
+[   51.645257] iommu: DMA domain TLB invalidation policy: strict mode
+[   56.681358] ima: No RoT found, activating RoT-bypass!
+[   81.306577] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.0.auto: option mask 0x2
+[   81.564888] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.0.auto: Registered PMU @ 0x0000000300120000 using 8 counters with Individual filter settings
+[   81.595199] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.1.auto: option mask 0x2
+[   81.663973] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.1.auto: Registered PMU @ 0x0000000401220000 using 8 counters with Individual filter settings
+[   81.694743] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.2.auto: option mask 0x2
+[   81.820236] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.2.auto: Registered PMU @ 0x0000000200120000 using 8 counters with Individual filter settings
+[   81.839285] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.3.auto: option mask 0x2
+[   82.847513] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.3.auto: Registered PMU @ 0x0000000100120000 using 8 counters with Individual filter settings
+[   82.861918] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.4.auto: option mask 0x2
+[   83.329251] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.4.auto: Registered PMU @ 0x0000008300120000 using 8 counters with Individual filter settings
+[   83.344405] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.5.auto: option mask 0x2
+[   84.036830] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.5.auto: Registered PMU @ 0x0000008401220000 using 8 counters with Individual filter settings
+[   84.050589] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.6.auto: option mask 0x2
+[   85.499415] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.6.auto: Registered PMU @ 0x0000008200120000 using 8 counters with Individual filter settings
+[   85.518590] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.7.auto: option mask 0x2
+[   85.787349] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.7.auto: Registered PMU @ 0x0000008100120000 using 8 counters with Individual filter settings
+[   85.801166] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.8.auto: option mask 0x2
+[   85.939863] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.8.auto: Registered PMU @ 0x0000080300120000 using 8 counters with Individual filter settings
+[   85.953854] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.9.auto: option mask 0x2
+[   86.073104] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.9.auto: Registered PMU @ 0x0000080401220000 using 8 counters with Individual filter settings
+[   86.087132] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.10.auto: option mask 0x2
+[   86.166901] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.10.auto: Registered PMU @ 0x0000080200120000 using 8 counters with Individual filter settings
+[   86.181092] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.11.auto: option mask 0x2
+[   86.238861] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.11.auto: Registered PMU @ 0x0000080100120000 using 8 counters with Individual filter settings
+[   86.252930] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.12.auto: option mask 0x2
+[   86.306798] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.12.auto: Registered PMU @ 0x0000088300120000 using 8 counters with Individual filter settings
+[   86.320879] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.13.auto: option mask 0x2
+[   86.374594] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.13.auto: Registered PMU @ 0x0000088401220000 using 8 counters with Individual filter settings
+[   86.388675] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.14.auto: option mask 0x2
+[   86.437865] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.14.auto: Registered PMU @ 0x0000088200120000 using 8 counters with Individual filter settings
+[   86.451895] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.15.auto: option mask 0x2
+[   86.499834] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.15.auto: Registered PMU @ 0x0000088100120000 using 8 counters with Individual filter settings
+[   86.513572] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.16.auto: option mask 0x2
+[   86.557845] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.16.auto: Registered PMU @ 0x0000100300120000 using 8 counters with Individual filter settings
+[   86.571833] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.17.auto: option mask 0x2
+[   86.616096] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.17.auto: Registered PMU @ 0x0000100401220000 using 8 counters with Individual filter settings
+[   86.630060] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.18.auto: option mask 0x2
+[   86.674825] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.18.auto: Registered PMU @ 0x0000100200120000 using 8 counters with Individual filter settings
+[   86.688791] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.19.auto: option mask 0x2
+[   86.736707] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.19.auto: Registered PMU @ 0x0000100100120000 using 8 counters with Individual filter settings
+[   86.750669] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.20.auto: option mask 0x2
+[   86.808023] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.20.auto: Registered PMU @ 0x0000108300120000 using 8 counters with Individual filter settings
+[   86.821959] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.21.auto: option mask 0x2
+[   86.887902] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.21.auto: Registered PMU @ 0x0000108401220000 using 8 counters with Individual filter settings
+[   86.901615] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.22.auto: option mask 0x2
+[   86.960545] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.22.auto: Registered PMU @ 0x0000108200120000 using 8 counters with Individual filter settings
+[   86.974361] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.23.auto: option mask 0x2
+[   87.036626] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.23.auto: Registered PMU @ 0x0000108100120000 using 8 counters with Individual filter settings
+[   87.056859] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.24.auto: option mask 0x2
+[   87.108555] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.24.auto: Registered PMU @ 0x0000180300120000 using 8 counters with Individual filter settings
+[   87.122286] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.25.auto: option mask 0x2
+[   87.179086] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.25.auto: Registered PMU @ 0x0000180401220000 using 8 counters with Individual filter settings
+[   87.192802] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.26.auto: option mask 0x2
+[   87.235867] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.26.auto: Registered PMU @ 0x0000180200120000 using 8 counters with Individual filter settings
+[   87.249574] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.27.auto: option mask 0x2
+[   87.292032] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.27.auto: Registered PMU @ 0x0000180100120000 using 8 counters with Individual filter settings
+[   87.305910] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.28.auto: option mask 0x2
+[   87.354893] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.28.auto: Registered PMU @ 0x0000188300120000 using 8 counters with Individual filter settings
+[   87.368592] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.29.auto: option mask 0x2
+[   87.403554] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.29.auto: Registered PMU @ 0x0000188401220000 using 8 counters with Individual filter settings
+[   87.417559] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.30.auto: option mask 0x2
+[   87.466043] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.30.auto: Registered PMU @ 0x0000188200120000 using 8 counters with Individual filter settings
+[   87.479718] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.31.auto: option mask 0x2
+[   87.521439] arm-smmu-v3-pmcg arm-smmu-v3-pmcg.31.auto: Registered PMU @ 0x0000188100120000 using 8 counters with Individual filter settings
+[ 4860.426376] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <python3.11:76491,76491> Get_user_pages_fast fail. (va=0xfffd5e608650; expected_page_num=512; real_got_page_num=0)
+[ 4860.426512] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <python3.11:76492,76492> Get_user_pages_fast fail. (va=0xfffd5e608650; expected_page_num=512; real_got_page_num=0)
+[ 4860.426530] [ascend] [devmm] [ERROR] [devmm_get_non_svm_addr_pa_list 1293] <python3.11:76492,76492> Get user pages fail. (ret=-14; va=0xfffd5e608650; size=0x200000; num=513)
+[ 4860.426540] [ascend] [devmm] [ERROR] [devmm_make_host_pa_node_list 1417] <python3.11:76492,76492> Get pa list failed. (pin_flg=3; va=fffd5e608650)
+[ 4860.426701] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <python3.11:76490,76490> Get_user_pages_fast fail. (va=0xfffe13408650; expected_page_num=512; real_got_page_num=0)
+[ 8986.174179] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <python3.11:152612,152612> Get_user_pages_fast fail. (va=0xfffdef408650; expected_page_num=512; real_got_page_num=0)
+[ 8986.174227] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <python3.11:152613,152613> Get_user_pages_fast fail. (va=0xfffd66608650; expected_page_num=512; real_got_page_num=0)
+[ 8986.174358] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <python3.11:152615,152615> Get_user_pages_fast fail. (va=0xfffd52608650; expected_page_num=512; real_got_page_num=0)
+[ 8986.174374] [ascend] [devmm] [ERROR] [devmm_get_non_svm_addr_pa_list 1293] <python3.11:152615,152615> Get user pages fail. (ret=-14; va=0xfffd52608650; size=0x200000; num=513)
+[ 8986.174393] [ascend] [devmm] [ERROR] [devmm_make_host_pa_node_list 1417] <python3.11:152615,152615> Get pa list failed. (pin_flg=3; va=fffd52608650)
+[21704.666069] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <python:411386,411386> Get_user_pages_fast fail. (va=0xfffc98608650; expected_page_num=512; real_got_page_num=0)
+[21704.690610] [ascend] [devmm] [ERROR] [devmm_get_non_svm_addr_pa_list 1293] <python:411386,411386> Get user pages fail. (ret=-14; va=0xfffc98608650; size=0x200000; num=513)
+[21704.707141] [ascend] [devmm] [ERROR] [devmm_make_host_pa_node_list 1417] <python:411386,411386> Get pa list failed. (pin_flg=3; va=fffc98608650)
+[21704.721191] [ascend] [devmm] [ERROR] [devmm_make_single_dma_blk_list_by_dma_map 1971] <python:411386,411386> Make host address node list failed. (dev_id=0; va=0xfffc98608650)
+[21704.737994] [ascend] [devmm] [ERROR] [devmm_make_raw_dmanode_list 2054] <python:411386,411386> Fill source dma blk list fail.
+[26272.310318] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:203104,203104> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=8; idx=4; host_pid=203104; va=12c0c1000000; image_word=bb33bb33; offset=256)
+[26272.343085] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:203104,203104> Va can't free, is translated by rts, must delete task first.
+[26272.378589] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:203104,203104> Va can't free, is used by rts, must call destory api first. (va=0x12c0c1000000)
+[26272.395392] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:203104,203104> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c0c1000000)
+[26272.415781] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:203104,203104> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2819)
+[26274.678477] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:203111,203111> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=15; idx=4; host_pid=203111; va=12c0c1000000; image_word=bb33bb33; offset=256)
+[26274.704579] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:203111,203111> Va can't free, is translated by rts, must delete task first.
+[26274.739659] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:203111,203111> Va can't free, is used by rts, must call destory api first. (va=0x12c0c1000000)
+[26274.756505] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:203111,203111> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c0c1000000)
+[26274.776906] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:203111,203111> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2819)
+[188968.308658] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <VLLM::Worker_TP:2201118,2201118> Get_user_pages_fast fail. (va=0xfffc9dc00b20; expected_page_num=1; real_got_page_num=0)
+[188968.309019] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <VLLM::Worker_TP:2201119,2201119> Get_user_pages_fast fail. (va=0xfffcd5700b20; expected_page_num=512; real_got_page_num=0)
+[188968.309140] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <VLLM::Worker_TP:2201124,2201124> Get_user_pages_fast fail. (va=0xfffc67c00b20; expected_page_num=1; real_got_page_num=0)
+[188968.309223] [ascend] [devmm] [ERROR] [devmm_get_non_svm_addr_pa_list 1293] <VLLM::Worker_TP:2201124,2201124> Get user pages fail. (ret=-14; va=0xfffc67a00b20; size=0x200000; num=513)
+[188968.309250] [ascend] [devmm] [ERROR] [devmm_get_non_svm_addr_pa_list 1293] <VLLM::Worker_TP:2201118,2201118> Get user pages fail. (ret=-14; va=0xfffc9da00b20; size=0x200000; num=513)
+[1427144.700283] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:2163256,2163256> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=5; idx=11406; host_pid=2163256; va=12c081000000; image_word=bb33bb33; offset=729984)
+[1427144.727364] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:2163256,2163256> Va can't free, is translated by rts, must delete task first.
+[1427144.742679] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:2163256,2163256> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1427144.759897] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:2163256,2163256> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1427144.780667] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:2163256,2163256> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1427146.067502] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:2163252,2163252> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=1; idx=13336; host_pid=2163252; va=12c081000000; image_word=bb33bb33; offset=853504)
+[1427146.094685] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:2163252,2163252> Va can't free, is translated by rts, must delete task first.
+[1427146.110130] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:2163252,2163252> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1427146.127491] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:2163252,2163252> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1427146.148440] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:2163252,2163252> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1472929.933138] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:2694944,2694944> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=7; idx=18188; host_pid=2694944; va=12c081000000; image_word=bb33bb33; offset=1164032)
+[1472929.967596] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:2694944,2694944> Va can't free, is translated by rts, must delete task first.
+[1472929.983151] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:2694944,2694944> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1472930.000625] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:2694944,2694944> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1472930.021691] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:2694944,2694944> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1472931.963812] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:2694941,2694941> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=4; idx=11408; host_pid=2694941; va=12c081000000; image_word=bb33bb33; offset=730112)
+[1472931.990876] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:2694941,2694941> Va can't free, is translated by rts, must delete task first.
+[1472932.006267] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:2694941,2694941> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1472932.023569] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:2694941,2694941> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1472932.044429] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:2694941,2694941> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1475407.409385] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:2733008,2733008> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=6; idx=18189; host_pid=2733008; va=12c081000000; image_word=bb33bb33; offset=1164096)
+[1475407.436718] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:2733008,2733008> Va can't free, is translated by rts, must delete task first.
+[1475407.452101] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:2733008,2733008> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1475407.469384] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:2733008,2733008> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1475407.490224] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:2733008,2733008> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1479299.560918] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:2812393,2812393> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=4; idx=11411; host_pid=2812393; va=12c081000000; image_word=bb33bb33; offset=730304)
+[1479299.595107] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:2812393,2812393> Va can't free, is translated by rts, must delete task first.
+[1479299.610503] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:2812393,2812393> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1479299.627805] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:2812393,2812393> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1479299.648667] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:2812393,2812393> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1482463.604732] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:2875916,2875916> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=7; idx=18192; host_pid=2875916; va=12c081000000; image_word=bb33bb33; offset=1164288)
+[1482463.631860] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:2875916,2875916> Va can't free, is translated by rts, must delete task first.
+[1482463.647231] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:2875916,2875916> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1482463.664507] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:2875916,2875916> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1482463.685339] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:2875916,2875916> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1482467.236426] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:2875913,2875913> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=4; idx=11412; host_pid=2875913; va=12c081000000; image_word=bb33bb33; offset=730368)
+[1482467.263572] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:2875913,2875913> Va can't free, is translated by rts, must delete task first.
+[1482467.278991] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:2875913,2875913> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1482467.296332] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:2875913,2875913> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1482467.317211] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:2875913,2875913> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1491593.380603] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:2985585,2985585> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=3; idx=14201; host_pid=2985585; va=12c081000000; image_word=bb33bb33; offset=908864)
+[1491593.407649] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:2985585,2985585> Va can't free, is translated by rts, must delete task first.
+[1491593.423017] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:2985585,2985585> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1491593.440296] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:2985585,2985585> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1491593.461131] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:2985585,2985585> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1500020.394152] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:3112823,3112823> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=4; idx=11417; host_pid=3112823; va=12c081000000; image_word=bb33bb33; offset=730688)
+[1500020.420998] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:3112823,3112823> Va can't free, is translated by rts, must delete task first.
+[1500020.436207] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:3112823,3112823> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1500020.453343] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:3112823,3112823> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1500020.474063] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:3112823,3112823> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1500022.923204] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:3112820,3112820> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=1; idx=13347; host_pid=3112820; va=12c081000000; image_word=bb33bb33; offset=854208)
+[1500022.957418] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:3112820,3112820> Va can't free, is translated by rts, must delete task first.
+[1500022.972901] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:3112820,3112820> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1500022.990303] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:3112820,3112820> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1500023.011264] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:3112820,3112820> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1502436.770999] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:3204134,3204134> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=5; idx=11419; host_pid=3204134; va=12c081000000; image_word=bb33bb33; offset=730816)
+[1502436.798033] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:3204134,3204134> Va can't free, is translated by rts, must delete task first.
+[1502436.813404] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:3204134,3204134> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1502436.830663] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:3204134,3204134> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1502436.851480] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:3204134,3204134> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1502438.948096] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:3204130,3204130> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=1; idx=13349; host_pid=3204130; va=12c081000000; image_word=bb33bb33; offset=854336)
+[1502438.975176] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:3204130,3204130> Va can't free, is translated by rts, must delete task first.
+[1502438.990590] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:3204130,3204130> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1502439.007910] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:3204130,3204130> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1502439.028763] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:3204130,3204130> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1507175.323665] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:3330022,3330022> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=1; idx=13350; host_pid=3330022; va=12c081000000; image_word=bb33bb33; offset=854400)
+[1507175.357674] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:3330022,3330022> Va can't free, is translated by rts, must delete task first.
+[1507175.373040] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:3330022,3330022> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1507175.390317] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:3330022,3330022> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1507175.411149] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:3330022,3330022> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1507177.742512] [ascend] [devmm] [ERROR] [devmm_clear_translate_pa_addr_inner 783] <python3.11:3330024,3330024> Vaddress is not finish image word, please GE and RTS call unbind_stream before rtfree. (devid=3; idx=14208; host_pid=3330024; va=12c081000000; image_word=bb33bb33; offset=909312)
+[1507177.776548] [ascend] [devmm] [ERROR] [devmm_check_can_free 1517] <python3.11:3330024,3330024> Va can't free, is translated by rts, must delete task first.
+[1507177.791936] [ascend] [devmm] [ERROR] [devmm_free_page_process 1602] <python3.11:3330024,3330024> Va can't free, is used by rts, must call destory api first. (va=0x12c081000000)
+[1507177.809236] [ascend] [devmm] [ERROR] [devmm_destory_svm_heap_bitmap 1896] <python3.11:3330024,3330024> Va heap_start_addr can't free, is being used by rts, must call release api first. (heap_start_addr=0x12c081000000)
+[1507177.830095] [ascend] [devmm] [ERROR] [devmm_ioctl_disable_heap 2123] <python3.11:3330024,3330024> Memory is being used, can't destory. (op=0x1; heap_type=0xefef0002; heap_idx=2818)
+[1563621.962433] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <VLLM::EngineCor:1365536,1365536> Get_user_pages_fast fail. (va=0xfffb34996fb8; expected_page_num=129; real_got_page_num=0)
+[1563621.981144] [ascend] [devmm] [ERROR] [devmm_get_non_svm_addr_pa_list 1293] <VLLM::EngineCor:1365536,1365536> Get user pages fail. (ret=-14; va=0xfffb34996fb8; size=0x80000; num=129)
+[1563621.998705] [ascend] [devmm] [ERROR] [devmm_make_host_pa_node_list 1417] <VLLM::EngineCor:1365536,1365536> Get pa list failed. (pin_flg=3; va=fffb34996fb8)
+[1563622.014030] [ascend] [devmm] [ERROR] [devmm_make_single_dma_blk_list_by_dma_map 1971] <VLLM::EngineCor:1365536,1365536> Make host address node list failed. (dev_id=10; va=0xfffb34996fb8)
+[1563622.032062] [ascend] [devmm] [ERROR] [devmm_make_raw_dmanode_list 2054] <VLLM::EngineCor:1365536,1365536> Fill source dma blk list fail.
+[1730467.000099] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <VLLM::Worker_TP:4014690,4014690> Get_user_pages_fast fail. (va=0xfffc4dbd7820; expected_page_num=512; real_got_page_num=0)
+[1730467.026037] [ascend] [devmm] [ERROR] [devmm_get_non_svm_addr_pa_list 1293] <VLLM::Worker_TP:4014690,4014690> Get user pages fail. (ret=-14; va=0xfffc4dbd7820; size=0x200000; num=513)
+[1730467.044056] [ascend] [devmm] [ERROR] [devmm_make_host_pa_node_list 1417] <VLLM::Worker_TP:4014690,4014690> Get pa list failed. (pin_flg=3; va=fffc4dbd7820)
+[1730467.059759] [ascend] [devmm] [ERROR] [devmm_make_single_dma_blk_list_by_dma_map 1971] <VLLM::Worker_TP:4014690,4014690> Make host address node list failed. (dev_id=3; va=0xfffc4dbd7820)
+[1730467.078141] [ascend] [devmm] [ERROR] [devmm_make_raw_dmanode_list 2054] <VLLM::Worker_TP:4014690,4014690> Fill source dma blk list fail.
+[1990175.793472] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <VLLM::Worker_TP:3068957,3068957> Get_user_pages_fast fail. (va=0xfffbfab57820; expected_page_num=512; real_got_page_num=0)
+[1990175.815611] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <VLLM::Worker_TP:3069323,3069323> Get_user_pages_fast fail. (va=0xfffc01dd7820; expected_page_num=512; real_got_page_num=0)
+[1990175.819709] [ascend] [devmm] [ERROR] [devmm_get_non_svm_addr_pa_list 1293] <VLLM::Worker_TP:3068957,3068957> Get user pages fail. (ret=-14; va=0xfffbfab57820; size=0x200000; num=513)
+[1990175.820425] [ascend] [devmm] [ERROR] [devmm_get_non_svm_addr_pa_list 1293] <VLLM::Worker_TP:3069323,3069323> Get user pages fail. (ret=-14; va=0xfffc01dd7820; size=0x280000; num=641)
+[1990175.821145] [ascend] [devmm] [ERROR] [devmm_make_host_pa_node_list 1417] <VLLM::Worker_TP:3068957,3068957> Get pa list failed. (pin_flg=3; va=fffbfab57820)
+[1993136.742701] [ascend] [devmm] [ERROR] [devmm_pin_user_pages_fast 124] <python3.11:3230853,3230853> Get_user_pages_fast fail. (va=0xfffb28c08650; expected_page_num=512; real_got_page_num=0)
+[1993136.768445] [ascend] [devmm] [ERROR] [devmm_get_non_svm_addr_pa_list 1293] <python3.11:3230853,3230853> Get user pages fail. (ret=-14; va=0xfffb28c08650; size=0x200000; num=513)
+[1993136.785809] [ascend] [devmm] [ERROR] [devmm_make_host_pa_node_list 1417] <python3.11:3230853,3230853> Get pa list failed. (pin_flg=3; va=fffb28c08650)
+[1993136.800818] [ascend] [devmm] [ERROR] [devmm_make_single_dma_blk_list_by_dma_map 1971] <python3.11:3230853,3230853> Make host address node list failed. (dev_id=0; va=0xfffb28c08650)
+[1993136.818421] [ascend] [devmm] [ERROR] [devmm_make_raw_dmanode_list 2054] <python3.11:3230853,3230853> Fill source dma blk list fail.
+
+=== DRIVER VERSION ===
+Version=26.0.rc1
+ascendhal_version=7.35.23
+aicpu_version=1.0
+tdt_version=1.0
+log_version=1.0
+prof_version=2.0
+dvppkernels_version=1.1
+tsfw_version=1.0
+Innerversion=V100R001C10SPC001B257
+compatible_version=[V100R001C21],[V100R001C22],[V100R001C23],[V100R001C25],[V100R001C10]
+compatible_version_fw=[7.0.0,9.9.9]
+package_version=26.0.rc1
+
+=== ASCEND INSTALL INFO ===
+UserName=root
+UserGroup=root
+Driver_Install_Type=full
+Driver_Install_Path_Param=/usr/local/Ascend
+Driver_Install_For_All=yes
+Driver_Install_Mode=normal
+Driver_Install_Status=complete
+Firmware_Install_Type=full
+Firmware_Install_Path_Param=/usr/local/Ascend
+
+=== TOOLKIT LATEST LINK ===
+toolkit latest unavailable
+
+=== CALLER MEMLOCK ===
+65536
+
+=== SYSTEMD MEMLOCK ===
+[k3s]
+LimitMEMLOCK=270225108992
+LoadState=not-found
+ActiveState=inactive
+[k3s-agent]
+LimitMEMLOCK=67108864
+LoadState=loaded
+ActiveState=active
+[containerd]
+LimitMEMLOCK=270225108992
+LoadState=not-found
+ActiveState=inactive
+
+=== K3S PROCESSES AND LIMITS ===

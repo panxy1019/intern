@@ -1,0 +1,189 @@
+apiVersion: v1
+kind: Node
+metadata:
+  annotations:
+    alpha.kubernetes.io/provided-node-ip: 110.123.0.3
+    baseDeviceInfos: '{"Ascend910-0":{"IP":"","SuperDeviceID":4290772992},"Ascend910-1":{"IP":"","SuperDeviceID":4290838529},"Ascend910-10":{"IP":"","SuperDeviceID":4292083722},"Ascend910-11":{"IP":"","SuperDeviceID":4292149259},"Ascend910-12":{"IP":"","SuperDeviceID":4292345868},"Ascend910-13":{"IP":"","SuperDeviceID":4292411405},"Ascend910-14":{"IP":"","SuperDeviceID":4292608014},"Ascend910-15":{"IP":"","SuperDeviceID":4292673551},"Ascend910-2":{"IP":"","SuperDeviceID":4291035138},"Ascend910-3":{"IP":"","SuperDeviceID":4291100675},"Ascend910-4":{"IP":"","SuperDeviceID":4291297284},"Ascend910-5":{"IP":"","SuperDeviceID":4291362821},"Ascend910-6":{"IP":"","SuperDeviceID":4291559430},"Ascend910-7":{"IP":"","SuperDeviceID":4291624967},"Ascend910-8":{"IP":"","SuperDeviceID":4291821576},"Ascend910-9":{"IP":"","SuperDeviceID":4291887113}}'
+    flannel.alpha.coreos.com/backend-data: '{"VNI":1,"VtepMAC":"ca:d2:f1:fc:ec:94"}'
+    flannel.alpha.coreos.com/backend-type: vxlan
+    flannel.alpha.coreos.com/kube-subnet-manager: "true"
+    flannel.alpha.coreos.com/public-ip: 110.123.0.3
+    k3s.io/hostname: a3-server-00
+    k3s.io/internal-ip: 110.123.0.3
+    k3s.io/node-args: '["agent","--data-dir","/home/k3s","--kubelet-arg","root-dir=/home/k3s/kubelet","--node-name","a3-server-00"]'
+    k3s.io/node-config-hash: 3TSSWI63A6ERK4YKE6W5CWN6JIWH65IGMNLDOQYQZU4KCPYN6HLQ====
+    k3s.io/node-env: '{"K3S_TOKEN":"********","K3S_URL":"https://110.120.0.3:6443"}'
+    node.alpha.kubernetes.io/ttl: "0"
+    p2p.k3s.cattle.io/node-address: /ip4/110.123.0.3/tcp/5001/p2p/QmbhT6kWFVVJCv1V568eqqzSz8jaMtpK3se1aYhJGzRBBt
+    p2p.k3s.cattle.io/node-addresses: '{"ID":"QmbhT6kWFVVJCv1V568eqqzSz8jaMtpK3se1aYhJGzRBBt","Addrs":["/ip4/110.123.0.3/tcp/5001"]}'
+    product-serial-number: 2102315BXE10RA100006
+    serverIndex: "1023"
+    serverType: A3
+    superPodID: "-1"
+    volumes.kubernetes.io/controller-managed-attach-detach: "true"
+  creationTimestamp: "2026-07-07T08:01:16Z"
+  finalizers:
+  - wrangler.cattle.io/node
+  labels:
+    accelerator: huawei-Ascend910
+    beta.kubernetes.io/arch: arm64
+    beta.kubernetes.io/instance-type: k3s
+    beta.kubernetes.io/os: linux
+    huawei.com/driver.version: 26.0.rc1
+    kubernetes.io/arch: arm64
+    kubernetes.io/hostname: a3-server-00
+    kubernetes.io/os: linux
+    mind-cluster/npu-chip-memory: 64G
+    node-role.kubernetes.io/worker: worker
+    node.kubernetes.io/instance-type: k3s
+    node.kubernetes.io/npu.chip.name: Ascend910
+    p2p.k3s.cattle.io/enabled: "true"
+    servertype: Ascend910A3-24
+    workerselector: dls-worker-node
+  name: a3-server-00
+  resourceVersion: "13630171"
+  uid: dafae381-3dbd-4ce5-b162-041ec25db73d
+spec:
+  podCIDR: 10.42.17.0/24
+  podCIDRs:
+  - 10.42.17.0/24
+  providerID: k3s://a3-server-00
+status:
+  addresses:
+  - address: 110.123.0.3
+    type: InternalIP
+  - address: a3-server-00
+    type: Hostname
+  allocatable:
+    cpu: "640"
+    ephemeral-storage: "3514443608175"
+    huawei.com/Ascend910: "16"
+    hugepages-1Gi: "0"
+    hugepages-2Mi: "0"
+    hugepages-32Mi: "0"
+    hugepages-64Ki: "0"
+    memory: 2111133676Ki
+    pods: "110"
+  capacity:
+    cpu: "640"
+    ephemeral-storage: 3612709304Ki
+    huawei.com/Ascend910: "16"
+    hugepages-1Gi: "0"
+    hugepages-2Mi: "0"
+    hugepages-32Mi: "0"
+    hugepages-64Ki: "0"
+    memory: 2111133676Ki
+    pods: "110"
+  conditions:
+  - lastHeartbeatTime: "2026-08-03T02:40:15Z"
+    lastTransitionTime: "2026-07-11T00:40:30Z"
+    message: kubelet has sufficient memory available
+    reason: KubeletHasSufficientMemory
+    status: "False"
+    type: MemoryPressure
+  - lastHeartbeatTime: "2026-08-03T02:40:15Z"
+    lastTransitionTime: "2026-07-11T00:40:30Z"
+    message: kubelet has no disk pressure
+    reason: KubeletHasNoDiskPressure
+    status: "False"
+    type: DiskPressure
+  - lastHeartbeatTime: "2026-08-03T02:40:15Z"
+    lastTransitionTime: "2026-07-11T00:40:30Z"
+    message: kubelet has sufficient PID available
+    reason: KubeletHasSufficientPID
+    status: "False"
+    type: PIDPressure
+  - lastHeartbeatTime: "2026-08-03T02:40:15Z"
+    lastTransitionTime: "2026-07-11T00:40:30Z"
+    message: kubelet is posting ready status
+    reason: KubeletReady
+    status: "True"
+    type: Ready
+  daemonEndpoints:
+    kubeletEndpoint:
+      Port: 10250
+  features:
+    supplementalGroupsPolicy: true
+  images:
+  - names:
+    - swr.cn-south-1.myhuaweicloud.com/ascendhub/verl_pt27_25rc3@sha256:2d25563176ab5313bbef71fea36c64a926391a404213165133f5fcba3c80768a
+    - swr.cn-south-1.myhuaweicloud.com/ascendhub/verl_pt27_25rc3:a3-arm
+    sizeBytes: 17362917166
+  - names:
+    - 110.120.0.3:8889/mineru/mineru-vllm-a3@sha256:878cce76d3e954cbddec8d7870d8d7288ce1e561fc52a99cf2d5346efee026ae
+    - 110.120.0.3:8889/mineru/mineru-vllm-a3:official-v0.11.0-20260715-ray248-lake-20260716
+    sizeBytes: 11401760573
+  - names:
+    - 110.120.0.3:8889/mineru/vllm-ascend-worker@sha256:d6f9824f0460e1bc814e4eb2466c5dfd5878b821263c42bd1d17cc9b0504cc28
+    - 110.120.0.3:8889/mineru/vllm-ascend-worker:v0.21.0rc1-a3-20260713-s3
+    sizeBytes: 7282575895
+  - names:
+    - 110.120.0.3:8889/infra/qwen36-pd-worker@sha256:15c3a3db3772807cc09d9ad37756cd973e3b078956b6a239375ec4ae23317133
+    - 110.120.0.3:8889/infra/qwen36-pd-worker:v0.22.1rc1-a3-ray248-20260730
+    sizeBytes: 6942354306
+  - names:
+    - docker.io/library/docker@sha256:2b62f89aaab9e4df0ff843f0d9a7bbd17340a9ba7c660ba6f40b1f00b38c2a4d
+    - docker.io/library/docker:24-cli
+    sizeBytes: 61501906
+  - names:
+    - 110.120.0.3:8889/ascend-k8sdeviceplugin@sha256:e6884f54125416036b5078d3302bcbf2fcce56bf3f72309fdf0fa6ff0013b98a
+    - 110.120.0.3:8889/ascend-k8sdeviceplugin:v26.1.0
+    sizeBytes: 56981069
+  - names:
+    - 110.120.0.3:8889/noded@sha256:6df9a746b7a1aeeba9d0b11787fa378c168541c24e4c95a47c1b5cd6cc6471e0
+    - 110.120.0.3:8889/noded:v26.1.0
+    sizeBytes: 56869784
+  - names:
+    - 110.120.0.3:8889/npu-exporter@sha256:9bd9e9f61b9662183ea2f46e5d6fbe04aea76c9a9bca0943cda696838119f992
+    - 110.120.0.3:8889/npu-exporter:v26.1.0
+    sizeBytes: 36153447
+  - names:
+    - 110.120.0.3:8889/npu-exporter@sha256:b78a73b78a4da627a778071544b3d6667096b54426839516b039426d239b0474
+    - 110.120.0.3:8889/npu-exporter:v26.0.0
+    sizeBytes: 34149797
+  - names:
+    - quay.io/prometheus/node-exporter@sha256:0f422f62c15f154af8d8572b23d623aebfb10cec73a5c654d18f911f3f9df241
+    - quay.io/prometheus/node-exporter:v1.11.1
+    sizeBytes: 12372123
+  - names:
+    - docker.io/rancher/klipper-lb@sha256:924cfc3535f02019dcf75c4a679b108c65c605353ef2194a2fcf2c781d5aa33f
+    - docker.io/rancher/klipper-lb:v0.4.15
+    sizeBytes: 6043454
+  - names:
+    - docker.io/rancher/mirrored-pause@sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893
+    - docker.io/rancher/mirrored-pause:3.6
+    sizeBytes: 253243
+  nodeInfo:
+    architecture: arm64
+    bootID: 6d0168e1-f3a1-454b-9e28-5fe50dbdc46d
+    containerRuntimeVersion: containerd://2.2.2-bd1.34
+    kernelVersion: 6.6.0-72.0.0.76.oe2403sp1.aarch64
+    kubeProxyVersion: ""
+    kubeletVersion: v1.34.6+k3s1
+    machineID: f8add69077a14ab5bbb243f18d318a1e
+    operatingSystem: linux
+    osImage: openEuler 24.03 (LTS-SP1)
+    swap:
+      capacity: 4294963200
+    systemUUID: f004b900-b0a4-ba0f-11f0-a84375685620
+  runtimeHandlers:
+  - features:
+      recursiveReadOnlyMounts: true
+      userNamespaces: true
+    name: ""
+  - features:
+      recursiveReadOnlyMounts: true
+      userNamespaces: true
+    name: ascend
+  - features:
+      recursiveReadOnlyMounts: true
+      userNamespaces: false
+    name: crun
+  - features:
+      recursiveReadOnlyMounts: true
+      userNamespaces: true
+    name: runc
+  - features:
+      recursiveReadOnlyMounts: false
+      userNamespaces: false
+    name: runhcs-wcow-process
