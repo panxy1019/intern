@@ -1,0 +1,297 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    huawei.com/Ascend910: Ascend910-2,Ascend910-3,Ascend910-4,Ascend910-5,Ascend910-6,Ascend910-7
+    kubectl.kubernetes.io/restartedAt: "2026-08-04T01:19:40Z"
+    predicate-time: "18446744073709551615"
+  creationTimestamp: "2026-08-04T01:45:18Z"
+  generateName: ray-vllm-pd-worker-qwen36-27b-7b477d6857-
+  generation: 1
+  labels:
+    app: ray-vllm-pd-worker-qwen36-27b
+    pod-template-hash: 7b477d6857
+  name: ray-vllm-pd-worker-qwen36-27b-7b477d6857-h57bj
+  namespace: infra-learning
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: ray-vllm-pd-worker-qwen36-27b-7b477d6857
+    uid: 4a5afcc7-e241-4838-99ff-61d2186bca78
+  resourceVersion: "13878160"
+  uid: 1d05a476-9af1-433d-98af-3e1f962f394a
+spec:
+  containers:
+  - args:
+    - exec /opt/qwen36-pd/pd-worker-entrypoint.sh
+    command:
+    - /bin/bash
+    - -lc
+    - --
+    env:
+    - name: PHYSICAL_IDS
+      value: 2,3,4,5,6,7
+    - name: PD_STAGE
+      value: 1p2d
+    - name: MODEL_PATH
+      value: /models/Qwen3.6-27B-w8a8
+    - name: MODEL_NAME
+      value: qwen36-27b-w8a8
+    - name: MAX_PREFILL_INFLIGHT_TOKENS
+      value: "8192"
+    - name: RAY_ADDRESS
+      value: ray-vllm-lab-head.infra-learning.svc.cluster.local:6379
+    - name: POD_IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    - name: NO_PROXY
+      value: localhost,127.0.0.1,::1,.svc,.svc.cluster.local,.cluster.local,110.120.0.3,110.123.0.3,10.0.0.0/8
+    image: 110.120.0.3:8889/infra/qwen36-pd-worker:v0.22.1rc1-a3-ray248-20260730
+    imagePullPolicy: IfNotPresent
+    name: pd-worker
+    readinessProbe:
+      exec:
+        command:
+        - /bin/sh
+        - -c
+        - test -f /var/run/qwen36-pd/READY && curl --noproxy '*' -fsS http://127.0.0.1:8080/openapi.json
+          >/dev/null
+      failureThreshold: 120
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    resources:
+      limits:
+        cpu: "64"
+        huawei.com/Ascend910: "6"
+        memory: 256Gi
+      requests:
+        cpu: "64"
+        huawei.com/Ascend910: "6"
+        memory: 256Gi
+    securityContext:
+      privileged: true
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /models/Qwen3.6-27B-w8a8
+      name: model
+      readOnly: true
+    - mountPath: /opt/qwen36-pd
+      name: scripts
+      readOnly: true
+    - mountPath: /var/run/qwen36-pd
+      name: state
+    - mountPath: /var/log/qwen36-pd
+      name: logs
+    - mountPath: /dev/shm
+      name: shm
+    - mountPath: /usr/local/Ascend/driver
+      name: driver
+      readOnly: true
+    - mountPath: /usr/local/dcmi
+      name: dcmi
+      readOnly: true
+    - mountPath: /usr/local/bin/npu-smi
+      name: npu-smi
+      readOnly: true
+    - mountPath: /usr/local/Ascend/driver/tools/hccn_tool
+      name: hccn-tool
+      readOnly: true
+    - mountPath: /etc/hccn.conf
+      name: hccn-conf
+      readOnly: true
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-h2rvd
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: a3-server-00
+  nodeSelector:
+    kubernetes.io/arch: arm64
+    kubernetes.io/hostname: a3-server-00
+    node.kubernetes.io/npu.chip.name: Ascend910
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - hostPath:
+      path: /home/admin/models/Qwen3.6-27B-w8a8
+      type: Directory
+    name: model
+  - configMap:
+      defaultMode: 365
+      name: qwen36-pd-worker-scripts
+    name: scripts
+  - emptyDir: {}
+    name: state
+  - emptyDir: {}
+    name: logs
+  - emptyDir:
+      medium: Memory
+      sizeLimit: 64Gi
+    name: shm
+  - hostPath:
+      path: /usr/local/Ascend/driver
+      type: ""
+    name: driver
+  - hostPath:
+      path: /usr/local/dcmi
+      type: ""
+    name: dcmi
+  - hostPath:
+      path: /usr/local/bin/npu-smi
+      type: File
+    name: npu-smi
+  - hostPath:
+      path: /usr/local/Ascend/driver/tools/hccn_tool
+      type: File
+    name: hccn-tool
+  - hostPath:
+      path: /etc/hccn.conf
+      type: File
+    name: hccn-conf
+  - name: kube-api-access-h2rvd
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-04T01:45:19Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-04T01:45:18Z"
+    observedGeneration: 1
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-04T02:00:42Z"
+    observedGeneration: 1
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-04T02:00:42Z"
+    observedGeneration: 1
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-04T01:45:18Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - allocatedResources:
+      cpu: "64"
+      huawei.com/Ascend910: "6"
+      memory: 256Gi
+    containerID: containerd://d0c1af9cf1154727176e65cc43036ae9146b3e47dce115dbd8325f6af5959d9f
+    image: 110.120.0.3:8889/infra/qwen36-pd-worker:v0.22.1rc1-a3-ray248-20260730
+    imageID: 110.120.0.3:8889/infra/qwen36-pd-worker@sha256:15c3a3db3772807cc09d9ad37756cd973e3b078956b6a239375ec4ae23317133
+    lastState: {}
+    name: pd-worker
+    ready: true
+    resources:
+      limits:
+        cpu: "64"
+        huawei.com/Ascend910: "6"
+        memory: 256Gi
+      requests:
+        cpu: "64"
+        huawei.com/Ascend910: "6"
+        memory: 256Gi
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2026-08-04T01:45:19Z"
+    user:
+      linux:
+        gid: 0
+        supplementalGroups:
+        - 0
+        uid: 0
+    volumeMounts:
+    - mountPath: /models/Qwen3.6-27B-w8a8
+      name: model
+      readOnly: true
+      recursiveReadOnly: Disabled
+    - mountPath: /opt/qwen36-pd
+      name: scripts
+      readOnly: true
+      recursiveReadOnly: Disabled
+    - mountPath: /var/run/qwen36-pd
+      name: state
+    - mountPath: /var/log/qwen36-pd
+      name: logs
+    - mountPath: /dev/shm
+      name: shm
+    - mountPath: /usr/local/Ascend/driver
+      name: driver
+      readOnly: true
+      recursiveReadOnly: Disabled
+    - mountPath: /usr/local/dcmi
+      name: dcmi
+      readOnly: true
+      recursiveReadOnly: Disabled
+    - mountPath: /usr/local/bin/npu-smi
+      name: npu-smi
+      readOnly: true
+      recursiveReadOnly: Disabled
+    - mountPath: /usr/local/Ascend/driver/tools/hccn_tool
+      name: hccn-tool
+      readOnly: true
+      recursiveReadOnly: Disabled
+    - mountPath: /etc/hccn.conf
+      name: hccn-conf
+      readOnly: true
+      recursiveReadOnly: Disabled
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-h2rvd
+      readOnly: true
+      recursiveReadOnly: Disabled
+  hostIP: 110.123.0.3
+  hostIPs:
+  - ip: 110.123.0.3
+  observedGeneration: 1
+  phase: Running
+  podIP: 10.42.17.149
+  podIPs:
+  - ip: 10.42.17.149
+  qosClass: Guaranteed
+  startTime: "2026-08-04T01:45:18Z"

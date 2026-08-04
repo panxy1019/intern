@@ -1,0 +1,943 @@
+INFO 08-04 01:55:40 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 08-04 01:55:40 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 08-04 01:55:40 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 08-04 01:55:40 [__init__.py:238] Platform plugin ascend is activated
+INFO 08-04 01:55:40 [platform.py:60] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+2026-08-04 01:55:46,129 - 6562 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.22.1+empty: default 1
+WARNING 08-04 01:55:46 [registry.py:984] Model architecture DeepseekV4ForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4:AscendDeepseekV4ForCausalLM.
+WARNING 08-04 01:55:46 [registry.py:984] Model architecture DeepSeekV4MTPModel is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4_mtp:DeepSeekV4MTP.
+INFO 08-04 01:55:46 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+INFO 08-04 01:55:46 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+(APIServer pid=6562) INFO 08-04 01:55:46 [utils.py:344] 
+(APIServer pid=6562) INFO 08-04 01:55:46 [utils.py:344]        █     █     █▄   ▄█
+(APIServer pid=6562) INFO 08-04 01:55:46 [utils.py:344]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.22.1
+(APIServer pid=6562) INFO 08-04 01:55:46 [utils.py:344]   █▄█▀ █     █     █     █  model   /models/Qwen3.6-27B-w8a8
+(APIServer pid=6562) INFO 08-04 01:55:46 [utils.py:344]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=6562) INFO 08-04 01:55:46 [utils.py:344] 
+(APIServer pid=6562) INFO 08-04 01:55:46 [utils.py:278] non-default args: {'model_tag': '/models/Qwen3.6-27B-w8a8', 'host': '0.0.0.0', 'port': 13702, 'model': '/models/Qwen3.6-27B-w8a8', 'trust_remote_code': True, 'seed': 1024, 'max_model_len': 32768, 'quantization': 'ascend', 'served_model_name': ['qwen36-27b-w8a8'], 'safetensors_load_strategy': 'eager', 'tensor_parallel_size': 2, 'gpu_memory_utilization': 0.88, 'enable_prefix_caching': False, 'max_num_batched_tokens': 4096, 'max_num_seqs': 64, 'kv_transfer_config': KVTransferConfig(kv_connector='MooncakeConnectorV1', engine_id='7e1e2c91-7c29-4f6d-8b17-bd5e79900c49', kv_buffer_device='npu', kv_buffer_size=1000000000.0, kv_role='kv_consumer', kv_rank=None, kv_parallel_size=1, kv_ip='127.0.0.1', kv_port=36200, kv_connector_extra_config={'prefill': {'dp_size': 1, 'tp_size': 2}, 'decode': {'dp_size': 1, 'tp_size': 2}}, kv_connector_module_path=None, enable_permute_local_kv=False, kv_load_failure_policy='fail')}
+(APIServer pid=6562) INFO 08-04 01:55:46 [model.py:617] Resolved architecture: Qwen3_5ForConditionalGeneration
+(APIServer pid=6562) INFO 08-04 01:55:46 [model.py:1752] Using max model len 32768
+(APIServer pid=6562) INFO 08-04 01:55:46 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=4096.
+(APIServer pid=6562) `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+(APIServer pid=6562) INFO 08-04 01:55:47 [patch_mamba_config.py:104] Setting attention block size to 1536 tokens to ensure that attention page size is >= mamba page size.
+(APIServer pid=6562) INFO 08-04 01:55:47 [patch_mamba_config.py:119] Padding mamba page size by 0.97% to ensure that mamba page size and attention page size are exactly equal.
+(APIServer pid=6562) INFO 08-04 01:55:47 [vllm.py:977] Asynchronous scheduling is enabled.
+(APIServer pid=6562) INFO 08-04 01:55:47 [kernel.py:270] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+(APIServer pid=6562) WARNING 08-04 01:55:47 [platform.py:1036] GPU-specific parameter is not supported on Ascend. parameter=disable_cascade_attn, value=True, action: resetting to False.
+(APIServer pid=6562) INFO 08-04 01:55:47 [ascend_config.py:772] Dynamic EPLB is False
+(APIServer pid=6562) INFO 08-04 01:55:47 [ascend_config.py:773] The number of redundant experts is 0
+(APIServer pid=6562) INFO 08-04 01:55:47 [platform.py:759] Set PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
+(APIServer pid=6562) INFO 08-04 01:55:47 [compilation.py:312] Enabled custom fusions: norm_quant, act_quant
+(APIServer pid=6562) The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+INFO 08-04 01:56:03 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 08-04 01:56:03 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 08-04 01:56:03 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 08-04 01:56:03 [__init__.py:238] Platform plugin ascend is activated
+INFO 08-04 01:56:03 [platform.py:60] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+(EngineCore pid=6695) 2026-08-04 01:56:11,298 - 6695 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.22.1+empty: default 1
+(EngineCore pid=6695) WARNING 08-04 01:56:11 [registry.py:984] Model architecture DeepseekV4ForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4:AscendDeepseekV4ForCausalLM.
+(EngineCore pid=6695) WARNING 08-04 01:56:11 [registry.py:984] Model architecture DeepSeekV4MTPModel is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4_mtp:DeepSeekV4MTP.
+(EngineCore pid=6695) INFO 08-04 01:56:11 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+(EngineCore pid=6695) INFO 08-04 01:56:11 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+(EngineCore pid=6695) INFO 08-04 01:56:11 [core.py:112] Initializing a V1 LLM engine (v0.22.1) with config: model='/models/Qwen3.6-27B-w8a8', speculative_config=None, tokenizer='/models/Qwen3.6-27B-w8a8', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=True, quantization=ascend, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=npu, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=1024, served_model_name=qwen36-27b-w8a8, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'vllm_ascend.compilation.compiler_interface.AscendCompiler', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::qwen_gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update', 'vllm::mla_forward', 'vllm::dsa_forward'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [4096], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False}, 'max_cudagraph_capture_size': 64, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=6695) INFO 08-04 01:56:11 [multiproc_executor.py:139] DP group leader: node_rank=0, node_rank_within_dp=0, master_addr=127.0.0.1, mq_connect_ip=10.42.17.149 (local), world_size=2, local_world_size=2
+INFO 08-04 01:56:17 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 08-04 01:56:17 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 08-04 01:56:17 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 08-04 01:56:17 [__init__.py:238] Platform plugin ascend is activated
+INFO 08-04 01:56:17 [platform.py:60] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+2026-08-04 01:56:22,689 - 6784 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.22.1+empty: default 1
+WARNING 08-04 01:56:23 [registry.py:984] Model architecture DeepseekV4ForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4:AscendDeepseekV4ForCausalLM.
+WARNING 08-04 01:56:23 [registry.py:984] Model architecture DeepSeekV4MTPModel is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4_mtp:DeepSeekV4MTP.
+INFO 08-04 01:56:23 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+INFO 08-04 01:56:23 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+`Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+INFO 08-04 01:56:25 [ascend_config.py:772] Dynamic EPLB is False
+INFO 08-04 01:56:25 [ascend_config.py:773] The number of redundant experts is 0
+(Worker pid=6784) INFO 08-04 01:56:27 [parallel_state.py:1422] world_size=2 rank=0 local_rank=0 distributed_init_method=tcp://127.0.0.1:41707 backend=hccl
+INFO 08-04 01:56:27 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 08-04 01:56:27 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 08-04 01:56:27 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 08-04 01:56:27 [__init__.py:238] Platform plugin ascend is activated
+INFO 08-04 01:56:27 [platform.py:60] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+2026-08-04 01:56:33,116 - 6863 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.22.1+empty: default 1
+WARNING 08-04 01:56:33 [registry.py:984] Model architecture DeepseekV4ForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4:AscendDeepseekV4ForCausalLM.
+WARNING 08-04 01:56:33 [registry.py:984] Model architecture DeepSeekV4MTPModel is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4_mtp:DeepSeekV4MTP.
+INFO 08-04 01:56:33 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+INFO 08-04 01:56:33 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+`Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+INFO 08-04 01:56:36 [ascend_config.py:772] Dynamic EPLB is False
+INFO 08-04 01:56:36 [ascend_config.py:773] The number of redundant experts is 0
+(Worker pid=6863) INFO 08-04 01:56:37 [parallel_state.py:1422] world_size=2 rank=1 local_rank=1 distributed_init_method=tcp://127.0.0.1:41707 backend=hccl
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+(Worker pid=6784) INFO 08-04 01:56:37 [parallel_state.py:1735] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+(Worker pid=6863) The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(Worker pid=6784) The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(Worker_TP1 pid=6863) INFO 08-04 01:56:44 [model_runner_v1.py:3586] Starting to load model /models/Qwen3.6-27B-w8a8...
+(Worker_TP0 pid=6784) INFO 08-04 01:56:44 [model_runner_v1.py:3586] Starting to load model /models/Qwen3.6-27B-w8a8...
+(Worker_TP1 pid=6863) INFO 08-04 01:56:45 [modelslim_config.py:477] Applied hf_to_vllm_mapper to quant_description keys
+(Worker_TP0 pid=6784) INFO 08-04 01:56:45 [modelslim_config.py:477] Applied hf_to_vllm_mapper to quant_description keys
+(Worker_TP0 pid=6784) INFO 08-04 01:56:45 [interface.py:293] Using default backend AttentionBackendEnum.TORCH_SDPA for vit attention
+(Worker_TP0 pid=6784) INFO 08-04 01:56:45 [mm_encoder_attention.py:372] Using AttentionBackendEnum.TORCH_SDPA for MMEncoderAttention.
+(Worker_TP0 pid=6784) INFO 08-04 01:56:45 [qwen_gdn_linear_attn.py:228] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=None).
+(Worker_TP0 pid=6784) INFO 08-04 01:56:45 [modelslim_config.py:383] Using the vLLM Ascend modelslim Quantization now!
+(Worker_TP1 pid=6863) INFO 08-04 01:56:46 [compilation.py:1066] Using OOT custom backend for compilation.
+(Worker_TP0 pid=6784) INFO 08-04 01:56:46 [compilation.py:1066] Using OOT custom backend for compilation.
+(Worker_TP0 pid=6784) INFO 08-04 01:56:47 [weight_utils.py:922] Filesystem type for checkpoints: EXT4. Checkpoint size: 33.92 GiB. Available RAM: 1159.30 GiB.
+(Worker_TP0 pid=6784) Loading safetensors checkpoint shards (eager):   0% Completed | 0/9 [00:00<?, ?it/s]
+(Worker_TP0 pid=6784) Loading safetensors checkpoint shards (eager):  11% Completed | 1/9 [00:03<00:29,  3.65s/it]
+(Worker_TP0 pid=6784) Loading safetensors checkpoint shards (eager):  22% Completed | 2/9 [00:07<00:24,  3.50s/it]
+(Worker_TP0 pid=6784) Loading safetensors checkpoint shards (eager):  33% Completed | 3/9 [00:10<00:20,  3.44s/it]
+(Worker_TP0 pid=6784) Loading safetensors checkpoint shards (eager):  44% Completed | 4/9 [00:11<00:13,  2.65s/it]
+(Worker_TP0 pid=6784) Loading safetensors checkpoint shards (eager):  56% Completed | 5/9 [00:13<00:08,  2.18s/it]
+(Worker_TP0 pid=6784) Loading safetensors checkpoint shards (eager):  67% Completed | 6/9 [00:14<00:05,  1.83s/it]
+(Worker_TP0 pid=6784) Loading safetensors checkpoint shards (eager):  78% Completed | 7/9 [00:15<00:03,  1.62s/it]
+(Worker_TP0 pid=6784) Loading safetensors checkpoint shards (eager):  89% Completed | 8/9 [00:16<00:01,  1.44s/it]
+(Worker_TP0 pid=6784) Loading safetensors checkpoint shards (eager): 100% Completed | 9/9 [00:17<00:00,  1.20s/it]
+(Worker_TP0 pid=6784) Loading safetensors checkpoint shards (eager): 100% Completed | 9/9 [00:17<00:00,  1.92s/it]
+(Worker_TP0 pid=6784) 
+(Worker_TP0 pid=6784) INFO 08-04 01:57:04 [default_loader.py:397] Loading weights took 17.27 seconds
+(Worker_TP0 pid=6784) INFO 08-04 01:57:15 [model_runner_v1.py:3633] Loading model weights took 16.8724 GB
+(Worker_TP1 pid=6863) INFO 08-04 01:57:20 [model_runner_v1.py:3633] Loading model weights took 16.8724 GB
+(Worker_TP0 pid=6784) INFO 08-04 01:57:21 [gpu_model_runner.py:6136] Encoder cache will be initialized with a budget of 16384 tokens, and profiled with 1 image items of the maximum feature size.
+(Worker_TP0 pid=6784) INFO 08-04 01:57:27 [compiler_interface.py:248] AscendCompiler hash factors: {'torch_npu_version': '2.10.0', 'enable_npugraph_ex': True, 'enable_static_kernel': False}
+(Worker_TP0 pid=6784) INFO 08-04 01:57:27 [backends.py:1089] Using cache directory: /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone for vLLM's torch.compile
+(Worker_TP0 pid=6784) INFO 08-04 01:57:27 [backends.py:1148] Dynamo bytecode transform time: 2.30 s
+(Worker_TP1 pid=6863) INFO 08-04 01:57:27 [compiler_interface.py:248] AscendCompiler hash factors: {'torch_npu_version': '2.10.0', 'enable_npugraph_ex': True, 'enable_static_kernel': False}
+(Worker_TP0 pid=6784) INFO 08-04 01:57:28 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_0
+(Worker_TP0 pid=6784) INFO 08-04 01:57:28 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_1 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:28 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_0
+(Worker_TP1 pid=6863) INFO 08-04 01:57:28 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_1 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321] Compiling model again due to a load failure from /root/.cache/vllm/torch_compile_cache/torch_aot_compile/d557d0e73cbfdca6c2439d286512da23c617fd109827e093a70640995d9fc0f9/rank_1_0/model, reason: While executing %triton_kernel_wrapper_mutation : [num_users=0] = call_function[target=torch.ops.higher_order.triton_kernel_wrapper_mutation](args = (), kwargs = {kernel_idx: 0, constant_args_idx: 0, grid: [(%floordiv, 1, 1)], tma_descriptor_metadata: {}, kwargs: {X: %reshape_2, Y: %empty_like, W: %contiguous, Z: %reshape_3, Rstd: %empty, M: %mul}})
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321] Original traceback:
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm/vllm/model_executor/models/qwen3_next.py", line 528, in forward
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]     hidden_states, residual = layer(
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm-ascend/vllm_ascend/patch/worker/patch_qwen3_5.py", line 115, in forward
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]     self.linear_attn(
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm-ascend/vllm_ascend/ops/gdn.py", line 381, in forward
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]     core_attn_out = self.norm(core_attn_out, z)
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm/vllm/model_executor/custom_op.py", line 136, in forward
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]     return self._forward_method(*args, **kwargs)
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm-ascend/vllm_ascend/ops/layernorm.py", line 201, in forward_oot
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]     return LayerNormFn.apply(x, self.weight, self.bias, z, self.eps, self.group_size, self.norm_before_gate, True)
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm-ascend/vllm_ascend/ops/layernorm.py", line 143, in forward
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]     y, mean, rstd = layer_norm_fwd_npu(
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm-ascend/vllm_ascend/ops/triton/layernorm_gated.py", line 148, in layer_norm_fwd_npu
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]     _layer_norm_fwd_1pass_kernel_npu[grid](
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/triton/runtime/jit.py", line 333, in <lambda>
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]     return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/triton/runtime/autotuner.py", line 386, in run
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]     return self.fn.run(*args, **kwargs)
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/triton/runtime/autotuner.py", line 386, in run
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321]     return self.fn.run(*args, **kwargs)
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321] 
+(Worker_TP1 pid=6863) WARNING 08-04 01:57:29 [decorators.py:321] Use tlparse to see full graph. (https://github.com/pytorch/tlparse?tab=readme-ov-file#tlparse-parse-structured-pt2-logs)
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321] Compiling model again due to a load failure from /root/.cache/vllm/torch_compile_cache/torch_aot_compile/d557d0e73cbfdca6c2439d286512da23c617fd109827e093a70640995d9fc0f9/rank_0_0/model, reason: While executing %triton_kernel_wrapper_mutation : [num_users=0] = call_function[target=torch.ops.higher_order.triton_kernel_wrapper_mutation](args = (), kwargs = {kernel_idx: 0, constant_args_idx: 0, grid: [(%floordiv, 1, 1)], tma_descriptor_metadata: {}, kwargs: {X: %reshape_2, Y: %empty_like, W: %contiguous, Z: %reshape_3, Rstd: %empty, M: %mul}})
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321] Original traceback:
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm/vllm/model_executor/models/qwen3_next.py", line 528, in forward
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]     hidden_states, residual = layer(
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm-ascend/vllm_ascend/patch/worker/patch_qwen3_5.py", line 115, in forward
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]     self.linear_attn(
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm-ascend/vllm_ascend/ops/gdn.py", line 381, in forward
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]     core_attn_out = self.norm(core_attn_out, z)
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm/vllm/model_executor/custom_op.py", line 136, in forward
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]     return self._forward_method(*args, **kwargs)
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm-ascend/vllm_ascend/ops/layernorm.py", line 201, in forward_oot
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]     return LayerNormFn.apply(x, self.weight, self.bias, z, self.eps, self.group_size, self.norm_before_gate, True)
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm-ascend/vllm_ascend/ops/layernorm.py", line 143, in forward
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]     y, mean, rstd = layer_norm_fwd_npu(
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]   File "/vllm-workspace/vllm-ascend/vllm_ascend/ops/triton/layernorm_gated.py", line 148, in layer_norm_fwd_npu
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]     _layer_norm_fwd_1pass_kernel_npu[grid](
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/triton/runtime/jit.py", line 333, in <lambda>
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]     return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/triton/runtime/autotuner.py", line 386, in run
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]     return self.fn.run(*args, **kwargs)
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/triton/runtime/autotuner.py", line 386, in run
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321]     return self.fn.run(*args, **kwargs)
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321] 
+(Worker_TP0 pid=6784) WARNING 08-04 01:57:29 [decorators.py:321] Use tlparse to see full graph. (https://github.com/pytorch/tlparse?tab=readme-ov-file#tlparse-parse-structured-pt2-logs)
+(Worker_TP1 pid=6863) /usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:2056: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS="+dynamo" for a DEBUG stack trace.
+(Worker_TP1 pid=6863)   torch._dynamo.utils.warn_once(msg)
+(Worker_TP0 pid=6784) /usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:2056: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS="+dynamo" for a DEBUG stack trace.
+(Worker_TP0 pid=6784)   torch._dynamo.utils.warn_once(msg)
+(Worker_TP1 pid=6863) INFO 08-04 01:57:42 [compiler_interface.py:248] AscendCompiler hash factors: {'torch_npu_version': '2.10.0', 'enable_npugraph_ex': True, 'enable_static_kernel': False}
+(Worker_TP1 pid=6863) INFO 08-04 01:57:43 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_0
+(Worker_TP1 pid=6863) INFO 08-04 01:57:43 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_1 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:57:44 [compiler_interface.py:248] AscendCompiler hash factors: {'torch_npu_version': '2.10.0', 'enable_npugraph_ex': True, 'enable_static_kernel': False}
+(Worker_TP0 pid=6784) INFO 08-04 01:57:44 [backends.py:1148] Dynamo bytecode transform time: 15.44 s
+(Worker_TP0 pid=6784) INFO 08-04 01:57:45 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_0
+(Worker_TP0 pid=6784) INFO 08-04 01:57:45 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_1 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:46 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:46 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:46 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_2 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:48 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:48 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_2
+(Worker_TP1 pid=6863) INFO 08-04 01:57:48 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_3 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:57:48 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:57:48 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:57:48 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_2 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:49 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:49 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_3
+(Worker_TP1 pid=6863) INFO 08-04 01:57:49 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_4
+(Worker_TP1 pid=6863) INFO 08-04 01:57:49 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_5 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:57:50 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:57:50 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_2
+(Worker_TP0 pid=6784) INFO 08-04 01:57:50 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_3 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:50 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:50 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_5
+(Worker_TP1 pid=6863) INFO 08-04 01:57:50 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_6 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:57:51 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:57:51 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_3
+(Worker_TP0 pid=6784) INFO 08-04 01:57:51 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_4
+(Worker_TP0 pid=6784) INFO 08-04 01:57:51 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_5 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:52 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:52 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_6
+(Worker_TP1 pid=6863) INFO 08-04 01:57:52 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_7 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:57:52 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:57:52 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_5
+(Worker_TP0 pid=6784) INFO 08-04 01:57:52 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_6 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:52 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:52 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_7
+(Worker_TP1 pid=6863) INFO 08-04 01:57:52 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_8
+(Worker_TP1 pid=6863) INFO 08-04 01:57:52 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_9 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:54 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:54 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_9
+(Worker_TP1 pid=6863) INFO 08-04 01:57:54 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_10 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:57:54 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:57:54 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_6
+(Worker_TP0 pid=6784) INFO 08-04 01:57:54 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_7 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:57:54 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:57:54 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_7
+(Worker_TP0 pid=6784) INFO 08-04 01:57:54 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_8
+(Worker_TP0 pid=6784) INFO 08-04 01:57:54 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_9 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:55 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:55 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_10
+(Worker_TP1 pid=6863) INFO 08-04 01:57:55 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_11 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:55 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:55 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_11
+(Worker_TP1 pid=6863) INFO 08-04 01:57:55 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_12
+(Worker_TP1 pid=6863) INFO 08-04 01:57:55 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_13 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:57:56 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:57:56 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_9
+(Worker_TP0 pid=6784) INFO 08-04 01:57:56 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_10 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:57 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:57 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_13
+(Worker_TP1 pid=6863) INFO 08-04 01:57:57 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_14 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:58 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:58 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_14
+(Worker_TP1 pid=6863) INFO 08-04 01:57:58 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_15 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:57:58 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:57:58 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_10
+(Worker_TP0 pid=6784) INFO 08-04 01:57:58 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_11 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:57:59 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:57:59 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_15
+(Worker_TP1 pid=6863) INFO 08-04 01:57:59 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_16
+(Worker_TP1 pid=6863) INFO 08-04 01:57:59 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_17 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:57:59 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:57:59 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_11
+(Worker_TP0 pid=6784) INFO 08-04 01:57:59 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_12
+(Worker_TP0 pid=6784) INFO 08-04 01:57:59 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_13 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:00 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:00 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_17
+(Worker_TP1 pid=6863) INFO 08-04 01:58:00 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_18 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:01 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:01 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_13
+(Worker_TP0 pid=6784) INFO 08-04 01:58:01 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_14 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:02 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:02 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_18
+(Worker_TP1 pid=6863) INFO 08-04 01:58:02 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_19 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:02 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:02 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_14
+(Worker_TP0 pid=6784) INFO 08-04 01:58:02 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_15 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:03 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:03 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_19
+(Worker_TP1 pid=6863) INFO 08-04 01:58:03 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_20
+(Worker_TP1 pid=6863) INFO 08-04 01:58:03 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_21 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:03 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:03 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_15
+(Worker_TP0 pid=6784) INFO 08-04 01:58:03 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_16
+(Worker_TP0 pid=6784) INFO 08-04 01:58:03 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_17 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:04 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:04 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_21
+(Worker_TP1 pid=6863) INFO 08-04 01:58:04 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_22 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:04 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:04 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_17
+(Worker_TP0 pid=6784) INFO 08-04 01:58:04 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_18 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:05 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:05 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_22
+(Worker_TP1 pid=6863) INFO 08-04 01:58:05 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_23 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:06 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:06 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_18
+(Worker_TP0 pid=6784) INFO 08-04 01:58:06 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_19 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:06 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:06 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_23
+(Worker_TP1 pid=6863) INFO 08-04 01:58:06 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_24
+(Worker_TP1 pid=6863) INFO 08-04 01:58:06 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_25 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:07 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:07 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_19
+(Worker_TP0 pid=6784) INFO 08-04 01:58:07 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_20
+(Worker_TP0 pid=6784) INFO 08-04 01:58:07 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_21 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:07 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:07 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_25
+(Worker_TP1 pid=6863) INFO 08-04 01:58:07 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_26 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:08 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:08 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_21
+(Worker_TP0 pid=6784) INFO 08-04 01:58:08 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_22 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:09 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:09 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_26
+(Worker_TP1 pid=6863) INFO 08-04 01:58:09 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_27 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:09 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:09 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_27
+(Worker_TP1 pid=6863) INFO 08-04 01:58:09 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_28
+(Worker_TP1 pid=6863) INFO 08-04 01:58:09 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_29 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:10 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:10 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_22
+(Worker_TP0 pid=6784) INFO 08-04 01:58:10 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_23 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:10 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:10 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_23
+(Worker_TP0 pid=6784) INFO 08-04 01:58:10 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_24
+(Worker_TP0 pid=6784) INFO 08-04 01:58:10 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_25 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:11 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:11 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_29
+(Worker_TP1 pid=6863) INFO 08-04 01:58:11 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_30 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:12 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:12 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_25
+(Worker_TP0 pid=6784) INFO 08-04 01:58:12 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_26 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:12 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:12 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_30
+(Worker_TP1 pid=6863) INFO 08-04 01:58:12 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_31 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:13 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:13 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_31
+(Worker_TP1 pid=6863) INFO 08-04 01:58:13 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_32
+(Worker_TP1 pid=6863) INFO 08-04 01:58:13 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_33 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:13 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:13 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_26
+(Worker_TP0 pid=6784) INFO 08-04 01:58:13 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_27 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:14 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:14 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_27
+(Worker_TP0 pid=6784) INFO 08-04 01:58:14 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_28
+(Worker_TP0 pid=6784) INFO 08-04 01:58:14 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_29 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:14 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:14 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_33
+(Worker_TP1 pid=6863) INFO 08-04 01:58:14 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_34 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:15 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:15 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_34
+(Worker_TP1 pid=6863) INFO 08-04 01:58:15 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_35 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:16 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:16 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_35
+(Worker_TP1 pid=6863) INFO 08-04 01:58:16 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_36
+(Worker_TP1 pid=6863) INFO 08-04 01:58:16 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_37 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:16 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:16 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_29
+(Worker_TP0 pid=6784) INFO 08-04 01:58:16 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_30 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:18 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:18 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_30
+(Worker_TP0 pid=6784) INFO 08-04 01:58:18 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_31 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:18 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:18 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_31
+(Worker_TP0 pid=6784) INFO 08-04 01:58:18 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_32
+(Worker_TP0 pid=6784) INFO 08-04 01:58:18 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_33 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:18 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:18 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_37
+(Worker_TP1 pid=6863) INFO 08-04 01:58:18 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_38 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:20 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:20 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_38
+(Worker_TP1 pid=6863) INFO 08-04 01:58:20 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_39 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:20 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:20 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_33
+(Worker_TP0 pid=6784) INFO 08-04 01:58:20 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_34 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:20 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:20 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_39
+(Worker_TP1 pid=6863) INFO 08-04 01:58:20 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_40
+(Worker_TP1 pid=6863) INFO 08-04 01:58:20 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_41 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:21 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:21 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_34
+(Worker_TP0 pid=6784) INFO 08-04 01:58:21 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_35 (file absent or not saved), recompiling
+(EngineCore pid=6695) INFO 08-04 01:58:21 [shm_broadcast.py:698] No available shared memory broadcast block found in 60 seconds. This typically happens when some processes are hanging or doing some time-consuming work (e.g. compilation, weight/kv cache quantization).
+(Worker_TP1 pid=6863) INFO 08-04 01:58:21 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:21 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_41
+(Worker_TP1 pid=6863) INFO 08-04 01:58:21 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_42 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:22 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:22 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_35
+(Worker_TP0 pid=6784) INFO 08-04 01:58:22 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_36
+(Worker_TP0 pid=6784) INFO 08-04 01:58:22 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_37 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:23 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:23 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_42
+(Worker_TP1 pid=6863) INFO 08-04 01:58:23 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_43 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:23 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:23 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_37
+(Worker_TP0 pid=6784) INFO 08-04 01:58:23 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_38 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:23 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:23 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_43
+(Worker_TP1 pid=6863) INFO 08-04 01:58:23 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_44
+(Worker_TP1 pid=6863) INFO 08-04 01:58:23 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_45 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:25 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:25 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_45
+(Worker_TP1 pid=6863) INFO 08-04 01:58:25 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_46 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:25 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:25 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_38
+(Worker_TP0 pid=6784) INFO 08-04 01:58:25 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_39 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:25 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:25 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_39
+(Worker_TP0 pid=6784) INFO 08-04 01:58:25 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_40
+(Worker_TP0 pid=6784) INFO 08-04 01:58:25 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_41 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:26 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:26 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_46
+(Worker_TP1 pid=6863) INFO 08-04 01:58:26 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_47 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:27 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:27 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_47
+(Worker_TP1 pid=6863) INFO 08-04 01:58:27 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_48
+(Worker_TP1 pid=6863) INFO 08-04 01:58:27 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_49 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:27 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:27 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_41
+(Worker_TP0 pid=6784) INFO 08-04 01:58:27 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_42 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:28 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:28 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_49
+(Worker_TP1 pid=6863) INFO 08-04 01:58:28 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_50 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:28 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:28 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_42
+(Worker_TP0 pid=6784) INFO 08-04 01:58:28 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_43 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:29 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:29 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_43
+(Worker_TP0 pid=6784) INFO 08-04 01:58:29 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_44
+(Worker_TP0 pid=6784) INFO 08-04 01:58:29 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_45 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:29 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:29 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_50
+(Worker_TP1 pid=6863) INFO 08-04 01:58:29 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_51 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:30 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:30 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_51
+(Worker_TP1 pid=6863) INFO 08-04 01:58:30 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_52
+(Worker_TP1 pid=6863) INFO 08-04 01:58:30 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_53 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:31 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:31 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_45
+(Worker_TP0 pid=6784) INFO 08-04 01:58:31 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_46 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:32 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:32 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_53
+(Worker_TP1 pid=6863) INFO 08-04 01:58:32 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_54 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:33 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:33 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_46
+(Worker_TP0 pid=6784) INFO 08-04 01:58:33 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_47 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:34 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:34 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_47
+(Worker_TP0 pid=6784) INFO 08-04 01:58:34 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_48
+(Worker_TP0 pid=6784) INFO 08-04 01:58:34 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_49 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:34 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:34 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_54
+(Worker_TP1 pid=6863) INFO 08-04 01:58:34 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_55 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:34 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:34 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_55
+(Worker_TP1 pid=6863) INFO 08-04 01:58:34 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_56
+(Worker_TP1 pid=6863) INFO 08-04 01:58:34 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_57 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:35 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:35 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_49
+(Worker_TP0 pid=6784) INFO 08-04 01:58:35 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_50 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:36 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:36 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_57
+(Worker_TP1 pid=6863) INFO 08-04 01:58:36 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_58 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:37 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:37 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_50
+(Worker_TP0 pid=6784) INFO 08-04 01:58:37 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_51 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:37 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:37 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_58
+(Worker_TP1 pid=6863) INFO 08-04 01:58:37 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_59 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:37 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:37 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_51
+(Worker_TP0 pid=6784) INFO 08-04 01:58:37 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_52
+(Worker_TP0 pid=6784) INFO 08-04 01:58:37 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_53 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:38 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:38 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_59
+(Worker_TP1 pid=6863) INFO 08-04 01:58:38 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_60
+(Worker_TP1 pid=6863) INFO 08-04 01:58:38 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_61 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:39 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:39 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_53
+(Worker_TP0 pid=6784) INFO 08-04 01:58:39 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_54 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:39 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:39 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_61
+(Worker_TP1 pid=6863) INFO 08-04 01:58:39 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_62 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:40 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:40 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_54
+(Worker_TP0 pid=6784) INFO 08-04 01:58:40 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_55 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:40 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:40 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_62
+(Worker_TP1 pid=6863) INFO 08-04 01:58:40 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_63 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:41 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:41 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_55
+(Worker_TP0 pid=6784) INFO 08-04 01:58:41 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_56
+(Worker_TP0 pid=6784) INFO 08-04 01:58:41 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_57 (file absent or not saved), recompiling
+(Worker_TP1 pid=6863) INFO 08-04 01:58:41 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP1 pid=6863) INFO 08-04 01:58:41 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_63
+(Worker_TP1 pid=6863) INFO 08-04 01:58:41 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_1_0/backbone/artifact_compile_range_1_4096_subgraph_64
+(Worker_TP0 pid=6784) INFO 08-04 01:58:42 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:42 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_57
+(Worker_TP0 pid=6784) INFO 08-04 01:58:42 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_58 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:44 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:44 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_58
+(Worker_TP0 pid=6784) INFO 08-04 01:58:44 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_59 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:44 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:44 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_59
+(Worker_TP0 pid=6784) INFO 08-04 01:58:44 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_60
+(Worker_TP0 pid=6784) INFO 08-04 01:58:44 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_61 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:46 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:46 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_61
+(Worker_TP0 pid=6784) INFO 08-04 01:58:46 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_62 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:48 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:48 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_62
+(Worker_TP0 pid=6784) INFO 08-04 01:58:48 [compiler_interface.py:310] npugraph_ex cache miss for key artifact_compile_range_1_4096_subgraph_63 (file absent or not saved), recompiling
+(Worker_TP0 pid=6784) INFO 08-04 01:58:49 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_1
+(Worker_TP0 pid=6784) INFO 08-04 01:58:49 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_63
+(Worker_TP0 pid=6784) INFO 08-04 01:58:49 [compiler_interface.py:353] Loaded npugraph_ex compilation cache from /root/.cache/vllm/torch_compile_cache/212cc9c1e4/rank_0_0/backbone/artifact_compile_range_1_4096_subgraph_64
+(Worker_TP0 pid=6784) INFO 08-04 01:58:49 [backends.py:292] Directly load the compiled graph(s) for compile range (1, 4096) from the cache, took 63.911 s
+(Worker_TP0 pid=6784) INFO 08-04 01:58:54 [decorators.py:708] saved AOT compiled function to /root/.cache/vllm/torch_compile_cache/torch_aot_compile/d557d0e73cbfdca6c2439d286512da23c617fd109827e093a70640995d9fc0f9/rank_0_0/model
+(Worker_TP0 pid=6784) INFO 08-04 01:58:54 [monitor.py:53] torch.compile took 84.98 s in total
+(Worker_TP0 pid=6784) INFO 08-04 01:58:54 [monitor.py:81] Initial profiling/warmup run took 0.50 s
+(Worker_TP1 pid=6863) INFO 08-04 01:58:55 [gpu_model_runner.py:6279] Profiling CUDA graph memory: PIECEWISE=11 (largest=64), FULL=11 (largest=64)
+(Worker_TP0 pid=6784) INFO 08-04 01:58:55 [gpu_model_runner.py:6279] Profiling CUDA graph memory: PIECEWISE=11 (largest=64), FULL=11 (largest=64)
+[rank0]:[W804 01:58:56.242646633 NPUGraph.cpp:223] Warning: Waiting for pending NCCL work to finish before starting graph capture. (function operator())
+[rank1]:[W804 01:58:56.243877902 NPUGraph.cpp:223] Warning: Waiting for pending NCCL work to finish before starting graph capture. (function operator())
+(Worker_TP1 pid=6863) INFO 08-04 01:59:01 [gpu_model_runner.py:6365] Estimated CUDA graph memory: 0.60 GiB total
+(Worker_TP0 pid=6784) INFO 08-04 01:59:01 [gpu_model_runner.py:6365] Estimated CUDA graph memory: 0.62 GiB total
+(Worker_TP1 pid=6863) INFO 08-04 01:59:03 [worker.py:566] ACL graph memory profiling is enabled (default since v0.22.1). The current --gpu-memory-utilization=0.8800 is equivalent to --gpu-memory-utilization=0.8702 without ACL graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.8898. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP0 pid=6784) INFO 08-04 01:59:03 [worker.py:552] Available KV cache memory: 33.93 GiB
+(Worker_TP0 pid=6784) INFO 08-04 01:59:03 [worker.py:566] ACL graph memory profiling is enabled (default since v0.22.1). The current --gpu-memory-utilization=0.8800 is equivalent to --gpu-memory-utilization=0.8699 without ACL graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.8901. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=6695) INFO 08-04 01:59:03 [kv_cache_utils.py:1733] GPU KV cache size: 938,475 tokens
+(EngineCore pid=6695) INFO 08-04 01:59:03 [kv_cache_utils.py:1734] Maximum concurrency for 32,768 tokens per request: 28.64x
+(Worker_TP1 pid=6863) INFO 08-04 01:59:03 [factory.py:62] Creating v1 connector with name: MooncakeConnector and engine_id: 7e1e2c91-7c29-4f6d-8b17-bd5e79900c49-3fd3a382b31a4c4c9e9a6739cdcf74d1
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W0804 01:59:03.288265  6863 transfer_engine_py.cpp:77] Using default malloc/free for protocol: ascend
+I0804 01:59:03.288316  6863 transfer_engine_impl.cpp:586] Metrics reporting is disabled (set MC_TE_METRIC=1 to enable)
+I0804 01:59:03.288327  6863 transfer_engine_impl.cpp:105] Transfer Engine parseHostNameWithPort. server_name: 10.42.17.149 port: 12001
+I0804 01:59:03.288425  6863 transfer_engine_impl.cpp:172] Transfer Engine RPC using P2P handshake, listening on 10.42.17.149:15549
+(Worker_TP0 pid=6784) INFO 08-04 01:59:03 [factory.py:62] Creating v1 connector with name: MooncakeConnector and engine_id: 7e1e2c91-7c29-4f6d-8b17-bd5e79900c49-3fd3a382b31a4c4c9e9a6739cdcf74d1
+I0804 01:59:03.288578  6863 ascend_direct_transport.cpp:94] install AscendDirectTransport for: 10.42.17.149:15549
+I0804 01:59:03.288602  6863 ascend_direct_transport.cpp:608] Set device id to:7
+I0804 01:59:03.288607  6863 ascend_direct_transport.cpp:620] Find available between 20700 and 20800
+I0804 01:59:03.288664  6863 ascend_direct_transport.cpp:573] AscendDirectTransport set segment desc: host_ip=10.42.17.149, host_port=20707, deviceLogicId=1
+I0804 01:59:03.288682  6863 ascend_direct_transport.cpp:289] Set adxl engine name to 10.42.17.149:20707
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W0804 01:59:03.288802  6784 transfer_engine_py.cpp:77] Using default malloc/free for protocol: ascend
+I0804 01:59:03.288848  6784 transfer_engine_impl.cpp:586] Metrics reporting is disabled (set MC_TE_METRIC=1 to enable)
+I0804 01:59:03.288856  6784 transfer_engine_impl.cpp:105] Transfer Engine parseHostNameWithPort. server_name: 10.42.17.149 port: 12001
+I0804 01:59:03.288909  6784 transfer_engine_impl.cpp:172] Transfer Engine RPC using P2P handshake, listening on 10.42.17.149:16567
+I0804 01:59:03.289031  6784 ascend_direct_transport.cpp:94] install AscendDirectTransport for: 10.42.17.149:16567
+I0804 01:59:03.289050  6784 ascend_direct_transport.cpp:608] Set device id to:6
+I0804 01:59:03.289068  6784 ascend_direct_transport.cpp:620] Find available between 20600 and 20700
+I0804 01:59:03.289108  6784 ascend_direct_transport.cpp:573] AscendDirectTransport set segment desc: host_ip=10.42.17.149, host_port=20635, deviceLogicId=0
+I0804 01:59:03.289119  6784 ascend_direct_transport.cpp:289] Set adxl engine name to 10.42.17.149:20635
+I0804 01:59:03.293256  6863 ascend_direct_transport.cpp:295] Success to initialize adxl engine:10.42.17.149:20707 with device_id:1, pid:6863
+I0804 01:59:03.293275  6863 ascend_direct_transport.cpp:136] Set transfer timeout to:33064
+I0804 01:59:03.293746  6784 ascend_direct_transport.cpp:295] Success to initialize adxl engine:10.42.17.149:20635 with device_id:0, pid:6784
+I0804 01:59:03.293767  6784 ascend_direct_transport.cpp:136] Set transfer timeout to:33064
+I0804 01:59:03.294512  8799 ascend_direct_transport.cpp:668] AscendDirectTransport query thread started
+I0804 01:59:03.295125  8808 ascend_direct_transport.cpp:668] AscendDirectTransport query thread started
+(Worker_TP1 pid=6863) INFO 08-04 01:59:06 [mooncake_connector.py:1977] num_blocks: 716
+I0804 01:59:06.284409  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d738400000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284592  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d7c0000000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284621  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d847a00000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284643  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d8cf600000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284665  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d957000000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284687  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d9dec00000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284708  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12da66600000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284726  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12daee200000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284744  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12db75c00000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284765  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dbfd800000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284785  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dc85200000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284803  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dd0ce00000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284822  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dd94800000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284845  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12de1c400000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284866  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dea3e00000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.284888  6863 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12df2ba00000, length:2274336768, location:*, mem type:0
+(Worker_TP0 pid=6784) INFO 08-04 01:59:06 [mooncake_connector.py:1977] num_blocks: 716
+I0804 01:59:06.400672  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d738400000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.400812  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d7c0000000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.400859  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d847a00000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.400879  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d8cf600000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.400899  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d957000000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.400918  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d9dec00000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.400938  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12da66600000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.400956  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12daee200000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.400976  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12db75c00000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.400995  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dbfd800000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.401013  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dc85200000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.401031  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dd0ce00000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.401050  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dd94800000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.401067  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12de1c400000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.401086  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dea3e00000, length:2274336768, location:*, mem type:0
+I0804 01:59:06.401104  6784 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12df2ba00000, length:2274336768, location:*, mem type:0
+(Worker_TP0 pid=6784) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/11 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   9%|▉         | 1/11 [00:00<00:08,  1.13it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  18%|█▊        | 2/11 [00:01<00:08,  1.06it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 3/11 [00:02<00:08,  1.01s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  36%|███▋      | 4/11 [00:03<00:07,  1.01s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▌     | 5/11 [00:04<00:06,  1.01s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▍    | 6/11 [00:05<00:05,  1.00s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  64%|██████▎   | 7/11 [00:06<00:03,  1.03it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  73%|███████▎  | 8/11 [00:07<00:02,  1.02it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 9/11 [00:08<00:01,  1.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  91%|█████████ | 10/11 [00:09<00:00,  1.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 11/11 [00:10<00:00,  1.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 11/11 [00:10<00:00,  1.01it/s]
+(Worker_TP0 pid=6784) Capturing CUDA graphs (decode, FULL):   0%|          | 0/11 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   9%|▉         | 1/11 [00:00<00:09,  1.09it/s]Capturing CUDA graphs (decode, FULL):  18%|█▊        | 2/11 [00:01<00:08,  1.03it/s]Capturing CUDA graphs (decode, FULL):  27%|██▋       | 3/11 [00:02<00:07,  1.02it/s]Capturing CUDA graphs (decode, FULL):  36%|███▋      | 4/11 [00:03<00:06,  1.01it/s]Capturing CUDA graphs (decode, FULL):  45%|████▌     | 5/11 [00:04<00:05,  1.01it/s]Capturing CUDA graphs (decode, FULL):  55%|█████▍    | 6/11 [00:05<00:04,  1.00it/s]Capturing CUDA graphs (decode, FULL):  64%|██████▎   | 7/11 [00:06<00:03,  1.00it/s]Capturing CUDA graphs (decode, FULL):  73%|███████▎  | 8/11 [00:07<00:02,  1.01it/s]Capturing CUDA graphs (decode, FULL):  82%|████████▏ | 9/11 [00:08<00:01,  1.01it/s]Capturing CUDA graphs (decode, FULL):  91%|█████████ | 10/11 [00:09<00:00,  1.01it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 11/11 [00:10<00:00,  1.00it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 11/11 [00:10<00:00,  1.01it/s]
+(Worker_TP1 pid=6863) INFO 08-04 01:59:29 [worker.py:729] ACL graph pool memory: 0.52 GiB (actual), 0.6 GiB (estimated), difference: 0.08 GiB (14.6%).
+(Worker_TP1 pid=6863) INFO 08-04 01:59:29 [worker.py:774] Free memory on device (61.13/61.28 GiB) on startup. Desired GPU memory utilization is (0.88, 53.92 GiB). Actual usage: 16.87 GiB for weights, 1.74 GiB for peak activation, 0.76 GiB for non-torch memory, 0.52 GiB for NPU graph memory. Replace gpu_memory_utilization with `--kv-cache-memory=36385928458` (33.89 GiB) to fit into requested memory, or `--kv-cache-memory=44126354944` (41.1 GiB) to fully utilize NPU free memory. Current KV cache memory: 33.96 GiB.
+(Worker_TP0 pid=6784) INFO 08-04 01:59:29 [gpu_model_runner.py:6456] Graph capturing finished in 23 secs, took 0.52 GiB
+(Worker_TP0 pid=6784) INFO 08-04 01:59:29 [worker.py:729] ACL graph pool memory: 0.52 GiB (actual), 0.62 GiB (estimated), difference: 0.1 GiB (18.5%).
+(Worker_TP0 pid=6784) INFO 08-04 01:59:29 [worker.py:774] Free memory on device (60.89/61.27 GiB) on startup. Desired GPU memory utilization is (0.88, 53.92 GiB). Actual usage: 16.87 GiB for weights, 1.74 GiB for peak activation, 0.76 GiB for non-torch memory, 0.52 GiB for NPU graph memory. Replace gpu_memory_utilization with `--kv-cache-memory=36374294835` (33.88 GiB) to fit into requested memory, or `--kv-cache-memory=43858710016` (40.85 GiB) to fully utilize NPU free memory. Current KV cache memory: 33.93 GiB.
+(Worker_TP1 pid=6863) INFO 08-04 01:59:33 [cpu_binding.py:389] [cpu_bind_mode] mode=global_slice rank=1 visible_npus=[6, 7]
+(Worker_TP1 pid=6863) INFO 08-04 01:59:33 [cpu_binding.py:454] The CPU allocation plan is as follows:
+(Worker_TP1 pid=6863) INFO 08-04 01:59:33 [cpu_binding.py:459] NPU7: main=[282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317]  acl=[318]  release=[[319]]
+(Worker_TP0 pid=6784) INFO 08-04 01:59:33 [cpu_binding.py:389] [cpu_bind_mode] mode=global_slice rank=0 visible_npus=[6, 7]
+(Worker_TP0 pid=6784) INFO 08-04 01:59:33 [cpu_binding.py:454] The CPU allocation plan is as follows:
+(Worker_TP0 pid=6784) INFO 08-04 01:59:33 [cpu_binding.py:459] NPU6: main=[242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277]  acl=[278]  release=[[279]]
+(Worker_TP1 pid=6863) INFO 08-04 01:59:33 [cpu_binding.py:485] [migrate] NPU:7 -> NUMA [3]
+(Worker_TP0 pid=6784) INFO 08-04 01:59:33 [cpu_binding.py:485] [migrate] NPU:6 -> NUMA [3]
+(Worker_TP0 pid=6784) INFO 08-04 01:59:44 [cpu_binding.py:584] NPU6(PCI 0000:91:00.0): sq_send_trigger_irq IRQ_ID=3568 -> CPU240, cq_update_irq IRQ_ID=3569 -> CPU241
+(Worker_TP1 pid=6863) INFO 08-04 01:59:54 [cpu_binding.py:584] NPU7(PCI 0000:93:00.0): sq_send_trigger_irq IRQ_ID=3824 -> CPU280, cq_update_irq IRQ_ID=3825 -> CPU281
+(EngineCore pid=6695) INFO 08-04 01:59:54 [core.py:302] init engine (profile, create kv cache, warmup model) took 153.28 s (compilation: 84.98 s)
+(EngineCore pid=6695) INFO 08-04 01:59:55 [factory.py:62] Creating v1 connector with name: MooncakeConnector and engine_id: 7e1e2c91-7c29-4f6d-8b17-bd5e79900c49-3fd3a382b31a4c4c9e9a6739cdcf74d1
+(EngineCore pid=6695) INFO 08-04 01:59:55 [ascend_config.py:772] Dynamic EPLB is False
+(EngineCore pid=6695) INFO 08-04 01:59:55 [ascend_config.py:773] The number of redundant experts is 0
+(EngineCore pid=6695) INFO 08-04 01:59:55 [mooncake_connector.py:1426] Initializing Mooncake Scheduler 7e1e2c91-7c29-4f6d-8b17-bd5e79900c49-3fd3a382b31a4c4c9e9a6739cdcf74d1
+(EngineCore pid=6695) `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+(EngineCore pid=6695) The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(EngineCore pid=6695) INFO 08-04 02:00:02 [vllm.py:977] Asynchronous scheduling is enabled.
+(EngineCore pid=6695) INFO 08-04 02:00:02 [kernel.py:270] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+(EngineCore pid=6695) INFO 08-04 02:00:02 [platform.py:759] Set PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
+(EngineCore pid=6695) INFO 08-04 02:00:02 [compilation.py:312] Enabled custom fusions: norm_quant, act_quant
+(APIServer pid=6562) INFO 08-04 02:00:02 [api_server.py:592] Supported tasks: ['generate']
+(APIServer pid=6562) WARNING 08-04 02:00:02 [model.py:1509] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'temperature': 1.0, 'top_k': 20, 'top_p': 0.95}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(APIServer pid=6562) INFO 08-04 02:00:04 [hf.py:488] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=6562) INFO 08-04 02:00:17 [base.py:224] Multi-modal warmup completed in 13.267s
+(APIServer pid=6562) INFO 08-04 02:00:18 [base.py:224] Readonly multi-modal warmup completed in 0.972s
+(APIServer pid=6562) INFO 08-04 02:00:18 [api_server.py:596] Starting vLLM server on http://0.0.0.0:13702
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:37] Available routes are:
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /openapi.json, Methods: GET, HEAD
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /docs, Methods: GET, HEAD
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /redoc, Methods: GET, HEAD
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /tokenize, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /detokenize, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /load, Methods: GET
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /version, Methods: GET
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /health, Methods: GET
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /metrics, Methods: GET
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /v1/models, Methods: GET
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /ping, Methods: GET
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /ping, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /invocations, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /v1/chat/completions/batch, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /v1/responses, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /v1/completions, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /v1/messages, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /inference/v1/generate, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /generative_scoring, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /v1/chat/completions/render, Methods: POST
+(APIServer pid=6562) INFO 08-04 02:00:18 [launcher.py:46] Route: /v1/completions/render, Methods: POST
+(APIServer pid=6562) INFO:     Started server process [6562]
+(APIServer pid=6562) INFO:     Waiting for application startup.
+(APIServer pid=6562) INFO:     Application startup complete.
+(APIServer pid=6562) INFO:     127.0.0.1:52500 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:46552 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:46558 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:46566 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:46574 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:46576 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:46582 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:46588 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:46598 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:46606 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:46620 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45452 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45460 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45472 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45484 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45498 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45500 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57736 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57748 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57764 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57768 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57772 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57778 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57780 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57784 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57800 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57814 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57828 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57836 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52000 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52010 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52016 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52018 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52026 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52040 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:58930 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:58940 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:58948 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:58950 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:58956 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:58970 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45406 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45412 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45414 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45424 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45432 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45444 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:35540 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:35542 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:35558 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:35562 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:35566 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:35582 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:39064 - "POST /v1/completions HTTP/1.1" 200 OK
+I0804 02:16:14.015872  8800 ascend_direct_transport.cpp:1148] Connected to segment: 10.42.17.149:20306, cost:239697 us.
+(Worker_TP1 pid=6863) INFO 08-04 02:16:14 [mooncake_connector.py:825] KV cache transfer for request cmpl-97dbfa81-6a7e-4e37-85fa-2c66e15a9ada-0-90aaeac4 took 245.67 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+I0804 02:16:14.033958  8809 ascend_direct_transport.cpp:1148] Connected to segment: 10.42.17.149:20273, cost:257628 us.
+(Worker_TP0 pid=6784) INFO 08-04 02:16:14 [mooncake_connector.py:825] KV cache transfer for request cmpl-97dbfa81-6a7e-4e37-85fa-2c66e15a9ada-0-90aaeac4 took 264.87 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(APIServer pid=6562) INFO:     127.0.0.1:39070 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:39078 - "GET /metrics HTTP/1.1" 200 OK
+(Worker_TP0 pid=6784) INFO 08-04 02:16:17 [acl_graph.py:257] Replaying aclgraph
+(APIServer pid=6562) INFO:     127.0.0.1:39084 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:16:18 [loggers.py:271] Engine 000: Avg prompt throughput: 0.1 tokens/s, Avg generation throughput: 1.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:39098 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:39112 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:39122 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60518 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP0 pid=6784) INFO 08-04 02:16:24 [mooncake_connector.py:825] KV cache transfer for request cmpl-e05ae600-7f05-42b1-b56f-2ba6e3837d30-0-86143b9b took 2.85 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:16:24 [mooncake_connector.py:825] KV cache transfer for request cmpl-e05ae600-7f05-42b1-b56f-2ba6e3837d30-0-86143b9b took 2.82 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(APIServer pid=6562) INFO:     127.0.0.1:60522 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60518 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP1 pid=6863) INFO 08-04 02:16:25 [mooncake_connector.py:825] KV cache transfer for request cmpl-db0b9f29-9d6f-4a1e-9052-97ddbd00e314-0-b16a47c7 took 2.90 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:16:25 [mooncake_connector.py:825] KV cache transfer for request cmpl-db0b9f29-9d6f-4a1e-9052-97ddbd00e314-0-b16a47c7 took 3.37 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(APIServer pid=6562) INFO:     127.0.0.1:60518 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP1 pid=6863) INFO 08-04 02:16:26 [mooncake_connector.py:825] KV cache transfer for request cmpl-52b20e6a-b7a3-4dba-9800-d3e32b70dcec-0-8af8f320 took 3.58 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:16:26 [mooncake_connector.py:825] KV cache transfer for request cmpl-52b20e6a-b7a3-4dba-9800-d3e32b70dcec-0-8af8f320 took 4.17 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(APIServer pid=6562) INFO:     127.0.0.1:60536 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60518 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP1 pid=6863) INFO 08-04 02:16:27 [mooncake_connector.py:825] KV cache transfer for request cmpl-9eca24db-7373-4ab4-b3be-c668aed4cc33-0-b6685fe7 took 2.58 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:16:27 [mooncake_connector.py:825] KV cache transfer for request cmpl-9eca24db-7373-4ab4-b3be-c668aed4cc33-0-b6685fe7 took 4.36 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(APIServer pid=6562) INFO:     127.0.0.1:60542 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:16:28 [loggers.py:271] Engine 000: Avg prompt throughput: 0.4 tokens/s, Avg generation throughput: 6.4 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:60558 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60568 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60572 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60582 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60584 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60600 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60616 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60618 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60418 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60422 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60436 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60448 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:16:38 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:60456 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:60466 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49416 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49428 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49444 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49452 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP0 pid=6784) INFO 08-04 02:16:47 [mooncake_connector.py:825] KV cache transfer for request cmpl-146f64a7-aa9f-4f05-916a-ac647074feb1-0-a363fbd8 took 2.54 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:16:47 [mooncake_connector.py:825] KV cache transfer for request cmpl-146f64a7-aa9f-4f05-916a-ac647074feb1-0-a363fbd8 took 2.69 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(APIServer pid=6562) INFO:     127.0.0.1:49454 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49452 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP1 pid=6863) INFO 08-04 02:16:48 [mooncake_connector.py:825] KV cache transfer for request cmpl-1d37d8d3-0ba8-4608-9ff7-c31e20ca9362-0-acf0c555 took 2.91 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:16:48 [mooncake_connector.py:825] KV cache transfer for request cmpl-1d37d8d3-0ba8-4608-9ff7-c31e20ca9362-0-acf0c555 took 2.64 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(APIServer pid=6562) INFO 08-04 02:16:48 [loggers.py:271] Engine 000: Avg prompt throughput: 0.1 tokens/s, Avg generation throughput: 1.6 tokens/s, Running: 0 reqs, Waiting: 1 reqs, Deferred: 1 reqs, GPU KV cache usage: 0.8%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:49458 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49472 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49484 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49486 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49490 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49502 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49512 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49522 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:58304 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:58310 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:58312 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:16:58 [loggers.py:271] Engine 000: Avg prompt throughput: 0.1 tokens/s, Avg generation throughput: 1.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:58314 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:58330 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:58336 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:48148 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:48164 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:48174 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:17:08 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:48190 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:48200 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP1 pid=6863) INFO 08-04 02:17:09 [mooncake_connector.py:825] KV cache transfer for request cmpl-0951e270-ab36-4008-9385-0e0d7fcbb71e-0-bfc1585d took 3.63 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:17:09 [mooncake_connector.py:825] KV cache transfer for request cmpl-0951e270-ab36-4008-9385-0e0d7fcbb71e-0-bfc1585d took 2.10 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(APIServer pid=6562) INFO:     127.0.0.1:48204 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:48218 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52890 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52892 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52894 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:17:18 [loggers.py:271] Engine 000: Avg prompt throughput: 0.1 tokens/s, Avg generation throughput: 35.6 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.6%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:52902 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52916 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52924 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57064 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:48200 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP0 pid=6784) INFO 08-04 02:17:25 [mooncake_connector.py:825] KV cache transfer for request cmpl-fed11421-de30-4d76-8bcc-e283e9bf16d0-0-8a7640e7 took 2.67 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:17:25 [mooncake_connector.py:825] KV cache transfer for request cmpl-fed11421-de30-4d76-8bcc-e283e9bf16d0-0-8a7640e7 took 2.94 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(APIServer pid=6562) INFO:     127.0.0.1:57070 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57074 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57080 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP0 pid=6784) INFO 08-04 02:17:27 [mooncake_connector.py:825] KV cache transfer for request cmpl-78fab80f-8568-43aa-94e1-921b97d7a46b-0-91fc04a0 took 2.10 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:17:27 [mooncake_connector.py:825] KV cache transfer for request cmpl-78fab80f-8568-43aa-94e1-921b97d7a46b-0-91fc04a0 took 2.33 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:17:27 [mooncake_connector.py:825] KV cache transfer for request cmpl-723d4c7d-bd89-4ba0-9ed5-98607681c5b1-0-bbf4aa77 took 1.67 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:17:27 [mooncake_connector.py:825] KV cache transfer for request cmpl-723d4c7d-bd89-4ba0-9ed5-98607681c5b1-0-bbf4aa77 took 2.05 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(APIServer pid=6562) INFO:     127.0.0.1:57092 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP1 pid=6863) INFO 08-04 02:17:28 [mooncake_connector.py:825] KV cache transfer for request cmpl-b03dcc53-4f64-466c-b2f5-09acff7c9593-0-b524ed92 took 1.68 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:17:28 [mooncake_connector.py:825] KV cache transfer for request cmpl-b03dcc53-4f64-466c-b2f5-09acff7c9593-0-b524ed92 took 1.66 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(APIServer pid=6562) INFO:     127.0.0.1:57100 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:17:28 [loggers.py:271] Engine 000: Avg prompt throughput: 0.4 tokens/s, Avg generation throughput: 37.6 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.2%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:57114 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57122 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52972 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52974 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52976 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52982 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:17:38 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 143.2 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.2%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:48200 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP0 pid=6784) INFO 08-04 02:17:39 [mooncake_connector.py:825] KV cache transfer for request cmpl-f71bc43d-ad48-40b7-a802-46bd1d219ed2-0-9c9c298c took 1.96 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:17:39 [mooncake_connector.py:825] KV cache transfer for request cmpl-f71bc43d-ad48-40b7-a802-46bd1d219ed2-0-9c9c298c took 2.22 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(APIServer pid=6562) INFO:     127.0.0.1:52984 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:52990 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57074 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP0 pid=6784) INFO 08-04 02:17:42 [mooncake_connector.py:825] KV cache transfer for request cmpl-6288d0cb-0447-455e-8013-bef2af10aa81-0-a80b50b3 took 1.91 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:17:42 [mooncake_connector.py:825] KV cache transfer for request cmpl-6288d0cb-0447-455e-8013-bef2af10aa81-0-a80b50b3 took 2.11 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(APIServer pid=6562) INFO:     127.0.0.1:51516 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57080 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:57092 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP0 pid=6784) INFO 08-04 02:17:44 [mooncake_connector.py:825] KV cache transfer for request cmpl-733d3090-309e-4460-9cbe-edf77854610f-0-b633fa5a took 1.85 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:17:44 [mooncake_connector.py:825] KV cache transfer for request cmpl-733d3090-309e-4460-9cbe-edf77854610f-0-b633fa5a took 1.89 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:17:44 [mooncake_connector.py:825] KV cache transfer for request cmpl-154600b7-2580-4805-a2e6-ccd06e99513e-0-8d3bce42 took 1.73 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:17:44 [mooncake_connector.py:825] KV cache transfer for request cmpl-154600b7-2580-4805-a2e6-ccd06e99513e-0-8d3bce42 took 1.78 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(APIServer pid=6562) INFO:     127.0.0.1:51524 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:51534 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:17:48 [loggers.py:271] Engine 000: Avg prompt throughput: 0.4 tokens/s, Avg generation throughput: 123.8 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.2%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:51542 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:51546 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:51550 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45492 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45508 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45510 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:17:58 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 118.4 tokens/s, Running: 2 reqs, Waiting: 0 reqs, GPU KV cache usage: 1.1%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:45520 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45522 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45538 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45540 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45548 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45564 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45578 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:45588 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49648 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49652 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49658 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49672 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:18:08 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 2.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(APIServer pid=6562) INFO:     127.0.0.1:49674 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49686 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:49688 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:43800 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:43802 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:43804 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:43816 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:18:18 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 100.0%
+(Worker_TP0 pid=6784) INFO 08-04 02:18:18 [mooncake_connector.py:825] KV cache transfer for request cmpl-a3639f39-fee3-4c42-afa3-016c5c6a4e1b-0-a203f18d took 1.82 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:18:18 [mooncake_connector.py:825] KV cache transfer for request cmpl-a3639f39-fee3-4c42-afa3-016c5c6a4e1b-0-a203f18d took 1.91 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(APIServer pid=6562) INFO:     127.0.0.1:43828 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:43842 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:43854 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:42466 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:42474 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:42484 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:18:28 [loggers.py:271] Engine 000: Avg prompt throughput: 0.1 tokens/s, Avg generation throughput: 39.9 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.6%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 99.9%
+(APIServer pid=6562) INFO:     127.0.0.1:42498 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:42514 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33200 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33216 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:43816 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP0 pid=6784) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-85bd06ea-335a-44a2-b3bd-bf823f90fcd1-0-a0e2edcc took 1.86 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-85bd06ea-335a-44a2-b3bd-bf823f90fcd1-0-a0e2edcc took 2.29 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(APIServer pid=6562) INFO:     127.0.0.1:33232 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33244 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33250 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33258 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33262 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33264 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33268 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP0 pid=6784) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-ed62a4c0-ee4c-4990-a2fa-306d314ff30e-0-899f08a7 took 1.65 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-ed62a4c0-ee4c-4990-a2fa-306d314ff30e-0-899f08a7 took 1.98 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP1 pid=6863) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-ab444a64-bbd5-47b3-b63d-b8594f6413f4-0-a2357127 took 1.80 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP1 pid=6863) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-ecc085ab-74f5-416b-ab92-007967f818f1-0-8d95c4b2 took 1.79 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP1 pid=6863) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-af990cf6-ba92-49d5-8171-55fa996fe474-0-87329699 took 1.57 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP1 pid=6863) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-9673bd67-87db-4a26-aa7f-00b7c89755ee-0-b905c025 took 1.58 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP1 pid=6863) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-3a3471ae-cb36-4fe9-9497-9cafd3147ca1-0-8e526815 took 1.57 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-ab444a64-bbd5-47b3-b63d-b8594f6413f4-0-a2357127 took 1.57 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-ee214b22-951c-4a86-a000-edf5cb382da2-0-913ef1fe took 1.50 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-ecc085ab-74f5-416b-ab92-007967f818f1-0-8d95c4b2 took 1.55 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP0 pid=6784) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-af990cf6-ba92-49d5-8171-55fa996fe474-0-87329699 took 1.59 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP0 pid=6784) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-9673bd67-87db-4a26-aa7f-00b7c89755ee-0-b905c025 took 1.51 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP0 pid=6784) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-3a3471ae-cb36-4fe9-9497-9cafd3147ca1-0-8e526815 took 1.52 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP0 pid=6784) INFO 08-04 02:18:35 [mooncake_connector.py:825] KV cache transfer for request cmpl-ee214b22-951c-4a86-a000-edf5cb382da2-0-913ef1fe took 1.56 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(APIServer pid=6562) INFO:     127.0.0.1:33276 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33286 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:18:38 [loggers.py:271] Engine 000: Avg prompt throughput: 0.8 tokens/s, Avg generation throughput: 106.0 tokens/s, Running: 8 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.5%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 99.9%
+(APIServer pid=6562) INFO:     127.0.0.1:33298 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33314 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33996 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33998 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:34002 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:34014 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:18:48 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 268.8 tokens/s, Running: 8 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.5%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 99.9%
+(APIServer pid=6562) INFO:     127.0.0.1:34026 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:43816 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP1 pid=6863) INFO 08-04 02:18:50 [mooncake_connector.py:825] KV cache transfer for request cmpl-174babd9-e5e0-41c7-a23c-0461985ab604-0-86929e3f took 2.47 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:18:50 [mooncake_connector.py:825] KV cache transfer for request cmpl-174babd9-e5e0-41c7-a23c-0461985ab604-0-86929e3f took 22.28 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(APIServer pid=6562) INFO:     127.0.0.1:34036 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:48632 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33232 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33244 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33250 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33258 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33262 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33264 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:33268 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP0 pid=6784) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-46407b67-47ba-4150-bc6e-375b8c0b46a8-0-98585577 took 1.91 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-46407b67-47ba-4150-bc6e-375b8c0b46a8-0-98585577 took 1.87 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP1 pid=6863) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-e2db0cce-db02-412c-957d-fe2dbc15316b-0-8abfc984 took 1.79 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-e2db0cce-db02-412c-957d-fe2dbc15316b-0-8abfc984 took 1.60 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-7ec5616c-ee4e-4101-be83-cacc77e0b142-0-b971433a took 1.57 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-7ec5616c-ee4e-4101-be83-cacc77e0b142-0-b971433a took 1.66 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-0c9bc457-dc04-4051-b6d8-1bb5a5ec6589-0-8ae4faf2 took 2.02 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP1 pid=6863) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-f0e44983-482f-4452-b060-306d78b9344c-0-b4f556f0 took 1.61 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-0c9bc457-dc04-4051-b6d8-1bb5a5ec6589-0-8ae4faf2 took 1.51 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP1 pid=6863) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-affae6ff-003e-48f7-82a4-4f966a17a9c5-0-8be51b17 took 1.60 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP1 pid=6863) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-4f0f2ac1-e96a-483e-a216-9cbde694a0e5-0-8cfd7167 took 1.81 ms. local_ip 10.42.17.149 local_device_id 1 remote_session_id 10.42.17.149:15655
+(Worker_TP0 pid=6784) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-f0e44983-482f-4452-b060-306d78b9344c-0-b4f556f0 took 1.53 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP0 pid=6784) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-affae6ff-003e-48f7-82a4-4f966a17a9c5-0-8be51b17 took 2.00 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(Worker_TP0 pid=6784) INFO 08-04 02:18:53 [mooncake_connector.py:825] KV cache transfer for request cmpl-4f0f2ac1-e96a-483e-a216-9cbde694a0e5-0-8cfd7167 took 1.82 ms. local_ip 10.42.17.149 local_device_id 0 remote_session_id 10.42.17.149:15824
+(APIServer pid=6562) INFO:     127.0.0.1:48640 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:48656 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:18:58 [loggers.py:271] Engine 000: Avg prompt throughput: 0.8 tokens/s, Avg generation throughput: 188.3 tokens/s, Running: 8 reqs, Waiting: 0 reqs, GPU KV cache usage: 4.5%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 99.9%
+(APIServer pid=6562) INFO:     127.0.0.1:48668 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:48678 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:48680 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:56200 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:56208 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:56222 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO 08-04 02:19:08 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 257.3 tokens/s, Running: 7 reqs, Waiting: 0 reqs, GPU KV cache usage: 3.9%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 99.9%
+(APIServer pid=6562) INFO:     127.0.0.1:56238 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:56242 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:56244 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:56260 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:56262 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=6562) INFO:     127.0.0.1:56276 - "GET /metrics HTTP/1.1" 200 OK

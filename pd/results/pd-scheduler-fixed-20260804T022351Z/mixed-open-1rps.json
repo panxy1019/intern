@@ -1,0 +1,39 @@
+{
+  "request_rate": 1.0,
+  "max_concurrency": 16,
+  "per_shape": 4,
+  "states": {
+    "rejected": 7,
+    "success": 9
+  },
+  "shapes": {
+    "prefill_heavy": {
+      "count": 4,
+      "e2e_ms_p50": 45.588,
+      "e2e_ms_p95": 63.214,
+      "e2e_ms_p99": 63.214,
+      "e2e_ms_mean": 49.646
+    },
+    "balanced": {
+      "count": 4,
+      "e2e_ms_p50": 3803.508,
+      "e2e_ms_p95": 5884.699,
+      "e2e_ms_p99": 5884.699,
+      "e2e_ms_mean": 2425.613
+    },
+    "decode_heavy": {
+      "count": 4,
+      "e2e_ms_p50": 13983.136,
+      "e2e_ms_p95": 17794.436,
+      "e2e_ms_p99": 17794.436,
+      "e2e_ms_mean": 11395.362
+    },
+    "short": {
+      "count": 4,
+      "e2e_ms_p50": 3045.759,
+      "e2e_ms_p95": 3690.941,
+      "e2e_ms_p99": 3690.941,
+      "e2e_ms_mean": 2055.584
+    }
+  }
+}

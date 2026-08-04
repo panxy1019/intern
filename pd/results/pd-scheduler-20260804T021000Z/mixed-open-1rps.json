@@ -1,0 +1,9 @@
+{
+  "request_rate": 1.0,
+  "max_concurrency": 16,
+  "per_shape": 4,
+  "states": {
+    "failed": 16
+  },
+  "shapes": {}
+}

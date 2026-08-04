@@ -1,0 +1,1 @@
+{"status":"ok","prefill_instances":1,"decode_instances":2,"request_num":0,"prefill_inflight_tokens":0,"prefill_waiting_tokens":0,"max_prefill_inflight_tokens":8192,"prefill_admission_rejected_total":22,"decode_expected_remaining_tokens":{"0.0.0.0:13701":0,"0.0.0.0:13702":0}}

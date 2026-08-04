@@ -1,0 +1,591 @@
+INFO:     Started server process [9163]
+INFO:     Waiting for application startup.
+2026-08-04 02:00:29,654 INFO [pd_proxy] Loaded proxy tokenizer from /models/Qwen3.6-27B-w8a8
+2026-08-04 02:00:29,796 INFO [pd_proxy] Initialized 1 prefill clients and 2 decode clients in worker 9163.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56094 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56098 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40154 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44242 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46190 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49006 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33844 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41364 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53900 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48442 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41354 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55330 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39914 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56310 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37350 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59626 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57804 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50646 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56222 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50394 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53252 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47816 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39842 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57388 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54748 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58296 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51436 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53508 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40400 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56108 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45122 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58350 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48892 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51368 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59392 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41786 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43036 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60708 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56546 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33518 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46522 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50282 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44680 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46124 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48396 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54874 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34782 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48500 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51718 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38448 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52676 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34282 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47652 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34722 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51804 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36568 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48706 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39198 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57222 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44244 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52344 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47784 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34936 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39426 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35190 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46582 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60480 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33418 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54288 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40110 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60552 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40084 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43648 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43664 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60706 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50222 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41862 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47892 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53424 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48070 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38082 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37576 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56884 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37500 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56016 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58434 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32828 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58768 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46462 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46466 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46478 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46484 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46484 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46484 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46484 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46484 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46484 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46484 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46484 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46494 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46504 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46510 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46516 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46532 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46536 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46546 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46552 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46564 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46566 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55018 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55028 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55036 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55042 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55058 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55070 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55082 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46544 - "POST /v1/v1/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45780 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45794 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45810 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45824 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45832 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45848 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45854 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45866 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45876 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44960 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44974 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44980 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44986 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45014 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45016 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45032 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36040 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36044 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36050 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36058 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36068 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36080 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36094 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53528 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53530 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53546 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53562 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53578 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53588 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53596 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38292 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38298 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38312 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38314 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38322 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38324 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38328 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:16:13,721 INFO [pd_proxy] PD_ROUTE request_id=d0261a07-9350-4354-bd24-adc752f037d5 prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:16:13,722 INFO [pd_proxy] PD_ROUTE request_id=97dbfa81-6a7e-4e37-85fa-2c66e15a9ada prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:44998 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44992 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54484 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54498 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:16:17,624 INFO [pd_proxy] PD_FIRST_BYTE request_id=d0261a07-9350-4354-bd24-adc752f037d5 decode=127.0.0.1:13701 prefill_ms=33313.246 decode_first_byte_ms=3902.457
+2026-08-04 02:16:17,635 INFO [pd_proxy] PD_FIRST_BYTE request_id=97dbfa81-6a7e-4e37-85fa-2c66e15a9ada decode=127.0.0.1:13702 prefill_ms=33338.430 decode_first_byte_ms=3913.135
+2026-08-04 02:16:18,006 INFO [pd_proxy] PD_COMPLETE request_id=d0261a07-9350-4354-bd24-adc752f037d5 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:16:18,018 INFO [pd_proxy] PD_COMPLETE request_id=97dbfa81-6a7e-4e37-85fa-2c66e15a9ada decode=127.0.0.1:13702 remaining_decode_tokens=0
+INFO:     127.0.0.1:44998 - "GET /metrics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54510 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54522 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54524 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54526 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54542 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:16:23,900 INFO [pd_proxy] PD_ROUTE request_id=5f8afbf8-5336-41b9-be07-80c84eab5af0 prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:44992 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:16:23,967 INFO [pd_proxy] PD_FIRST_BYTE request_id=5f8afbf8-5336-41b9-be07-80c84eab5af0 decode=127.0.0.1:13701 prefill_ms=5856.789 decode_first_byte_ms=66.961
+2026-08-04 02:16:24,350 INFO [pd_proxy] PD_COMPLETE request_id=5f8afbf8-5336-41b9-be07-80c84eab5af0 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:16:24,381 INFO [pd_proxy] PD_ROUTE request_id=e05ae600-7f05-42b1-b56f-2ba6e3837d30 prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:44998 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:16:24,448 INFO [pd_proxy] PD_FIRST_BYTE request_id=e05ae600-7f05-42b1-b56f-2ba6e3837d30 decode=127.0.0.1:13702 prefill_ms=6309.825 decode_first_byte_ms=67.227
+INFO:     127.0.0.1:48438 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:16:24,832 INFO [pd_proxy] PD_COMPLETE request_id=e05ae600-7f05-42b1-b56f-2ba6e3837d30 decode=127.0.0.1:13702 remaining_decode_tokens=2
+2026-08-04 02:16:24,889 INFO [pd_proxy] PD_ROUTE request_id=ac84787e-d767-4539-a76d-301ffc8162ee prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:44992 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:16:24,955 INFO [pd_proxy] PD_FIRST_BYTE request_id=ac84787e-d767-4539-a76d-301ffc8162ee decode=127.0.0.1:13701 prefill_ms=517.622 decode_first_byte_ms=65.602
+2026-08-04 02:16:25,339 INFO [pd_proxy] PD_COMPLETE request_id=ac84787e-d767-4539-a76d-301ffc8162ee decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:16:25,384 INFO [pd_proxy] PD_ROUTE request_id=db0b9f29-9d6f-4a1e-9052-97ddbd00e314 prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:44998 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:16:25,451 INFO [pd_proxy] PD_FIRST_BYTE request_id=db0b9f29-9d6f-4a1e-9052-97ddbd00e314 decode=127.0.0.1:13702 prefill_ms=515.227 decode_first_byte_ms=66.570
+2026-08-04 02:16:25,835 INFO [pd_proxy] PD_COMPLETE request_id=db0b9f29-9d6f-4a1e-9052-97ddbd00e314 decode=127.0.0.1:13702 remaining_decode_tokens=2
+2026-08-04 02:16:25,884 INFO [pd_proxy] PD_ROUTE request_id=4e5cbdf0-521e-4d04-9311-0e6451de34b1 prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:44992 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:16:25,967 INFO [pd_proxy] PD_FIRST_BYTE request_id=4e5cbdf0-521e-4d04-9311-0e6451de34b1 decode=127.0.0.1:13701 prefill_ms=512.543 decode_first_byte_ms=82.710
+2026-08-04 02:16:26,349 INFO [pd_proxy] PD_COMPLETE request_id=4e5cbdf0-521e-4d04-9311-0e6451de34b1 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:16:26,380 INFO [pd_proxy] PD_ROUTE request_id=52b20e6a-b7a3-4dba-9800-d3e32b70dcec prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:44998 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:16:26,453 INFO [pd_proxy] PD_FIRST_BYTE request_id=52b20e6a-b7a3-4dba-9800-d3e32b70dcec decode=127.0.0.1:13702 prefill_ms=515.080 decode_first_byte_ms=72.815
+INFO:     127.0.0.1:48442 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:16:26,838 INFO [pd_proxy] PD_COMPLETE request_id=52b20e6a-b7a3-4dba-9800-d3e32b70dcec decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:16:26,874 INFO [pd_proxy] PD_ROUTE request_id=c31544ad-b452-4d44-a2a7-6ebd14bd6777 prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:44992 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:16:26,938 INFO [pd_proxy] PD_FIRST_BYTE request_id=c31544ad-b452-4d44-a2a7-6ebd14bd6777 decode=127.0.0.1:13701 prefill_ms=505.151 decode_first_byte_ms=63.780
+2026-08-04 02:16:27,320 INFO [pd_proxy] PD_COMPLETE request_id=c31544ad-b452-4d44-a2a7-6ebd14bd6777 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:16:27,379 INFO [pd_proxy] PD_ROUTE request_id=9eca24db-7373-4ab4-b3be-c668aed4cc33 prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:44998 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:16:27,447 INFO [pd_proxy] PD_FIRST_BYTE request_id=9eca24db-7373-4ab4-b3be-c668aed4cc33 decode=127.0.0.1:13702 prefill_ms=514.869 decode_first_byte_ms=67.576
+2026-08-04 02:16:27,834 INFO [pd_proxy] PD_COMPLETE request_id=9eca24db-7373-4ab4-b3be-c668aed4cc33 decode=127.0.0.1:13702 remaining_decode_tokens=8
+INFO:     127.0.0.1:44992 - "GET /metrics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48458 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48468 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48474 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48488 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48490 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48494 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49360 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49368 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49372 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49382 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49398 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49412 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49422 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36176 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36188 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:16:46,716 INFO [pd_proxy] PD_ROUTE request_id=b243a93a-2442-4898-807d-304cc9200fe4 prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:36214 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36224 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:16:46,781 INFO [pd_proxy] PD_FIRST_BYTE request_id=b243a93a-2442-4898-807d-304cc9200fe4 decode=127.0.0.1:13701 prefill_ms=529.104 decode_first_byte_ms=64.877
+2026-08-04 02:16:47,164 INFO [pd_proxy] PD_COMPLETE request_id=b243a93a-2442-4898-807d-304cc9200fe4 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:16:47,198 INFO [pd_proxy] PD_ROUTE request_id=146f64a7-aa9f-4f05-916a-ac647074feb1 prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:36204 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:16:47,273 INFO [pd_proxy] PD_FIRST_BYTE request_id=146f64a7-aa9f-4f05-916a-ac647074feb1 decode=127.0.0.1:13702 prefill_ms=1034.175 decode_first_byte_ms=74.975
+2026-08-04 02:16:47,662 INFO [pd_proxy] PD_COMPLETE request_id=146f64a7-aa9f-4f05-916a-ac647074feb1 decode=127.0.0.1:13702 remaining_decode_tokens=0
+INFO:     127.0.0.1:36214 - "GET /metrics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36226 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36230 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36226 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36230 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36226 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36230 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36226 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36230 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36226 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36230 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36226 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36230 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36226 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+INFO:     127.0.0.1:36230 - "POST /v1/completions HTTP/1.1" 429 Too Many Requests
+2026-08-04 02:16:48,283 INFO [pd_proxy] PD_ROUTE request_id=8197a482-3dcd-487c-9d0d-8833d30a4399 prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:36204 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:16:48,360 INFO [pd_proxy] PD_FIRST_BYTE request_id=8197a482-3dcd-487c-9d0d-8833d30a4399 decode=127.0.0.1:13701 prefill_ms=589.032 decode_first_byte_ms=76.891
+INFO:     127.0.0.1:36236 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:16:48,742 INFO [pd_proxy] PD_COMPLETE request_id=8197a482-3dcd-487c-9d0d-8833d30a4399 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:16:48,763 INFO [pd_proxy] PD_ROUTE request_id=1d37d8d3-0ba8-4608-9ff7-c31e20ca9362 prompt_tokens=4096 expected_output_tokens=16 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:36214 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:16:48,838 INFO [pd_proxy] PD_FIRST_BYTE request_id=1d37d8d3-0ba8-4608-9ff7-c31e20ca9362 decode=127.0.0.1:13702 prefill_ms=1044.280 decode_first_byte_ms=74.132
+2026-08-04 02:16:49,221 INFO [pd_proxy] PD_COMPLETE request_id=1d37d8d3-0ba8-4608-9ff7-c31e20ca9362 decode=127.0.0.1:13702 remaining_decode_tokens=0
+INFO:     127.0.0.1:36226 - "GET /metrics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36244 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36246 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36262 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36274 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36290 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48156 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48164 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48168 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48176 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48188 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48204 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48218 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55268 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55278 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55304 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55320 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:17:09,554 INFO [pd_proxy] PD_ROUTE request_id=70debbdb-a227-4b0c-9cf9-ccd7ddc2a46c prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:55288 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:17:09,612 INFO [pd_proxy] PD_FIRST_BYTE request_id=70debbdb-a227-4b0c-9cf9-ccd7ddc2a46c decode=127.0.0.1:13701 prefill_ms=2511.758 decode_first_byte_ms=57.031
+2026-08-04 02:17:09,759 INFO [pd_proxy] PD_ROUTE request_id=0951e270-ab36-4008-9385-0e0d7fcbb71e prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:55282 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:17:09,875 INFO [pd_proxy] PD_FIRST_BYTE request_id=0951e270-ab36-4008-9385-0e0d7fcbb71e decode=127.0.0.1:13702 prefill_ms=2720.050 decode_first_byte_ms=115.403
+INFO:     127.0.0.1:55334 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55348 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55360 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33246 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33258 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33272 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33276 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33280 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:17:22,424 INFO [pd_proxy] PD_COMPLETE request_id=70debbdb-a227-4b0c-9cf9-ccd7ddc2a46c decode=127.0.0.1:13701 remaining_decode_tokens=0
+INFO:     127.0.0.1:33288 - "GET /openapi.json HTTP/1.1" 200 OK
+2026-08-04 02:17:22,731 INFO [pd_proxy] PD_COMPLETE request_id=0951e270-ab36-4008-9385-0e0d7fcbb71e decode=127.0.0.1:13702 remaining_decode_tokens=0
+INFO:     127.0.0.1:55288 - "GET /metrics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33346 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53450 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:17:25,294 INFO [pd_proxy] PD_ROUTE request_id=cbc234ff-fc54-4686-b927-a222fd9474c2 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:17:25,294 INFO [pd_proxy] PD_ROUTE request_id=fed11421-de30-4d76-8bcc-e283e9bf16d0 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:55288 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:17:25,342 INFO [pd_proxy] PD_FIRST_BYTE request_id=fed11421-de30-4d76-8bcc-e283e9bf16d0 decode=127.0.0.1:13702 prefill_ms=2554.342 decode_first_byte_ms=47.271
+2026-08-04 02:17:25,343 INFO [pd_proxy] PD_FIRST_BYTE request_id=cbc234ff-fc54-4686-b927-a222fd9474c2 decode=127.0.0.1:13701 prefill_ms=2550.518 decode_first_byte_ms=49.137
+INFO:     127.0.0.1:53462 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:17:27,796 INFO [pd_proxy] PD_ROUTE request_id=78fab80f-8568-43aa-94e1-921b97d7a46b prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:17:27,797 INFO [pd_proxy] PD_ROUTE request_id=bd8d7cc3-1f04-4bb5-9178-94851fae5f87 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:17:27,797 INFO [pd_proxy] PD_ROUTE request_id=723d4c7d-bd89-4ba0-9ed5-98607681c5b1 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:33304 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33320 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33302 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:17:27,953 INFO [pd_proxy] PD_FIRST_BYTE request_id=723d4c7d-bd89-4ba0-9ed5-98607681c5b1 decode=127.0.0.1:13702 prefill_ms=5049.858 decode_first_byte_ms=155.841
+2026-08-04 02:17:27,954 INFO [pd_proxy] PD_FIRST_BYTE request_id=78fab80f-8568-43aa-94e1-921b97d7a46b decode=127.0.0.1:13702 prefill_ms=5046.079 decode_first_byte_ms=157.387
+2026-08-04 02:17:27,954 INFO [pd_proxy] PD_FIRST_BYTE request_id=bd8d7cc3-1f04-4bb5-9178-94851fae5f87 decode=127.0.0.1:13701 prefill_ms=5043.576 decode_first_byte_ms=157.409
+2026-08-04 02:17:28,019 INFO [pd_proxy] PD_ROUTE request_id=ad8bdbdd-58b6-4fc0-882f-6e8ef7129c39 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:17:28,020 INFO [pd_proxy] PD_ROUTE request_id=b03dcc53-4f64-466c-b2f5-09acff7c9593 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:17:28,020 INFO [pd_proxy] PD_ROUTE request_id=28f133ca-9e9d-4b10-95fe-176c72b5fe58 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:33324 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33340 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33328 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:17:28,147 INFO [pd_proxy] PD_FIRST_BYTE request_id=b03dcc53-4f64-466c-b2f5-09acff7c9593 decode=127.0.0.1:13702 prefill_ms=5255.011 decode_first_byte_ms=127.633
+2026-08-04 02:17:28,193 INFO [pd_proxy] PD_FIRST_BYTE request_id=28f133ca-9e9d-4b10-95fe-176c72b5fe58 decode=127.0.0.1:13701 prefill_ms=5258.145 decode_first_byte_ms=172.483
+2026-08-04 02:17:28,194 INFO [pd_proxy] PD_FIRST_BYTE request_id=ad8bdbdd-58b6-4fc0-882f-6e8ef7129c39 decode=127.0.0.1:13701 prefill_ms=5261.068 decode_first_byte_ms=174.993
+INFO:     127.0.0.1:53474 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53490 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53504 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53510 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44448 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44462 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44474 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44484 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:17:39,247 INFO [pd_proxy] PD_COMPLETE request_id=cbc234ff-fc54-4686-b927-a222fd9474c2 decode=127.0.0.1:13701 remaining_decode_tokens=27
+2026-08-04 02:17:39,366 INFO [pd_proxy] PD_COMPLETE request_id=fed11421-de30-4d76-8bcc-e283e9bf16d0 decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:17:39,477 INFO [pd_proxy] PD_ROUTE request_id=f71bc43d-ad48-40b7-a802-46bd1d219ed2 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:55288 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:17:39,615 INFO [pd_proxy] PD_FIRST_BYTE request_id=f71bc43d-ad48-40b7-a802-46bd1d219ed2 decode=127.0.0.1:13702 prefill_ms=225.764 decode_first_byte_ms=138.179
+2026-08-04 02:17:39,682 INFO [pd_proxy] PD_ROUTE request_id=22a17fdb-7649-4e78-8c8d-665fcc942bc3 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:55282 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:17:39,822 INFO [pd_proxy] PD_FIRST_BYTE request_id=22a17fdb-7649-4e78-8c8d-665fcc942bc3 decode=127.0.0.1:13701 prefill_ms=309.382 decode_first_byte_ms=140.708
+INFO:     127.0.0.1:44488 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44490 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:17:42,095 INFO [pd_proxy] PD_COMPLETE request_id=bd8d7cc3-1f04-4bb5-9178-94851fae5f87 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:17:42,234 INFO [pd_proxy] PD_COMPLETE request_id=723d4c7d-bd89-4ba0-9ed5-98607681c5b1 decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:17:42,234 INFO [pd_proxy] PD_COMPLETE request_id=78fab80f-8568-43aa-94e1-921b97d7a46b decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:17:42,308 INFO [pd_proxy] PD_COMPLETE request_id=28f133ca-9e9d-4b10-95fe-176c72b5fe58 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:17:42,310 INFO [pd_proxy] PD_COMPLETE request_id=ad8bdbdd-58b6-4fc0-882f-6e8ef7129c39 decode=127.0.0.1:13701 remaining_decode_tokens=4
+2026-08-04 02:17:42,343 INFO [pd_proxy] PD_ROUTE request_id=6288d0cb-0447-455e-8013-bef2af10aa81 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:33320 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:17:42,437 INFO [pd_proxy] PD_COMPLETE request_id=b03dcc53-4f64-466c-b2f5-09acff7c9593 decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:17:42,464 INFO [pd_proxy] PD_FIRST_BYTE request_id=6288d0cb-0447-455e-8013-bef2af10aa81 decode=127.0.0.1:13702 prefill_ms=242.411 decode_first_byte_ms=120.299
+INFO:     127.0.0.1:44492 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32982 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:17:44,927 INFO [pd_proxy] PD_ROUTE request_id=a3de4e7b-f262-45d5-8de0-e83362d46fda prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:17:44,929 INFO [pd_proxy] PD_ROUTE request_id=733d3090-309e-4460-9cbe-edf77854610f prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:17:44,929 INFO [pd_proxy] PD_ROUTE request_id=32399158-4bc0-4d7b-9fcc-faf7bf4e2560 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:17:44,929 INFO [pd_proxy] PD_ROUTE request_id=154600b7-2580-4805-a2e6-ccd06e99513e prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:33304 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33328 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33324 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33302 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:17:45,055 INFO [pd_proxy] PD_FIRST_BYTE request_id=a3de4e7b-f262-45d5-8de0-e83362d46fda decode=127.0.0.1:13701 prefill_ms=2672.785 decode_first_byte_ms=127.314
+2026-08-04 02:17:45,056 INFO [pd_proxy] PD_FIRST_BYTE request_id=32399158-4bc0-4d7b-9fcc-faf7bf4e2560 decode=127.0.0.1:13701 prefill_ms=2608.360 decode_first_byte_ms=126.905
+2026-08-04 02:17:45,063 INFO [pd_proxy] PD_FIRST_BYTE request_id=154600b7-2580-4805-a2e6-ccd06e99513e decode=127.0.0.1:13702 prefill_ms=2669.822 decode_first_byte_ms=134.261
+2026-08-04 02:17:45,064 INFO [pd_proxy] PD_FIRST_BYTE request_id=733d3090-309e-4460-9cbe-edf77854610f decode=127.0.0.1:13702 prefill_ms=2612.626 decode_first_byte_ms=134.938
+2026-08-04 02:17:45,134 INFO [pd_proxy] PD_ROUTE request_id=dc07a396-b1e0-4b81-b98f-5e72d6d13615 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:33340 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32988 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:17:45,274 INFO [pd_proxy] PD_FIRST_BYTE request_id=dc07a396-b1e0-4b81-b98f-5e72d6d13615 decode=127.0.0.1:13701 prefill_ms=2691.886 decode_first_byte_ms=139.789
+INFO:     127.0.0.1:33002 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33006 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33022 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33030 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33038 - "GET /openapi.json HTTP/1.1" 200 OK
+2026-08-04 02:17:53,667 INFO [pd_proxy] PD_COMPLETE request_id=22a17fdb-7649-4e78-8c8d-665fcc942bc3 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:17:53,694 INFO [pd_proxy] PD_COMPLETE request_id=f71bc43d-ad48-40b7-a802-46bd1d219ed2 decode=127.0.0.1:13702 remaining_decode_tokens=0
+INFO:     127.0.0.1:34866 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34868 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:17:56,510 INFO [pd_proxy] PD_COMPLETE request_id=6288d0cb-0447-455e-8013-bef2af10aa81 decode=127.0.0.1:13702 remaining_decode_tokens=0
+INFO:     127.0.0.1:34884 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:17:59,110 INFO [pd_proxy] PD_COMPLETE request_id=733d3090-309e-4460-9cbe-edf77854610f decode=127.0.0.1:13702 remaining_decode_tokens=16
+2026-08-04 02:17:59,110 INFO [pd_proxy] PD_COMPLETE request_id=154600b7-2580-4805-a2e6-ccd06e99513e decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:17:59,162 INFO [pd_proxy] PD_COMPLETE request_id=a3de4e7b-f262-45d5-8de0-e83362d46fda decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:17:59,162 INFO [pd_proxy] PD_COMPLETE request_id=32399158-4bc0-4d7b-9fcc-faf7bf4e2560 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:17:59,359 INFO [pd_proxy] PD_COMPLETE request_id=dc07a396-b1e0-4b81-b98f-5e72d6d13615 decode=127.0.0.1:13701 remaining_decode_tokens=2
+INFO:     127.0.0.1:33320 - "GET /metrics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34894 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34908 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34912 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34924 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34940 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55438 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55454 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55456 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55458 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55468 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55478 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55480 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55484 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54860 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54868 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54882 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:18:18,604 INFO [pd_proxy] PD_ROUTE request_id=6f86f6e2-bc41-4e66-b4b2-8c42dbae08ba prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:54906 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:18:18,810 INFO [pd_proxy] PD_FIRST_BYTE request_id=6f86f6e2-bc41-4e66-b4b2-8c42dbae08ba decode=127.0.0.1:13701 prefill_ms=228.309 decode_first_byte_ms=205.766
+2026-08-04 02:18:18,814 INFO [pd_proxy] PD_ROUTE request_id=a3639f39-fee3-4c42-afa3-016c5c6a4e1b prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:54892 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:18:18,864 INFO [pd_proxy] PD_FIRST_BYTE request_id=a3639f39-fee3-4c42-afa3-016c5c6a4e1b decode=127.0.0.1:13702 prefill_ms=441.890 decode_first_byte_ms=50.246
+INFO:     127.0.0.1:54918 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54924 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54928 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54936 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36204 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36212 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36228 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36242 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:18:31,561 INFO [pd_proxy] PD_COMPLETE request_id=6f86f6e2-bc41-4e66-b4b2-8c42dbae08ba decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:18:31,651 INFO [pd_proxy] PD_COMPLETE request_id=a3639f39-fee3-4c42-afa3-016c5c6a4e1b decode=127.0.0.1:13702 remaining_decode_tokens=0
+INFO:     127.0.0.1:54906 - "GET /metrics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36390 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:18:31,915 INFO [pd_proxy] PD_ROUTE request_id=bc48e068-486d-4cb7-ad8c-e10af5b7e992 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:54906 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:18:32,028 INFO [pd_proxy] PD_FIRST_BYTE request_id=bc48e068-486d-4cb7-ad8c-e10af5b7e992 decode=127.0.0.1:13701 prefill_ms=248.047 decode_first_byte_ms=112.944
+INFO:     127.0.0.1:36398 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36716 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36732 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:18:35,127 INFO [pd_proxy] PD_ROUTE request_id=85bd06ea-335a-44a2-b3bd-bf823f90fcd1 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:35,130 INFO [pd_proxy] PD_ROUTE request_id=53ee22bd-80a4-4e49-84d1-3073ecd0904a prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:35,130 INFO [pd_proxy] PD_ROUTE request_id=ed62a4c0-ee4c-4990-a2fa-306d314ff30e prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:35,131 INFO [pd_proxy] PD_ROUTE request_id=6fa94df9-eda9-44c6-b602-c125f19fd9e4 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:35,131 INFO [pd_proxy] PD_ROUTE request_id=ab444a64-bbd5-47b3-b63d-b8594f6413f4 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:35,131 INFO [pd_proxy] PD_ROUTE request_id=ed5f5499-dafa-4d1b-be25-7f5b8d2ed6d4 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:35,131 INFO [pd_proxy] PD_ROUTE request_id=ecc085ab-74f5-416b-ab92-007967f818f1 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:35,132 INFO [pd_proxy] PD_ROUTE request_id=b95273d6-4fc0-4fdf-ae60-498cacbae5aa prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:35,132 INFO [pd_proxy] PD_ROUTE request_id=af990cf6-ba92-49d5-8171-55fa996fe474 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:35,132 INFO [pd_proxy] PD_ROUTE request_id=5450f9f4-6ba8-4333-8d4b-fb46934ada7b prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:35,132 INFO [pd_proxy] PD_ROUTE request_id=9673bd67-87db-4a26-aa7f-00b7c89755ee prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:35,132 INFO [pd_proxy] PD_ROUTE request_id=2ce162ba-afa0-489b-8cbc-fce97f79c823 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:35,133 INFO [pd_proxy] PD_ROUTE request_id=3a3471ae-cb36-4fe9-9497-9cafd3147ca1 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:35,133 INFO [pd_proxy] PD_ROUTE request_id=6bd6bfdc-26f2-4c1d-8674-ea8cb12fb1ba prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:35,133 INFO [pd_proxy] PD_ROUTE request_id=ee214b22-951c-4a86-a000-edf5cb382da2 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:36362 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36274 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36300 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36286 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36312 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36352 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36326 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36278 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36342 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36374 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36256 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36372 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36304 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36260 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54892 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:18:35,199 INFO [pd_proxy] PD_FIRST_BYTE request_id=85bd06ea-335a-44a2-b3bd-bf823f90fcd1 decode=127.0.0.1:13702 prefill_ms=3407.258 decode_first_byte_ms=72.022
+2026-08-04 02:18:35,323 INFO [pd_proxy] PD_FIRST_BYTE request_id=ed5f5499-dafa-4d1b-be25-7f5b8d2ed6d4 decode=127.0.0.1:13701 prefill_ms=3416.519 decode_first_byte_ms=192.107
+2026-08-04 02:18:35,324 INFO [pd_proxy] PD_FIRST_BYTE request_id=6fa94df9-eda9-44c6-b602-c125f19fd9e4 decode=127.0.0.1:13701 prefill_ms=3443.813 decode_first_byte_ms=192.927
+2026-08-04 02:18:35,324 INFO [pd_proxy] PD_FIRST_BYTE request_id=6bd6bfdc-26f2-4c1d-8674-ea8cb12fb1ba decode=127.0.0.1:13701 prefill_ms=3458.557 decode_first_byte_ms=191.292
+2026-08-04 02:18:35,325 INFO [pd_proxy] PD_FIRST_BYTE request_id=b95273d6-4fc0-4fdf-ae60-498cacbae5aa decode=127.0.0.1:13701 prefill_ms=3449.255 decode_first_byte_ms=193.091
+2026-08-04 02:18:35,325 INFO [pd_proxy] PD_FIRST_BYTE request_id=5450f9f4-6ba8-4333-8d4b-fb46934ada7b decode=127.0.0.1:13701 prefill_ms=3403.775 decode_first_byte_ms=192.826
+2026-08-04 02:18:35,325 INFO [pd_proxy] PD_FIRST_BYTE request_id=53ee22bd-80a4-4e49-84d1-3073ecd0904a decode=127.0.0.1:13701 prefill_ms=3452.552 decode_first_byte_ms=194.782
+2026-08-04 02:18:35,326 INFO [pd_proxy] PD_FIRST_BYTE request_id=2ce162ba-afa0-489b-8cbc-fce97f79c823 decode=127.0.0.1:13701 prefill_ms=3408.294 decode_first_byte_ms=192.968
+2026-08-04 02:18:35,330 INFO [pd_proxy] PD_FIRST_BYTE request_id=ed62a4c0-ee4c-4990-a2fa-306d314ff30e decode=127.0.0.1:13702 prefill_ms=3440.558 decode_first_byte_ms=199.982
+2026-08-04 02:18:35,331 INFO [pd_proxy] PD_FIRST_BYTE request_id=9673bd67-87db-4a26-aa7f-00b7c89755ee decode=127.0.0.1:13702 prefill_ms=3460.921 decode_first_byte_ms=198.527
+2026-08-04 02:18:35,331 INFO [pd_proxy] PD_FIRST_BYTE request_id=ab444a64-bbd5-47b3-b63d-b8594f6413f4 decode=127.0.0.1:13702 prefill_ms=3430.517 decode_first_byte_ms=200.163
+2026-08-04 02:18:35,331 INFO [pd_proxy] PD_FIRST_BYTE request_id=3a3471ae-cb36-4fe9-9497-9cafd3147ca1 decode=127.0.0.1:13702 prefill_ms=3437.642 decode_first_byte_ms=198.437
+2026-08-04 02:18:35,331 INFO [pd_proxy] PD_FIRST_BYTE request_id=af990cf6-ba92-49d5-8171-55fa996fe474 decode=127.0.0.1:13702 prefill_ms=3422.847 decode_first_byte_ms=199.683
+2026-08-04 02:18:35,332 INFO [pd_proxy] PD_FIRST_BYTE request_id=ecc085ab-74f5-416b-ab92-007967f818f1 decode=127.0.0.1:13702 prefill_ms=3427.481 decode_first_byte_ms=200.516
+2026-08-04 02:18:35,358 INFO [pd_proxy] PD_FIRST_BYTE request_id=ee214b22-951c-4a86-a000-edf5cb382da2 decode=127.0.0.1:13702 prefill_ms=3469.485 decode_first_byte_ms=224.938
+INFO:     127.0.0.1:36738 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36744 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36752 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36754 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36766 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50186 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50200 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:18:46,562 INFO [pd_proxy] PD_COMPLETE request_id=bc48e068-486d-4cb7-ad8c-e10af5b7e992 decode=127.0.0.1:13701 remaining_decode_tokens=0
+INFO:     127.0.0.1:50216 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:18:46,800 INFO [pd_proxy] PD_ROUTE request_id=87fbf758-f75d-4925-bdc3-8f902e61f942 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+INFO:     127.0.0.1:54906 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:18:46,942 INFO [pd_proxy] PD_FIRST_BYTE request_id=87fbf758-f75d-4925-bdc3-8f902e61f942 decode=127.0.0.1:13701 prefill_ms=231.900 decode_first_byte_ms=141.796
+INFO:     127.0.0.1:50222 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:18:50,427 INFO [pd_proxy] PD_COMPLETE request_id=85bd06ea-335a-44a2-b3bd-bf823f90fcd1 decode=127.0.0.1:13702 remaining_decode_tokens=5
+2026-08-04 02:18:50,441 INFO [pd_proxy] PD_COMPLETE request_id=ed5f5499-dafa-4d1b-be25-7f5b8d2ed6d4 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:18:50,441 INFO [pd_proxy] PD_COMPLETE request_id=6fa94df9-eda9-44c6-b602-c125f19fd9e4 decode=127.0.0.1:13701 remaining_decode_tokens=2
+2026-08-04 02:18:50,441 INFO [pd_proxy] PD_COMPLETE request_id=6bd6bfdc-26f2-4c1d-8674-ea8cb12fb1ba decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:18:50,442 INFO [pd_proxy] PD_COMPLETE request_id=b95273d6-4fc0-4fdf-ae60-498cacbae5aa decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:18:50,442 INFO [pd_proxy] PD_COMPLETE request_id=5450f9f4-6ba8-4333-8d4b-fb46934ada7b decode=127.0.0.1:13701 remaining_decode_tokens=16
+2026-08-04 02:18:50,442 INFO [pd_proxy] PD_COMPLETE request_id=53ee22bd-80a4-4e49-84d1-3073ecd0904a decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:18:50,442 INFO [pd_proxy] PD_COMPLETE request_id=2ce162ba-afa0-489b-8cbc-fce97f79c823 decode=127.0.0.1:13701 remaining_decode_tokens=0
+INFO:     127.0.0.1:50230 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:18:50,537 INFO [pd_proxy] PD_COMPLETE request_id=ed62a4c0-ee4c-4990-a2fa-306d314ff30e decode=127.0.0.1:13702 remaining_decode_tokens=2
+2026-08-04 02:18:50,546 INFO [pd_proxy] PD_COMPLETE request_id=9673bd67-87db-4a26-aa7f-00b7c89755ee decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:18:50,546 INFO [pd_proxy] PD_COMPLETE request_id=ab444a64-bbd5-47b3-b63d-b8594f6413f4 decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:18:50,546 INFO [pd_proxy] PD_COMPLETE request_id=3a3471ae-cb36-4fe9-9497-9cafd3147ca1 decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:18:50,546 INFO [pd_proxy] PD_COMPLETE request_id=af990cf6-ba92-49d5-8171-55fa996fe474 decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:18:50,546 INFO [pd_proxy] PD_COMPLETE request_id=ecc085ab-74f5-416b-ab92-007967f818f1 decode=127.0.0.1:13702 remaining_decode_tokens=5
+2026-08-04 02:18:50,568 INFO [pd_proxy] PD_COMPLETE request_id=ee214b22-951c-4a86-a000-edf5cb382da2 decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:18:50,706 INFO [pd_proxy] PD_ROUTE request_id=174babd9-e5e0-41c7-a23c-0461985ab604 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:36362 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:18:50,786 INFO [pd_proxy] PD_FIRST_BYTE request_id=174babd9-e5e0-41c7-a23c-0461985ab604 decode=127.0.0.1:13702 prefill_ms=260.449 decode_first_byte_ms=79.409
+INFO:     127.0.0.1:50240 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50242 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40856 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:18:53,865 INFO [pd_proxy] PD_ROUTE request_id=46d00422-5cd4-4b15-916c-8a7e655ffee4 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:53,868 INFO [pd_proxy] PD_ROUTE request_id=46407b67-47ba-4150-bc6e-375b8c0b46a8 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:53,869 INFO [pd_proxy] PD_ROUTE request_id=6005df7b-27f7-434f-8b7d-feb4540aa1b5 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:53,869 INFO [pd_proxy] PD_ROUTE request_id=e2db0cce-db02-412c-957d-fe2dbc15316b prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:53,869 INFO [pd_proxy] PD_ROUTE request_id=a394719c-37ec-4d12-8cf3-4210cecf6a7e prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:53,869 INFO [pd_proxy] PD_ROUTE request_id=0c9bc457-dc04-4051-b6d8-1bb5a5ec6589 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:53,870 INFO [pd_proxy] PD_ROUTE request_id=97b58a6f-a664-4aa1-937e-9dfce3e5172f prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:53,870 INFO [pd_proxy] PD_ROUTE request_id=4f0f2ac1-e96a-483e-a216-9cbde694a0e5 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:53,870 INFO [pd_proxy] PD_ROUTE request_id=94399e70-f74a-4981-948b-1959b3025e03 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:53,870 INFO [pd_proxy] PD_ROUTE request_id=7ec5616c-ee4e-4101-be83-cacc77e0b142 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:53,871 INFO [pd_proxy] PD_ROUTE request_id=7bebf1ce-f7ec-457d-a214-ac0cf51e6556 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:53,871 INFO [pd_proxy] PD_ROUTE request_id=affae6ff-003e-48f7-82a4-4f966a17a9c5 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+2026-08-04 02:18:53,871 INFO [pd_proxy] PD_ROUTE request_id=4e252a4d-2c1f-4ec7-86b3-c5c33982f836 prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13701/v1/
+2026-08-04 02:18:53,871 INFO [pd_proxy] PD_ROUTE request_id=f0e44983-482f-4452-b060-306d78b9344c prompt_tokens=512 expected_output_tokens=512 prefill=http://127.0.0.1:13700/v1/ decode=http://127.0.0.1:13702/v1/
+INFO:     127.0.0.1:36278 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36342 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36256 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36372 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36304 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36326 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36286 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36352 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36312 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36260 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54892 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36274 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36300 - "POST /v1/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36374 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-08-04 02:18:53,996 INFO [pd_proxy] PD_FIRST_BYTE request_id=46407b67-47ba-4150-bc6e-375b8c0b46a8 decode=127.0.0.1:13702 prefill_ms=3308.527 decode_first_byte_ms=127.576
+2026-08-04 02:18:54,000 INFO [pd_proxy] PD_FIRST_BYTE request_id=46d00422-5cd4-4b15-916c-8a7e655ffee4 decode=127.0.0.1:13701 prefill_ms=3392.036 decode_first_byte_ms=134.659
+2026-08-04 02:18:54,026 INFO [pd_proxy] PD_FIRST_BYTE request_id=e2db0cce-db02-412c-957d-fe2dbc15316b decode=127.0.0.1:13702 prefill_ms=3410.570 decode_first_byte_ms=156.823
+2026-08-04 02:18:54,026 INFO [pd_proxy] PD_FIRST_BYTE request_id=0c9bc457-dc04-4051-b6d8-1bb5a5ec6589 decode=127.0.0.1:13702 prefill_ms=3312.826 decode_first_byte_ms=156.644
+2026-08-04 02:18:54,027 INFO [pd_proxy] PD_FIRST_BYTE request_id=7ec5616c-ee4e-4101-be83-cacc77e0b142 decode=127.0.0.1:13702 prefill_ms=3408.034 decode_first_byte_ms=156.491
+2026-08-04 02:18:54,028 INFO [pd_proxy] PD_FIRST_BYTE request_id=94399e70-f74a-4981-948b-1959b3025e03 decode=127.0.0.1:13701 prefill_ms=3303.921 decode_first_byte_ms=158.017
+2026-08-04 02:18:54,028 INFO [pd_proxy] PD_FIRST_BYTE request_id=6005df7b-27f7-434f-8b7d-feb4540aa1b5 decode=127.0.0.1:13701 prefill_ms=3306.339 decode_first_byte_ms=159.597
+2026-08-04 02:18:54,056 INFO [pd_proxy] PD_FIRST_BYTE request_id=f0e44983-482f-4452-b060-306d78b9344c decode=127.0.0.1:13702 prefill_ms=3410.863 decode_first_byte_ms=184.527
+2026-08-04 02:18:54,056 INFO [pd_proxy] PD_FIRST_BYTE request_id=4f0f2ac1-e96a-483e-a216-9cbde694a0e5 decode=127.0.0.1:13702 prefill_ms=3402.428 decode_first_byte_ms=186.300
+2026-08-04 02:18:54,056 INFO [pd_proxy] PD_FIRST_BYTE request_id=affae6ff-003e-48f7-82a4-4f966a17a9c5 decode=127.0.0.1:13702 prefill_ms=3400.866 decode_first_byte_ms=185.634
+2026-08-04 02:18:54,059 INFO [pd_proxy] PD_FIRST_BYTE request_id=97b58a6f-a664-4aa1-937e-9dfce3e5172f decode=127.0.0.1:13701 prefill_ms=3393.763 decode_first_byte_ms=189.403
+2026-08-04 02:18:54,059 INFO [pd_proxy] PD_FIRST_BYTE request_id=a394719c-37ec-4d12-8cf3-4210cecf6a7e decode=127.0.0.1:13701 prefill_ms=3315.197 decode_first_byte_ms=190.093
+2026-08-04 02:18:54,059 INFO [pd_proxy] PD_FIRST_BYTE request_id=4e252a4d-2c1f-4ec7-86b3-c5c33982f836 decode=127.0.0.1:13701 prefill_ms=3321.620 decode_first_byte_ms=188.357
+2026-08-04 02:18:54,060 INFO [pd_proxy] PD_FIRST_BYTE request_id=7bebf1ce-f7ec-457d-a214-ac0cf51e6556 decode=127.0.0.1:13701 prefill_ms=3297.129 decode_first_byte_ms=189.215
+INFO:     127.0.0.1:40866 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40868 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40874 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40878 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:19:01,395 INFO [pd_proxy] PD_COMPLETE request_id=87fbf758-f75d-4925-bdc3-8f902e61f942 decode=127.0.0.1:13701 remaining_decode_tokens=0
+INFO:     127.0.0.1:40880 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40892 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50730 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:19:05,420 INFO [pd_proxy] PD_COMPLETE request_id=174babd9-e5e0-41c7-a23c-0461985ab604 decode=127.0.0.1:13702 remaining_decode_tokens=6
+INFO:     127.0.0.1:50734 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50748 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50762 - "GET /healthcheck HTTP/1.1" 200 OK
+2026-08-04 02:19:09,083 INFO [pd_proxy] PD_COMPLETE request_id=46d00422-5cd4-4b15-916c-8a7e655ffee4 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:19:09,111 INFO [pd_proxy] PD_COMPLETE request_id=94399e70-f74a-4981-948b-1959b3025e03 decode=127.0.0.1:13701 remaining_decode_tokens=6
+2026-08-04 02:19:09,111 INFO [pd_proxy] PD_COMPLETE request_id=6005df7b-27f7-434f-8b7d-feb4540aa1b5 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:19:09,138 INFO [pd_proxy] PD_COMPLETE request_id=7bebf1ce-f7ec-457d-a214-ac0cf51e6556 decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:19:09,138 INFO [pd_proxy] PD_COMPLETE request_id=4e252a4d-2c1f-4ec7-86b3-c5c33982f836 decode=127.0.0.1:13701 remaining_decode_tokens=25
+2026-08-04 02:19:09,138 INFO [pd_proxy] PD_COMPLETE request_id=97b58a6f-a664-4aa1-937e-9dfce3e5172f decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:19:09,138 INFO [pd_proxy] PD_COMPLETE request_id=a394719c-37ec-4d12-8cf3-4210cecf6a7e decode=127.0.0.1:13701 remaining_decode_tokens=0
+2026-08-04 02:19:09,210 INFO [pd_proxy] PD_COMPLETE request_id=46407b67-47ba-4150-bc6e-375b8c0b46a8 decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:19:09,249 INFO [pd_proxy] PD_COMPLETE request_id=e2db0cce-db02-412c-957d-fe2dbc15316b decode=127.0.0.1:13702 remaining_decode_tokens=2
+2026-08-04 02:19:09,250 INFO [pd_proxy] PD_COMPLETE request_id=0c9bc457-dc04-4051-b6d8-1bb5a5ec6589 decode=127.0.0.1:13702 remaining_decode_tokens=2
+2026-08-04 02:19:09,250 INFO [pd_proxy] PD_COMPLETE request_id=7ec5616c-ee4e-4101-be83-cacc77e0b142 decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:19:09,268 INFO [pd_proxy] PD_COMPLETE request_id=f0e44983-482f-4452-b060-306d78b9344c decode=127.0.0.1:13702 remaining_decode_tokens=2
+2026-08-04 02:19:09,271 INFO [pd_proxy] PD_COMPLETE request_id=affae6ff-003e-48f7-82a4-4f966a17a9c5 decode=127.0.0.1:13702 remaining_decode_tokens=0
+2026-08-04 02:19:09,272 INFO [pd_proxy] PD_COMPLETE request_id=4f0f2ac1-e96a-483e-a216-9cbde694a0e5 decode=127.0.0.1:13702 remaining_decode_tokens=0
+INFO:     127.0.0.1:36362 - "GET /metrics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50764 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50770 - "GET /healthcheck HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50778 - "GET /healthcheck HTTP/1.1" 200 OK

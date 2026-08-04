@@ -1,0 +1,55 @@
+{
+  "request_rate": 1.0,
+  "max_concurrency": 16,
+  "per_shape": 4,
+  "states": {
+    "rejected": 7,
+    "success": 9
+  },
+  "states_by_shape": {
+    "balanced": {
+      "success": 2,
+      "rejected": 2
+    },
+    "decode_heavy": {
+      "success": 3,
+      "rejected": 1
+    },
+    "prefill_heavy": {
+      "rejected": 4
+    },
+    "short": {
+      "success": 4
+    }
+  },
+  "shapes": {
+    "prefill_heavy": {
+      "count": 4,
+      "e2e_ms_p50": 48.948,
+      "e2e_ms_p95": 49.674,
+      "e2e_ms_p99": 49.674,
+      "e2e_ms_mean": 45.806
+    },
+    "balanced": {
+      "count": 4,
+      "e2e_ms_p50": 3596.082,
+      "e2e_ms_p95": 3826.879,
+      "e2e_ms_p99": 3826.879,
+      "e2e_ms_mean": 1859.163
+    },
+    "decode_heavy": {
+      "count": 4,
+      "e2e_ms_p50": 13693.438,
+      "e2e_ms_p95": 13797.64,
+      "e2e_ms_p99": 13797.64,
+      "e2e_ms_mean": 10254.605
+    },
+    "short": {
+      "count": 4,
+      "e2e_ms_p50": 744.56,
+      "e2e_ms_p95": 747.029,
+      "e2e_ms_p99": 747.029,
+      "e2e_ms_mean": 738.277
+    }
+  }
+}

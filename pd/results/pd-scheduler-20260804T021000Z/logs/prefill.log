@@ -1,0 +1,737 @@
+INFO 08-04 01:45:44 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 08-04 01:45:44 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 08-04 01:45:44 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 08-04 01:45:44 [__init__.py:238] Platform plugin ascend is activated
+INFO 08-04 01:45:44 [platform.py:60] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+2026-08-04 01:45:51,019 - 612 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.22.1+empty: default 1
+WARNING 08-04 01:45:51 [registry.py:984] Model architecture DeepseekV4ForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4:AscendDeepseekV4ForCausalLM.
+WARNING 08-04 01:45:51 [registry.py:984] Model architecture DeepSeekV4MTPModel is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4_mtp:DeepSeekV4MTP.
+INFO 08-04 01:45:52 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+INFO 08-04 01:45:52 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+(APIServer pid=612) INFO 08-04 01:45:53 [utils.py:344] 
+(APIServer pid=612) INFO 08-04 01:45:53 [utils.py:344]        █     █     █▄   ▄█
+(APIServer pid=612) INFO 08-04 01:45:53 [utils.py:344]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.22.1
+(APIServer pid=612) INFO 08-04 01:45:53 [utils.py:344]   █▄█▀ █     █     █     █  model   /models/Qwen3.6-27B-w8a8
+(APIServer pid=612) INFO 08-04 01:45:53 [utils.py:344]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=612) INFO 08-04 01:45:53 [utils.py:344] 
+(APIServer pid=612) INFO 08-04 01:45:53 [utils.py:278] non-default args: {'model_tag': '/models/Qwen3.6-27B-w8a8', 'host': '0.0.0.0', 'port': 13700, 'model': '/models/Qwen3.6-27B-w8a8', 'trust_remote_code': True, 'seed': 1024, 'max_model_len': 32768, 'quantization': 'ascend', 'served_model_name': ['qwen36-27b-w8a8'], 'safetensors_load_strategy': 'eager', 'tensor_parallel_size': 2, 'gpu_memory_utilization': 0.88, 'enable_prefix_caching': False, 'max_num_batched_tokens': 8192, 'max_num_seqs': 16, 'kv_transfer_config': KVTransferConfig(kv_connector='MooncakeConnectorV1', engine_id='3ae9a579-5801-430b-9fb3-f30d49efa6ff', kv_buffer_device='npu', kv_buffer_size=1000000000.0, kv_role='kv_producer', kv_rank=None, kv_parallel_size=1, kv_ip='127.0.0.1', kv_port=36000, kv_connector_extra_config={'prefill': {'dp_size': 1, 'tp_size': 2}, 'decode': {'dp_size': 1, 'tp_size': 2}}, kv_connector_module_path=None, enable_permute_local_kv=False, kv_load_failure_policy='fail')}
+(APIServer pid=612) INFO 08-04 01:46:07 [model.py:617] Resolved architecture: Qwen3_5ForConditionalGeneration
+(APIServer pid=612) INFO 08-04 01:46:07 [model.py:1752] Using max model len 32768
+(APIServer pid=612) INFO 08-04 01:46:07 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(APIServer pid=612) `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+(APIServer pid=612) INFO 08-04 01:46:07 [patch_mamba_config.py:104] Setting attention block size to 1536 tokens to ensure that attention page size is >= mamba page size.
+(APIServer pid=612) INFO 08-04 01:46:07 [patch_mamba_config.py:119] Padding mamba page size by 0.97% to ensure that mamba page size and attention page size are exactly equal.
+(APIServer pid=612) INFO 08-04 01:46:08 [vllm.py:977] Asynchronous scheduling is enabled.
+(APIServer pid=612) INFO 08-04 01:46:08 [kernel.py:270] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+(APIServer pid=612) WARNING 08-04 01:46:08 [platform.py:1036] GPU-specific parameter is not supported on Ascend. parameter=disable_cascade_attn, value=True, action: resetting to False.
+(APIServer pid=612) INFO 08-04 01:46:08 [ascend_config.py:772] Dynamic EPLB is False
+(APIServer pid=612) INFO 08-04 01:46:08 [ascend_config.py:773] The number of redundant experts is 0
+(APIServer pid=612) INFO 08-04 01:46:08 [platform.py:759] Set PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
+(APIServer pid=612) INFO 08-04 01:46:08 [compilation.py:312] Enabled custom fusions: norm_quant, act_quant
+(APIServer pid=612) The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+INFO 08-04 01:46:24 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 08-04 01:46:24 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 08-04 01:46:24 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 08-04 01:46:25 [__init__.py:238] Platform plugin ascend is activated
+INFO 08-04 01:46:25 [platform.py:60] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+(EngineCore pid=845) 2026-08-04 01:46:32,002 - 845 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.22.1+empty: default 1
+(EngineCore pid=845) WARNING 08-04 01:46:32 [registry.py:984] Model architecture DeepseekV4ForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4:AscendDeepseekV4ForCausalLM.
+(EngineCore pid=845) WARNING 08-04 01:46:32 [registry.py:984] Model architecture DeepSeekV4MTPModel is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4_mtp:DeepSeekV4MTP.
+(EngineCore pid=845) INFO 08-04 01:46:32 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+(EngineCore pid=845) INFO 08-04 01:46:32 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+(EngineCore pid=845) INFO 08-04 01:46:32 [core.py:112] Initializing a V1 LLM engine (v0.22.1) with config: model='/models/Qwen3.6-27B-w8a8', speculative_config=None, tokenizer='/models/Qwen3.6-27B-w8a8', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=True, quantization=ascend, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=npu, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=1024, served_model_name=qwen36-27b-w8a8, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'vllm_ascend.compilation.compiler_interface.AscendCompiler', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::qwen_gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update', 'vllm::mla_forward', 'vllm::dsa_forward'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False}, 'max_cudagraph_capture_size': 16, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=845) INFO 08-04 01:46:32 [multiproc_executor.py:139] DP group leader: node_rank=0, node_rank_within_dp=0, master_addr=127.0.0.1, mq_connect_ip=10.42.17.149 (local), world_size=2, local_world_size=2
+INFO 08-04 01:46:38 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 08-04 01:46:38 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 08-04 01:46:38 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 08-04 01:46:38 [__init__.py:238] Platform plugin ascend is activated
+INFO 08-04 01:46:38 [platform.py:60] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+2026-08-04 01:46:43,444 - 939 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.22.1+empty: default 1
+WARNING 08-04 01:46:44 [registry.py:984] Model architecture DeepseekV4ForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4:AscendDeepseekV4ForCausalLM.
+WARNING 08-04 01:46:44 [registry.py:984] Model architecture DeepSeekV4MTPModel is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4_mtp:DeepSeekV4MTP.
+INFO 08-04 01:46:44 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+INFO 08-04 01:46:44 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+`Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+INFO 08-04 01:46:47 [ascend_config.py:772] Dynamic EPLB is False
+INFO 08-04 01:46:47 [ascend_config.py:773] The number of redundant experts is 0
+(Worker pid=939) INFO 08-04 01:46:48 [parallel_state.py:1422] world_size=2 rank=0 local_rank=0 distributed_init_method=tcp://127.0.0.1:33741 backend=hccl
+INFO 08-04 01:46:48 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 08-04 01:46:48 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 08-04 01:46:48 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 08-04 01:46:48 [__init__.py:238] Platform plugin ascend is activated
+INFO 08-04 01:46:48 [platform.py:60] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+2026-08-04 01:46:53,955 - 1020 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.22.1+empty: default 1
+WARNING 08-04 01:46:54 [registry.py:984] Model architecture DeepseekV4ForCausalLM is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4:AscendDeepseekV4ForCausalLM.
+WARNING 08-04 01:46:54 [registry.py:984] Model architecture DeepSeekV4MTPModel is already registered, and will be overwritten by the new model class vllm_ascend.models.deepseek_v4_mtp:DeepSeekV4MTP.
+INFO 08-04 01:46:54 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+INFO 08-04 01:46:54 [__init__.py:115] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+`Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+INFO 08-04 01:46:57 [ascend_config.py:772] Dynamic EPLB is False
+INFO 08-04 01:46:57 [ascend_config.py:773] The number of redundant experts is 0
+(Worker pid=1020) INFO 08-04 01:46:58 [parallel_state.py:1422] world_size=2 rank=1 local_rank=1 distributed_init_method=tcp://127.0.0.1:33741 backend=hccl
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+(Worker pid=939) INFO 08-04 01:46:59 [parallel_state.py:1735] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+(Worker pid=939) The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(Worker pid=1020) The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(Worker_TP0 pid=939) INFO 08-04 01:47:05 [model_runner_v1.py:3586] Starting to load model /models/Qwen3.6-27B-w8a8...
+(Worker_TP1 pid=1020) INFO 08-04 01:47:05 [model_runner_v1.py:3586] Starting to load model /models/Qwen3.6-27B-w8a8...
+(Worker_TP0 pid=939) INFO 08-04 01:47:05 [modelslim_config.py:477] Applied hf_to_vllm_mapper to quant_description keys
+(Worker_TP0 pid=939) INFO 08-04 01:47:05 [interface.py:293] Using default backend AttentionBackendEnum.TORCH_SDPA for vit attention
+(Worker_TP0 pid=939) INFO 08-04 01:47:05 [mm_encoder_attention.py:372] Using AttentionBackendEnum.TORCH_SDPA for MMEncoderAttention.
+(Worker_TP1 pid=1020) INFO 08-04 01:47:05 [modelslim_config.py:477] Applied hf_to_vllm_mapper to quant_description keys
+(Worker_TP0 pid=939) INFO 08-04 01:47:06 [qwen_gdn_linear_attn.py:228] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=None).
+(Worker_TP0 pid=939) INFO 08-04 01:47:06 [modelslim_config.py:383] Using the vLLM Ascend modelslim Quantization now!
+(Worker_TP0 pid=939) INFO 08-04 01:47:07 [compilation.py:1066] Using OOT custom backend for compilation.
+(Worker_TP1 pid=1020) INFO 08-04 01:47:07 [compilation.py:1066] Using OOT custom backend for compilation.
+(Worker_TP0 pid=939) INFO 08-04 01:47:07 [weight_utils.py:922] Filesystem type for checkpoints: EXT4. Checkpoint size: 33.92 GiB. Available RAM: 1213.57 GiB.
+(Worker_TP0 pid=939) Loading safetensors checkpoint shards (eager):   0% Completed | 0/9 [00:00<?, ?it/s]
+(Worker_TP0 pid=939) Loading safetensors checkpoint shards (eager):  11% Completed | 1/9 [00:01<00:13,  1.70s/it]
+(Worker_TP0 pid=939) Loading safetensors checkpoint shards (eager):  22% Completed | 2/9 [00:03<00:13,  1.90s/it]
+(Worker_TP0 pid=939) Loading safetensors checkpoint shards (eager):  33% Completed | 3/9 [00:05<00:10,  1.72s/it]
+(Worker_TP0 pid=939) Loading safetensors checkpoint shards (eager):  44% Completed | 4/9 [00:07<00:08,  1.76s/it]
+(Worker_TP0 pid=939) Loading safetensors checkpoint shards (eager):  56% Completed | 5/9 [00:08<00:06,  1.67s/it]
+(Worker_TP0 pid=939) Loading safetensors checkpoint shards (eager):  67% Completed | 6/9 [00:10<00:05,  1.70s/it]
+(Worker_TP0 pid=939) Loading safetensors checkpoint shards (eager):  78% Completed | 7/9 [00:11<00:03,  1.62s/it]
+(Worker_TP0 pid=939) Loading safetensors checkpoint shards (eager):  89% Completed | 8/9 [00:13<00:01,  1.60s/it]
+(Worker_TP0 pid=939) Loading safetensors checkpoint shards (eager): 100% Completed | 9/9 [00:14<00:00,  1.35s/it]
+(Worker_TP0 pid=939) Loading safetensors checkpoint shards (eager): 100% Completed | 9/9 [00:14<00:00,  1.57s/it]
+(Worker_TP0 pid=939) 
+(Worker_TP0 pid=939) INFO 08-04 01:47:22 [default_loader.py:397] Loading weights took 14.17 seconds
+(Worker_TP0 pid=939) INFO 08-04 01:47:31 [model_runner_v1.py:3633] Loading model weights took 16.8724 GB
+(Worker_TP1 pid=1020) INFO 08-04 01:47:31 [model_runner_v1.py:3633] Loading model weights took 16.8724 GB
+(Worker_TP1 pid=1020) /usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:97: SyntaxWarning: invalid escape sequence '\h'
+(Worker_TP1 pid=1020)   gelu_grad_erf = erfc(-\hat{x}) / 2 + (1 /sqrt(Pi)) * (\hat{x}) * exp(-\hat{x}^2)
+(Worker_TP1 pid=1020) /usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:157: SyntaxWarning: invalid escape sequence '\h'
+(Worker_TP1 pid=1020)   gelu_grad_erf = erfc(-\hat{x}) / 2 + (1 /sqrt(Pi)) * (\hat{x}) * exp(-\hat{x}^2)
+(Worker_TP0 pid=939) /usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:97: SyntaxWarning: invalid escape sequence '\h'
+(Worker_TP0 pid=939)   gelu_grad_erf = erfc(-\hat{x}) / 2 + (1 /sqrt(Pi)) * (\hat{x}) * exp(-\hat{x}^2)
+(Worker_TP0 pid=939) /usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:157: SyntaxWarning: invalid escape sequence '\h'
+(Worker_TP0 pid=939)   gelu_grad_erf = erfc(-\hat{x}) / 2 + (1 /sqrt(Pi)) * (\hat{x}) * exp(-\hat{x}^2)
+(Worker_TP0 pid=939) INFO 08-04 01:47:36 [gpu_model_runner.py:6136] Encoder cache will be initialized with a budget of 16384 tokens, and profiled with 1 image items of the maximum feature size.
+(Worker_TP0 pid=939) /usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:2056: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS="+dynamo" for a DEBUG stack trace.
+(Worker_TP0 pid=939)   torch._dynamo.utils.warn_once(msg)
+(Worker_TP1 pid=1020) /usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:2056: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS="+dynamo" for a DEBUG stack trace.
+(Worker_TP1 pid=1020)   torch._dynamo.utils.warn_once(msg)
+(Worker_TP0 pid=939) INFO 08-04 01:47:54 [compiler_interface.py:248] AscendCompiler hash factors: {'torch_npu_version': '2.10.0', 'enable_npugraph_ex': True, 'enable_static_kernel': False}
+(Worker_TP0 pid=939) INFO 08-04 01:47:54 [backends.py:1089] Using cache directory: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone for vLLM's torch.compile
+(Worker_TP0 pid=939) INFO 08-04 01:47:54 [backends.py:1148] Dynamo bytecode transform time: 14.23 s
+(Worker_TP1 pid=1020) INFO 08-04 01:47:54 [compiler_interface.py:248] AscendCompiler hash factors: {'torch_npu_version': '2.10.0', 'enable_npugraph_ex': True, 'enable_static_kernel': False}
+(Worker_TP0 pid=939) INFO 08-04 01:47:55 [compiler_interface.py:285] enable_npugraph_ex is enabled, which will bring graph compilation optimization.
+(Worker_TP0 pid=939) INFO 08-04 01:47:55 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_0
+(Worker_TP0 pid=939) INFO 08-04 01:47:55 [backends.py:378] Cache the graph of compile range (1, 8192) for later use
+(Worker_TP1 pid=1020) INFO 08-04 01:47:55 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_0
+(Worker_TP0 pid=939) INFO 08-04 01:47:58 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_1
+(Worker_TP1 pid=1020) INFO 08-04 01:47:59 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_1
+(Worker_TP0 pid=939) INFO 08-04 01:48:00 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_2
+(Worker_TP1 pid=1020) INFO 08-04 01:48:01 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_2
+(Worker_TP0 pid=939) INFO 08-04 01:48:01 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_3
+(Worker_TP1 pid=1020) INFO 08-04 01:48:01 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_3
+(Worker_TP0 pid=939) INFO 08-04 01:48:02 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_4
+(Worker_TP1 pid=1020) INFO 08-04 01:48:03 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_4
+(Worker_TP0 pid=939) INFO 08-04 01:48:04 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_5
+(Worker_TP1 pid=1020) INFO 08-04 01:48:04 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_5
+(Worker_TP0 pid=939) INFO 08-04 01:48:05 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_6
+(Worker_TP1 pid=1020) INFO 08-04 01:48:05 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_6
+(Worker_TP0 pid=939) INFO 08-04 01:48:06 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_7
+(Worker_TP1 pid=1020) INFO 08-04 01:48:06 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_7
+(Worker_TP0 pid=939) INFO 08-04 01:48:07 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_8
+(Worker_TP1 pid=1020) INFO 08-04 01:48:07 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_8
+(Worker_TP0 pid=939) INFO 08-04 01:48:08 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_9
+(Worker_TP1 pid=1020) INFO 08-04 01:48:09 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_9
+(Worker_TP0 pid=939) INFO 08-04 01:48:10 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_10
+(Worker_TP0 pid=939) INFO 08-04 01:48:10 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_11
+(Worker_TP1 pid=1020) INFO 08-04 01:48:11 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_10
+(Worker_TP1 pid=1020) INFO 08-04 01:48:11 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_11
+(Worker_TP0 pid=939) INFO 08-04 01:48:12 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_12
+(Worker_TP1 pid=1020) INFO 08-04 01:48:13 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_12
+(Worker_TP0 pid=939) INFO 08-04 01:48:13 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_13
+(Worker_TP1 pid=1020) INFO 08-04 01:48:14 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_13
+(Worker_TP0 pid=939) INFO 08-04 01:48:15 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_14
+(Worker_TP1 pid=1020) INFO 08-04 01:48:15 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_14
+(Worker_TP0 pid=939) INFO 08-04 01:48:15 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_15
+(Worker_TP1 pid=1020) INFO 08-04 01:48:16 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_15
+(Worker_TP0 pid=939) INFO 08-04 01:48:17 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_16
+(Worker_TP1 pid=1020) INFO 08-04 01:48:17 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_16
+(Worker_TP0 pid=939) INFO 08-04 01:48:18 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_17
+(Worker_TP1 pid=1020) INFO 08-04 01:48:19 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_17
+(Worker_TP0 pid=939) INFO 08-04 01:48:20 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_18
+(Worker_TP1 pid=1020) INFO 08-04 01:48:20 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_18
+(Worker_TP0 pid=939) INFO 08-04 01:48:20 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_19
+(Worker_TP1 pid=1020) INFO 08-04 01:48:21 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_19
+(Worker_TP0 pid=939) INFO 08-04 01:48:21 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_20
+(Worker_TP1 pid=1020) INFO 08-04 01:48:23 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_20
+(Worker_TP0 pid=939) INFO 08-04 01:48:23 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_21
+(Worker_TP1 pid=1020) INFO 08-04 01:48:24 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_21
+(Worker_TP0 pid=939) INFO 08-04 01:48:25 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_22
+(Worker_TP0 pid=939) INFO 08-04 01:48:25 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_23
+(Worker_TP1 pid=1020) INFO 08-04 01:48:25 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_22
+(Worker_TP1 pid=1020) INFO 08-04 01:48:26 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_23
+(Worker_TP0 pid=939) INFO 08-04 01:48:27 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_24
+(Worker_TP1 pid=1020) INFO 08-04 01:48:27 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_24
+(Worker_TP0 pid=939) INFO 08-04 01:48:28 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_25
+(Worker_TP1 pid=1020) INFO 08-04 01:48:29 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_25
+(Worker_TP0 pid=939) INFO 08-04 01:48:29 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_26
+(Worker_TP0 pid=939) INFO 08-04 01:48:30 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_27
+(Worker_TP1 pid=1020) INFO 08-04 01:48:30 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_26
+(Worker_TP1 pid=1020) INFO 08-04 01:48:31 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_27
+(Worker_TP0 pid=939) INFO 08-04 01:48:31 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_28
+(Worker_TP1 pid=1020) INFO 08-04 01:48:32 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_28
+(EngineCore pid=845) INFO 08-04 01:48:32 [shm_broadcast.py:698] No available shared memory broadcast block found in 60 seconds. This typically happens when some processes are hanging or doing some time-consuming work (e.g. compilation, weight/kv cache quantization).
+(Worker_TP0 pid=939) INFO 08-04 01:48:33 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_29
+(Worker_TP1 pid=1020) INFO 08-04 01:48:33 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_29
+(Worker_TP0 pid=939) INFO 08-04 01:48:34 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_30
+(Worker_TP0 pid=939) INFO 08-04 01:48:35 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_31
+(Worker_TP1 pid=1020) INFO 08-04 01:48:35 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_30
+(Worker_TP1 pid=1020) INFO 08-04 01:48:36 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_31
+(Worker_TP0 pid=939) INFO 08-04 01:48:36 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_32
+(Worker_TP0 pid=939) INFO 08-04 01:48:37 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_33
+(Worker_TP1 pid=1020) INFO 08-04 01:48:37 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_32
+(Worker_TP0 pid=939) INFO 08-04 01:48:39 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_34
+(Worker_TP1 pid=1020) INFO 08-04 01:48:39 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_33
+(Worker_TP0 pid=939) INFO 08-04 01:48:39 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_35
+(Worker_TP1 pid=1020) INFO 08-04 01:48:40 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_34
+(Worker_TP0 pid=939) INFO 08-04 01:48:40 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_36
+(Worker_TP1 pid=1020) INFO 08-04 01:48:41 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_35
+(Worker_TP0 pid=939) INFO 08-04 01:48:42 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_37
+(Worker_TP1 pid=1020) INFO 08-04 01:48:42 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_36
+(Worker_TP1 pid=1020) INFO 08-04 01:48:44 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_37
+(Worker_TP0 pid=939) INFO 08-04 01:48:44 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_38
+(Worker_TP0 pid=939) INFO 08-04 01:48:44 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_39
+(Worker_TP1 pid=1020) INFO 08-04 01:48:45 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_38
+(Worker_TP0 pid=939) INFO 08-04 01:48:46 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_40
+(Worker_TP1 pid=1020) INFO 08-04 01:48:46 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_39
+(Worker_TP1 pid=1020) INFO 08-04 01:48:47 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_40
+(Worker_TP0 pid=939) INFO 08-04 01:48:47 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_41
+(Worker_TP0 pid=939) INFO 08-04 01:48:49 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_42
+(Worker_TP1 pid=1020) INFO 08-04 01:48:49 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_41
+(Worker_TP0 pid=939) INFO 08-04 01:48:49 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_43
+(Worker_TP0 pid=939) INFO 08-04 01:48:50 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_44
+(Worker_TP1 pid=1020) INFO 08-04 01:48:50 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_42
+(Worker_TP1 pid=1020) INFO 08-04 01:48:51 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_43
+(Worker_TP0 pid=939) INFO 08-04 01:48:52 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_45
+(Worker_TP1 pid=1020) INFO 08-04 01:48:52 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_44
+(Worker_TP0 pid=939) INFO 08-04 01:48:53 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_46
+(Worker_TP1 pid=1020) INFO 08-04 01:48:54 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_45
+(Worker_TP0 pid=939) INFO 08-04 01:48:54 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_47
+(Worker_TP0 pid=939) INFO 08-04 01:48:55 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_48
+(Worker_TP1 pid=1020) INFO 08-04 01:48:55 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_46
+(Worker_TP1 pid=1020) INFO 08-04 01:48:56 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_47
+(Worker_TP0 pid=939) INFO 08-04 01:48:57 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_49
+(Worker_TP1 pid=1020) INFO 08-04 01:48:57 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_48
+(Worker_TP1 pid=1020) INFO 08-04 01:48:59 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_49
+(Worker_TP0 pid=939) INFO 08-04 01:48:59 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_50
+(Worker_TP0 pid=939) INFO 08-04 01:48:59 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_51
+(Worker_TP1 pid=1020) INFO 08-04 01:49:00 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_50
+(Worker_TP0 pid=939) INFO 08-04 01:49:00 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_52
+(Worker_TP1 pid=1020) INFO 08-04 01:49:01 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_51
+(Worker_TP1 pid=1020) INFO 08-04 01:49:02 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_52
+(Worker_TP0 pid=939) INFO 08-04 01:49:02 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_53
+(Worker_TP0 pid=939) INFO 08-04 01:49:03 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_54
+(Worker_TP1 pid=1020) INFO 08-04 01:49:04 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_53
+(Worker_TP0 pid=939) INFO 08-04 01:49:04 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_55
+(Worker_TP0 pid=939) INFO 08-04 01:49:05 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_56
+(Worker_TP1 pid=1020) INFO 08-04 01:49:05 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_54
+(Worker_TP1 pid=1020) INFO 08-04 01:49:06 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_55
+(Worker_TP0 pid=939) INFO 08-04 01:49:07 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_57
+(Worker_TP1 pid=1020) INFO 08-04 01:49:07 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_56
+(Worker_TP0 pid=939) INFO 08-04 01:49:08 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_58
+(Worker_TP0 pid=939) INFO 08-04 01:49:09 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_59
+(Worker_TP1 pid=1020) INFO 08-04 01:49:09 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_57
+(Worker_TP1 pid=1020) INFO 08-04 01:49:10 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_58
+(Worker_TP0 pid=939) INFO 08-04 01:49:11 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_60
+(Worker_TP1 pid=1020) INFO 08-04 01:49:11 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_59
+(Worker_TP0 pid=939) INFO 08-04 01:49:12 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_61
+(Worker_TP1 pid=1020) INFO 08-04 01:49:12 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_60
+(Worker_TP0 pid=939) INFO 08-04 01:49:13 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_62
+(Worker_TP1 pid=1020) INFO 08-04 01:49:14 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_61
+(Worker_TP0 pid=939) INFO 08-04 01:49:14 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_63
+(Worker_TP0 pid=939) INFO 08-04 01:49:14 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_0_0/backbone/artifact_compile_range_1_8192_subgraph_64
+(Worker_TP0 pid=939) INFO 08-04 01:49:14 [backends.py:393] Compiling a graph for compile range (1, 8192) takes 79.47 s
+(Worker_TP1 pid=1020) INFO 08-04 01:49:15 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_62
+(Worker_TP1 pid=1020) INFO 08-04 01:49:16 [compiler_interface.py:190] Skipping npugraph_ex cache for graph containing Triton kernels (kernel_side_table indices are process-local): /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_63
+(Worker_TP1 pid=1020) INFO 08-04 01:49:16 [compiler_interface.py:199] Saved compiled graph to cache: /root/.cache/vllm/torch_compile_cache/3b6c85bc2c/rank_1_0/backbone/artifact_compile_range_1_8192_subgraph_64
+(Worker_TP0 pid=939) INFO 08-04 01:49:19 [decorators.py:708] saved AOT compiled function to /root/.cache/vllm/torch_compile_cache/torch_aot_compile/d487eeb55a4e45cb72d9a9347795d6b97e9a98ee3e439b1c9a1dd69c5228a291/rank_0_0/model
+(Worker_TP0 pid=939) INFO 08-04 01:49:19 [monitor.py:53] torch.compile took 99.57 s in total
+(EngineCore pid=845) INFO 08-04 01:49:32 [shm_broadcast.py:698] No available shared memory broadcast block found in 60 seconds. This typically happens when some processes are hanging or doing some time-consuming work (e.g. compilation, weight/kv cache quantization).
+(Worker_TP0 pid=939) INFO 08-04 01:49:38 [monitor.py:81] Initial profiling/warmup run took 18.52 s
+(Worker_TP1 pid=1020) INFO 08-04 01:49:38 [gpu_model_runner.py:6279] Profiling CUDA graph memory: PIECEWISE=5 (largest=16), FULL=5 (largest=16)
+(Worker_TP0 pid=939) INFO 08-04 01:49:38 [gpu_model_runner.py:6279] Profiling CUDA graph memory: PIECEWISE=5 (largest=16), FULL=5 (largest=16)
+[rank1]:[W804 01:49:39.148421299 NPUGraph.cpp:223] Warning: Waiting for pending NCCL work to finish before starting graph capture. (function operator())
+[rank0]:[W804 01:49:39.149587144 NPUGraph.cpp:223] Warning: Waiting for pending NCCL work to finish before starting graph capture. (function operator())
+(Worker_TP1 pid=1020) INFO 08-04 01:49:48 [gpu_model_runner.py:6365] Estimated CUDA graph memory: 0.50 GiB total
+(Worker_TP0 pid=939) INFO 08-04 01:49:48 [gpu_model_runner.py:6365] Estimated CUDA graph memory: 0.50 GiB total
+(Worker_TP1 pid=1020) INFO 08-04 01:49:50 [worker.py:566] ACL graph memory profiling is enabled (default since v0.22.1). The current --gpu-memory-utilization=0.8800 is equivalent to --gpu-memory-utilization=0.8718 without ACL graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.8882. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP0 pid=939) INFO 08-04 01:49:50 [worker.py:552] Available KV cache memory: 34.04 GiB
+(Worker_TP0 pid=939) INFO 08-04 01:49:50 [worker.py:566] ACL graph memory profiling is enabled (default since v0.22.1). The current --gpu-memory-utilization=0.8800 is equivalent to --gpu-memory-utilization=0.8718 without ACL graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.8882. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=845) INFO 08-04 01:49:50 [kv_cache_utils.py:1733] GPU KV cache size: 942,407 tokens
+(EngineCore pid=845) INFO 08-04 01:49:50 [kv_cache_utils.py:1734] Maximum concurrency for 32,768 tokens per request: 28.76x
+(Worker_TP1 pid=1020) INFO 08-04 01:49:50 [factory.py:62] Creating v1 connector with name: MooncakeConnector and engine_id: 3ae9a579-5801-430b-9fb3-f30d49efa6ff-e6421b4f25ee42caa0f6a90ccbefb95c
+(Worker_TP0 pid=939) INFO 08-04 01:49:50 [factory.py:62] Creating v1 connector with name: MooncakeConnector and engine_id: 3ae9a579-5801-430b-9fb3-f30d49efa6ff-e6421b4f25ee42caa0f6a90ccbefb95c
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W0804 01:49:50.067230  1020 transfer_engine_py.cpp:77] Using default malloc/free for protocol: ascend
+W0804 01:49:50.067233   939 transfer_engine_py.cpp:77] Using default malloc/free for protocol: ascend
+I0804 01:49:50.067283  1020 transfer_engine_impl.cpp:586] Metrics reporting is disabled (set MC_TE_METRIC=1 to enable)
+I0804 01:49:50.067284   939 transfer_engine_impl.cpp:586] Metrics reporting is disabled (set MC_TE_METRIC=1 to enable)
+I0804 01:49:50.067291  1020 transfer_engine_impl.cpp:105] Transfer Engine parseHostNameWithPort. server_name: 10.42.17.149 port: 12001
+I0804 01:49:50.067291   939 transfer_engine_impl.cpp:105] Transfer Engine parseHostNameWithPort. server_name: 10.42.17.149 port: 12001
+I0804 01:49:50.067385  1020 transfer_engine_impl.cpp:172] Transfer Engine RPC using P2P handshake, listening on 10.42.17.149:15655
+I0804 01:49:50.067395   939 transfer_engine_impl.cpp:172] Transfer Engine RPC using P2P handshake, listening on 10.42.17.149:15824
+I0804 01:49:50.067585   939 ascend_direct_transport.cpp:94] install AscendDirectTransport for: 10.42.17.149:15824
+I0804 01:49:50.067587  1020 ascend_direct_transport.cpp:94] install AscendDirectTransport for: 10.42.17.149:15655
+I0804 01:49:50.067600  1020 ascend_direct_transport.cpp:608] Set device id to:3
+I0804 01:49:50.067601   939 ascend_direct_transport.cpp:608] Set device id to:2
+I0804 01:49:50.067605  1020 ascend_direct_transport.cpp:620] Find available between 20300 and 20400
+I0804 01:49:50.067606   939 ascend_direct_transport.cpp:620] Find available between 20200 and 20300
+I0804 01:49:50.067663  1020 ascend_direct_transport.cpp:573] AscendDirectTransport set segment desc: host_ip=10.42.17.149, host_port=20306, deviceLogicId=1
+I0804 01:49:50.067670   939 ascend_direct_transport.cpp:573] AscendDirectTransport set segment desc: host_ip=10.42.17.149, host_port=20273, deviceLogicId=0
+I0804 01:49:50.067677  1020 ascend_direct_transport.cpp:289] Set adxl engine name to 10.42.17.149:20306
+I0804 01:49:50.067680   939 ascend_direct_transport.cpp:289] Set adxl engine name to 10.42.17.149:20273
+I0804 01:49:50.073889   939 ascend_direct_transport.cpp:295] Success to initialize adxl engine:10.42.17.149:20273 with device_id:0, pid:939
+I0804 01:49:50.073909   939 ascend_direct_transport.cpp:136] Set transfer timeout to:33064
+I0804 01:49:50.074385  1020 ascend_direct_transport.cpp:295] Success to initialize adxl engine:10.42.17.149:20306 with device_id:1, pid:1020
+I0804 01:49:50.074398  1020 ascend_direct_transport.cpp:136] Set transfer timeout to:33064
+I0804 01:49:50.075606  3470 ascend_direct_transport.cpp:668] AscendDirectTransport query thread started
+I0804 01:49:50.076282  3479 ascend_direct_transport.cpp:668] AscendDirectTransport query thread started
+(Worker_TP1 pid=1020) INFO 08-04 01:49:53 [mooncake_connector.py:1977] num_blocks: 719
+I0804 01:49:53.257830  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d73ac00000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.257918  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d7c3000000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.257941  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d84b400000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.257961  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d8d3800000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.257985  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d95bc00000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.258004  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d9e4000000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.258025  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12da6c400000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.258042  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12daf4800000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.258066  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12db7cc00000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.258091  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dc05000000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.258117  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dc8d400000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.258133  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dd15800000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.258149  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dd9dc00000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.258167  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12de26000000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.258198  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12deae400000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.258215  1020 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12df36800000, length:2283866112, location:*, mem type:0
+(Worker_TP1 pid=1020) INFO 08-04 01:49:53 [mooncake_connector.py:289] KVCacheSendingThread started listening on path: tcp://10.42.17.149:36001. Thread: tp_rank=1, pp_rank=0, pcp_rank=0
+(Worker_TP0 pid=939) INFO 08-04 01:49:53 [mooncake_connector.py:1977] num_blocks: 719
+I0804 01:49:53.357159   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d73ac00000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357247   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d7c3000000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357273   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d84b400000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357296   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d8d3800000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357321   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d95bc00000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357342   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12d9e4000000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357369   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12da6c400000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357389   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12daf4800000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357417   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12db7cc00000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357442   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dc05000000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357467   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dc8d400000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357488   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dd15800000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357508   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12dd9dc00000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357528   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12de26000000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357561   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12deae400000, length:2283866112, location:*, mem type:0
+I0804 01:49:53.357582   939 ascend_direct_transport.cpp:471] AscendDirectTransport register mem addr:0x12df36800000, length:2283866112, location:*, mem type:0
+(Worker_TP0 pid=939) INFO 08-04 01:49:53 [mooncake_connector.py:289] KVCacheSendingThread started listening on path: tcp://10.42.17.149:36000. Thread: tp_rank=0, pp_rank=0, pcp_rank=0
+(Worker_TP0 pid=939) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/5 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|██        | 1/5 [00:00<00:03,  1.14it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  40%|████      | 2/5 [00:01<00:02,  1.06it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  60%|██████    | 3/5 [00:02<00:01,  1.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  80%|████████  | 4/5 [00:03<00:01,  1.01s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 5/5 [00:04<00:00,  1.01s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 5/5 [00:04<00:00,  1.01it/s]
+(Worker_TP0 pid=939) Capturing CUDA graphs (decode, FULL):   0%|          | 0/5 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):  20%|██        | 1/5 [00:00<00:03,  1.24it/s]Capturing CUDA graphs (decode, FULL):  40%|████      | 2/5 [00:01<00:02,  1.08it/s]Capturing CUDA graphs (decode, FULL):  60%|██████    | 3/5 [00:02<00:01,  1.04it/s]Capturing CUDA graphs (decode, FULL):  80%|████████  | 4/5 [00:03<00:00,  1.03it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 5/5 [00:06<00:00,  1.70s/it]Capturing CUDA graphs (decode, FULL): 100%|██████████| 5/5 [00:06<00:00,  1.36s/it]
+(Worker_TP1 pid=1020) INFO 08-04 01:50:09 [worker.py:729] ACL graph pool memory: 0.39 GiB (actual), 0.5 GiB (estimated), difference: 0.11 GiB (28.4%).
+(Worker_TP1 pid=1020) INFO 08-04 01:50:09 [worker.py:774] Free memory on device (61.12/61.28 GiB) on startup. Desired GPU memory utilization is (0.88, 53.92 GiB). Actual usage: 16.87 GiB for weights, 1.74 GiB for peak activation, 0.76 GiB for non-torch memory, 0.39 GiB for NPU graph memory. Replace gpu_memory_utilization with `--kv-cache-memory=36527629578` (34.02 GiB) to fit into requested memory, or `--kv-cache-memory=44252265984` (41.21 GiB) to fully utilize NPU free memory. Current KV cache memory: 34.05 GiB.
+(Worker_TP0 pid=939) INFO 08-04 01:50:09 [gpu_model_runner.py:6456] Graph capturing finished in 13 secs, took 0.39 GiB
+(Worker_TP0 pid=939) INFO 08-04 01:50:09 [worker.py:729] ACL graph pool memory: 0.39 GiB (actual), 0.5 GiB (estimated), difference: 0.11 GiB (28.2%).
+(Worker_TP0 pid=939) INFO 08-04 01:50:09 [worker.py:774] Free memory on device (60.9/61.27 GiB) on startup. Desired GPU memory utilization is (0.88, 53.92 GiB). Actual usage: 16.87 GiB for weights, 1.74 GiB for peak activation, 0.76 GiB for non-torch memory, 0.39 GiB for NPU graph memory. Replace gpu_memory_utilization with `--kv-cache-memory=36513812787` (34.01 GiB) to fit into requested memory, or `--kv-cache-memory=44010003968` (40.99 GiB) to fully utilize NPU free memory. Current KV cache memory: 34.04 GiB.
+(Worker_TP1 pid=1020) INFO 08-04 01:50:12 [cpu_binding.py:389] [cpu_bind_mode] mode=global_slice rank=1 visible_npus=[2, 3]
+(Worker_TP1 pid=1020) INFO 08-04 01:50:12 [cpu_binding.py:454] The CPU allocation plan is as follows:
+(Worker_TP1 pid=1020) INFO 08-04 01:50:12 [cpu_binding.py:459] NPU3: main=[122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157]  acl=[158]  release=[[159]]
+(Worker_TP0 pid=939) INFO 08-04 01:50:12 [cpu_binding.py:389] [cpu_bind_mode] mode=global_slice rank=0 visible_npus=[2, 3]
+(Worker_TP0 pid=939) INFO 08-04 01:50:12 [cpu_binding.py:454] The CPU allocation plan is as follows:
+(Worker_TP0 pid=939) INFO 08-04 01:50:12 [cpu_binding.py:459] NPU2: main=[82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117]  acl=[118]  release=[[119]]
+(Worker_TP1 pid=1020) INFO 08-04 01:50:12 [cpu_binding.py:485] [migrate] NPU:3 -> NUMA [1]
+(Worker_TP0 pid=939) INFO 08-04 01:50:12 [cpu_binding.py:485] [migrate] NPU:2 -> NUMA [1]
+(Worker_TP0 pid=939) INFO 08-04 01:50:19 [cpu_binding.py:584] NPU2(PCI 0000:99:00.0): sq_send_trigger_irq IRQ_ID=2537 -> CPU80, cq_update_irq IRQ_ID=2538 -> CPU81
+(Worker_TP1 pid=1020) INFO 08-04 01:50:23 [cpu_binding.py:584] NPU3(PCI 0000:9b:00.0): sq_send_trigger_irq IRQ_ID=2797 -> CPU120, cq_update_irq IRQ_ID=2798 -> CPU121
+(EngineCore pid=845) INFO 08-04 01:50:23 [core.py:302] init engine (profile, create kv cache, warmup model) took 171.83 s (compilation: 101.67 s)
+(EngineCore pid=845) INFO 08-04 01:50:24 [factory.py:62] Creating v1 connector with name: MooncakeConnector and engine_id: 3ae9a579-5801-430b-9fb3-f30d49efa6ff-e6421b4f25ee42caa0f6a90ccbefb95c
+(EngineCore pid=845) INFO 08-04 01:50:24 [ascend_config.py:772] Dynamic EPLB is False
+(EngineCore pid=845) INFO 08-04 01:50:24 [ascend_config.py:773] The number of redundant experts is 0
+(EngineCore pid=845) INFO 08-04 01:50:24 [mooncake_connector.py:1426] Initializing Mooncake Scheduler 3ae9a579-5801-430b-9fb3-f30d49efa6ff-e6421b4f25ee42caa0f6a90ccbefb95c
+(EngineCore pid=845) `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+(EngineCore pid=845) The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(EngineCore pid=845) INFO 08-04 01:50:31 [vllm.py:977] Asynchronous scheduling is enabled.
+(EngineCore pid=845) INFO 08-04 01:50:31 [kernel.py:270] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+(EngineCore pid=845) INFO 08-04 01:50:31 [platform.py:759] Set PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
+(EngineCore pid=845) INFO 08-04 01:50:31 [compilation.py:312] Enabled custom fusions: norm_quant, act_quant
+(APIServer pid=612) INFO 08-04 01:50:31 [api_server.py:592] Supported tasks: ['generate']
+(APIServer pid=612) WARNING 08-04 01:50:32 [model.py:1509] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'temperature': 1.0, 'top_k': 20, 'top_p': 0.95}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(APIServer pid=612) INFO 08-04 01:50:33 [hf.py:488] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=612) INFO 08-04 01:50:46 [base.py:224] Multi-modal warmup completed in 13.065s
+(APIServer pid=612) INFO 08-04 01:50:47 [base.py:224] Readonly multi-modal warmup completed in 0.794s
+(APIServer pid=612) INFO 08-04 01:50:47 [api_server.py:596] Starting vLLM server on http://0.0.0.0:13700
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:37] Available routes are:
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /openapi.json, Methods: GET, HEAD
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /docs, Methods: GET, HEAD
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /redoc, Methods: GET, HEAD
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /tokenize, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /detokenize, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /load, Methods: GET
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /version, Methods: GET
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /health, Methods: GET
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /metrics, Methods: GET
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /v1/models, Methods: GET
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /ping, Methods: GET
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /ping, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /invocations, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /v1/chat/completions/batch, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /v1/responses, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /v1/completions, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /v1/messages, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /inference/v1/generate, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /generative_scoring, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /v1/chat/completions/render, Methods: POST
+(APIServer pid=612) INFO 08-04 01:50:47 [launcher.py:46] Route: /v1/completions/render, Methods: POST
+(APIServer pid=612) INFO:     Started server process [612]
+(APIServer pid=612) INFO:     Waiting for application startup.
+(APIServer pid=612) INFO:     Application startup complete.
+(APIServer pid=612) INFO:     127.0.0.1:52296 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35760 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35774 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35780 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35796 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35804 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35816 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35828 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35844 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35856 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35862 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60276 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60282 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60286 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60302 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60318 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60326 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53260 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53262 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53276 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53290 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53292 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53298 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53312 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53324 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53330 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53334 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53340 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53350 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:34850 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:34866 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:34868 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:34880 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:34898 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:34910 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:52928 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:52932 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:52940 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:52950 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:52960 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:52976 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:59406 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:59420 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:59422 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:59430 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:59434 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:59436 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60896 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60912 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60928 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60944 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60956 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:60966 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:13 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-97dbfa81-6a7e-4e37-85fa-2c66e15a9ada-0-90aaeac4
+(EngineCore pid=845) INFO 08-04 02:16:13 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-d0261a07-9350-4354-bd24-adc752f037d5-0-84a236bd
+(APIServer pid=612) INFO:     127.0.0.1:34884 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:34888 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:40726 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:40732 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:16:17 [loggers.py:271] Engine 000: Avg prompt throughput: 819.1 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:40740 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:40750 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:40754 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:40764 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:23 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-5f8afbf8-5336-41b9-be07-80c84eab5af0-0-a38b4873
+(APIServer pid=612) INFO:     127.0.0.1:34884 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:24 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-e05ae600-7f05-42b1-b56f-2ba6e3837d30-0-86143b9b
+(APIServer pid=612) INFO:     127.0.0.1:34888 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:33952 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:24 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-ac84787e-d767-4539-a76d-301ffc8162ee-0-80b2b118
+(APIServer pid=612) INFO:     127.0.0.1:34884 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:25 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-db0b9f29-9d6f-4a1e-9052-97ddbd00e314-0-b16a47c7
+(APIServer pid=612) INFO:     127.0.0.1:34888 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:25 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-4e5cbdf0-521e-4d04-9311-0e6451de34b1-0-a31f6ab3
+(APIServer pid=612) INFO:     127.0.0.1:34884 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:26 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-52b20e6a-b7a3-4dba-9800-d3e32b70dcec-0-8af8f320
+(APIServer pid=612) INFO:     127.0.0.1:34888 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:33956 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:26 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-c31544ad-b452-4d44-a2a7-6ebd14bd6777-0-9adec9fb
+(APIServer pid=612) INFO:     127.0.0.1:34884 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:27 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-9eca24db-7373-4ab4-b3be-c668aed4cc33-0-b6685fe7
+(APIServer pid=612) INFO:     127.0.0.1:34888 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:16:27 [loggers.py:271] Engine 000: Avg prompt throughput: 3275.7 tokens/s, Avg generation throughput: 0.8 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:33960 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:33966 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:33972 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:33976 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:33984 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:33986 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:33996 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:34012 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:34014 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53716 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53718 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53722 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:16:37 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:53730 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53740 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53744 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44494 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44500 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:46 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-b243a93a-2442-4898-807d-304cc9200fe4-0-9883bd00
+(APIServer pid=612) INFO:     127.0.0.1:44514 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44538 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:47 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-146f64a7-aa9f-4f05-916a-ac647074feb1-0-a363fbd8
+(APIServer pid=612) INFO:     127.0.0.1:44522 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:16:47 [loggers.py:271] Engine 000: Avg prompt throughput: 818.9 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(EngineCore pid=845) INFO 08-04 02:16:48 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-8197a482-3dcd-487c-9d0d-8833d30a4399-0-915c3067
+(APIServer pid=612) INFO:     127.0.0.1:44522 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44548 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:16:48 [mooncake_connector.py:1688] Delaying free of 6 blocks for request cmpl-1d37d8d3-0ba8-4608-9ff7-c31e20ca9362-0-acf0c555
+(APIServer pid=612) INFO:     127.0.0.1:44514 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44556 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44562 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44572 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44584 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44592 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44602 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44610 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:44616 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:58878 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:58890 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:58900 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:16:57 [loggers.py:271] Engine 000: Avg prompt throughput: 818.9 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:58904 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:58920 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:58922 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35712 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35720 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35742 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:17:07 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:35758 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:17:09 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-70debbdb-a227-4b0c-9cf9-ccd7ddc2a46c-0-9c95f67f
+(APIServer pid=612) INFO:     127.0.0.1:35722 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:17:09 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-0951e270-ab36-4008-9385-0e0d7fcbb71e-0-bfc1585d
+(APIServer pid=612) INFO:     127.0.0.1:35736 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35768 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35778 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:32864 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:32880 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:17:17 [loggers.py:271] Engine 000: Avg prompt throughput: 102.2 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:32890 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:32892 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:32906 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:32980 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:54794 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:17:25 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-fed11421-de30-4d76-8bcc-e283e9bf16d0-0-8a7640e7
+(EngineCore pid=845) INFO 08-04 02:17:25 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-cbc234ff-fc54-4686-b927-a222fd9474c2-0-b8900a5a
+(APIServer pid=612) INFO:     127.0.0.1:32908 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:32920 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:54806 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:17:27 [loggers.py:271] Engine 000: Avg prompt throughput: 102.2 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 3 reqs, Waiting: 0 reqs, GPU KV cache usage: 2.8%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(EngineCore pid=845) INFO 08-04 02:17:27 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-723d4c7d-bd89-4ba0-9ed5-98607681c5b1-0-bbf4aa77
+(EngineCore pid=845) INFO 08-04 02:17:27 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-78fab80f-8568-43aa-94e1-921b97d7a46b-0-91fc04a0
+(EngineCore pid=845) INFO 08-04 02:17:27 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-bd8d7cc3-1f04-4bb5-9178-94851fae5f87-0-96169bcf
+(APIServer pid=612) INFO:     127.0.0.1:32924 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:32932 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:32940 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:17:28 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-ad8bdbdd-58b6-4fc0-882f-6e8ef7129c39-0-a265aa54
+(EngineCore pid=845) INFO 08-04 02:17:28 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-28f133ca-9e9d-4b10-95fe-176c72b5fe58-0-9f59392e
+(EngineCore pid=845) INFO 08-04 02:17:28 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-b03dcc53-4f64-466c-b2f5-09acff7c9593-0-b524ed92
+(APIServer pid=612) INFO:     127.0.0.1:32950 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:32954 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:32970 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:54816 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:54824 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:54840 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50350 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50362 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50364 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:17:37 [loggers.py:271] Engine 000: Avg prompt throughput: 306.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:50376 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:17:39 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-f71bc43d-ad48-40b7-a802-46bd1d219ed2-0-9c9c298c
+(APIServer pid=612) INFO:     127.0.0.1:50378 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:17:39 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-22a17fdb-7649-4e78-8c8d-665fcc942bc3-0-849cba77
+(APIServer pid=612) INFO:     127.0.0.1:50384 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50390 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50398 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:17:42 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-6288d0cb-0447-455e-8013-bef2af10aa81-0-a80b50b3
+(APIServer pid=612) INFO:     127.0.0.1:50378 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35536 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:17:44 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-a3de4e7b-f262-45d5-8de0-e83362d46fda-0-807f0e2f
+(EngineCore pid=845) INFO 08-04 02:17:44 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-154600b7-2580-4805-a2e6-ccd06e99513e-0-8d3bce42
+(EngineCore pid=845) INFO 08-04 02:17:44 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-733d3090-309e-4460-9cbe-edf77854610f-0-b633fa5a
+(EngineCore pid=845) INFO 08-04 02:17:44 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-32399158-4bc0-4d7b-9fcc-faf7bf4e2560-0-94fb7862
+(APIServer pid=612) INFO:     127.0.0.1:50384 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50410 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50412 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50422 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:17:45 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-dc07a396-b1e0-4b81-b98f-5e72d6d13615-0-bf3e2456
+(APIServer pid=612) INFO:     127.0.0.1:50378 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35552 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35558 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:17:47 [loggers.py:271] Engine 000: Avg prompt throughput: 408.8 tokens/s, Avg generation throughput: 0.8 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:35564 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35570 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:35584 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:46932 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:46948 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:17:57 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:46964 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:46968 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:46984 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:46988 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:46990 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:46998 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:47010 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:47014 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:47022 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:47028 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53722 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53724 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53738 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53742 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53754 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:53760 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50258 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50268 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50278 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:18:18 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-6f86f6e2-bc41-4e66-b4b2-8c42dbae08ba-0-81f9c649
+(APIServer pid=612) INFO:     127.0.0.1:50280 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:18:18 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-a3639f39-fee3-4c42-afa3-016c5c6a4e1b-0-a203f18d
+(APIServer pid=612) INFO:     127.0.0.1:50292 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50294 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50308 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:50318 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37792 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37796 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:18:27 [loggers.py:271] Engine 000: Avg prompt throughput: 102.2 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:37810 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37812 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37952 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:18:31 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-bc48e068-486d-4cb7-ad8c-e10af5b7e992-0-bd181b55
+(APIServer pid=612) INFO:     127.0.0.1:37818 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:42536 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:42546 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-ee214b22-951c-4a86-a000-edf5cb382da2-0-913ef1fe
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-9673bd67-87db-4a26-aa7f-00b7c89755ee-0-b905c025
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-6bd6bfdc-26f2-4c1d-8674-ea8cb12fb1ba-0-b8845212
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-53ee22bd-80a4-4e49-84d1-3073ecd0904a-0-95a7d1c8
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-b95273d6-4fc0-4fdf-ae60-498cacbae5aa-0-84476a9c
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-6fa94df9-eda9-44c6-b602-c125f19fd9e4-0-953531f6
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-ed62a4c0-ee4c-4990-a2fa-306d314ff30e-0-899f08a7
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-3a3471ae-cb36-4fe9-9497-9cafd3147ca1-0-8e526815
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-ab444a64-bbd5-47b3-b63d-b8594f6413f4-0-a2357127
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-ecc085ab-74f5-416b-ab92-007967f818f1-0-8d95c4b2
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-af990cf6-ba92-49d5-8171-55fa996fe474-0-87329699
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-ed5f5499-dafa-4d1b-be25-7f5b8d2ed6d4-0-817ea7f9
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-85bd06ea-335a-44a2-b3bd-bf823f90fcd1-0-a0e2edcc
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-2ce162ba-afa0-489b-8cbc-fce97f79c823-0-b338f7a5
+(EngineCore pid=845) INFO 08-04 02:18:35 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-5450f9f4-6ba8-4333-8d4b-fb46934ada7b-0-a226825d
+(APIServer pid=612) INFO:     127.0.0.1:37828 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37840 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37852 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37860 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37864 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37876 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37880 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37890 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37892 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37894 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37896 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37906 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37920 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37926 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37936 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:42550 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:18:37 [loggers.py:271] Engine 000: Avg prompt throughput: 817.5 tokens/s, Avg generation throughput: 1.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:42562 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:42572 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:42576 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37988 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:37996 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38008 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:18:46 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-87fbf758-f75d-4925-bdc3-8f902e61f942-0-95ead8ec
+(APIServer pid=612) INFO:     127.0.0.1:38002 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:18:47 [loggers.py:271] Engine 000: Avg prompt throughput: 51.1 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:38018 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38020 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:18:50 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-174babd9-e5e0-41c7-a23c-0461985ab604-0-86929e3f
+(APIServer pid=612) INFO:     127.0.0.1:38002 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38148 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:47398 - "GET /metrics HTTP/1.1" 200 OK
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-e2db0cce-db02-412c-957d-fe2dbc15316b-0-8abfc984
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-f0e44983-482f-4452-b060-306d78b9344c-0-b4f556f0
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-7ec5616c-ee4e-4101-be83-cacc77e0b142-0-b971433a
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-4f0f2ac1-e96a-483e-a216-9cbde694a0e5-0-8cfd7167
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-affae6ff-003e-48f7-82a4-4f966a17a9c5-0-8be51b17
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-46d00422-5cd4-4b15-916c-8a7e655ffee4-0-a9aeb1af
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-97b58a6f-a664-4aa1-937e-9dfce3e5172f-0-9e2c7d39
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-4e252a4d-2c1f-4ec7-86b3-c5c33982f836-0-a13c570f
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-a394719c-37ec-4d12-8cf3-4210cecf6a7e-0-b98b9973
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-0c9bc457-dc04-4051-b6d8-1bb5a5ec6589-0-8ae4faf2
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-46407b67-47ba-4150-bc6e-375b8c0b46a8-0-98585577
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-6005df7b-27f7-434f-8b7d-feb4540aa1b5-0-9a122a24
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-94399e70-f74a-4981-948b-1959b3025e03-0-af2bafa3
+(EngineCore pid=845) INFO 08-04 02:18:53 [mooncake_connector.py:1688] Delaying free of 4 blocks for request cmpl-7bebf1ce-f7ec-457d-a214-ac0cf51e6556-0-83068dcf
+(APIServer pid=612) INFO:     127.0.0.1:38022 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38024 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38040 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38044 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38050 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38062 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38074 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38082 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38098 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38106 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38116 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38124 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38140 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:38146 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:47404 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:47406 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:18:57 [loggers.py:271] Engine 000: Avg prompt throughput: 766.5 tokens/s, Avg generation throughput: 1.5 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:47420 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:47422 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:47438 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:39626 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:39640 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:39654 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO 08-04 02:19:07 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=612) INFO:     127.0.0.1:39656 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:39658 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:39674 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:39676 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:39692 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=612) INFO:     127.0.0.1:39706 - "GET /metrics HTTP/1.1" 200 OK

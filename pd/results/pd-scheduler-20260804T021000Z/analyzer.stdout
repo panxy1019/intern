@@ -1,0 +1,6 @@
+{
+  "cases": 4,
+  "observations": 145,
+  "analysis": "results/pd-scheduler-20260804T021000Z/analysis.json",
+  "csv": "results/pd-scheduler-20260804T021000Z/benchmark_summary.csv"
+}

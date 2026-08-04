@@ -1,0 +1,65 @@
+{
+  "mode": "sequential-route",
+  "count": 8,
+  "status_counts": {
+    "404": 8
+  },
+  "results": [
+    {
+      "status_code": 404,
+      "elapsed_ms": 6.26,
+      "body": {
+        "detail": "Not Found"
+      }
+    },
+    {
+      "status_code": 404,
+      "elapsed_ms": 1.134,
+      "body": {
+        "detail": "Not Found"
+      }
+    },
+    {
+      "status_code": 404,
+      "elapsed_ms": 0.98,
+      "body": {
+        "detail": "Not Found"
+      }
+    },
+    {
+      "status_code": 404,
+      "elapsed_ms": 0.942,
+      "body": {
+        "detail": "Not Found"
+      }
+    },
+    {
+      "status_code": 404,
+      "elapsed_ms": 0.974,
+      "body": {
+        "detail": "Not Found"
+      }
+    },
+    {
+      "status_code": 404,
+      "elapsed_ms": 0.944,
+      "body": {
+        "detail": "Not Found"
+      }
+    },
+    {
+      "status_code": 404,
+      "elapsed_ms": 0.936,
+      "body": {
+        "detail": "Not Found"
+      }
+    },
+    {
+      "status_code": 404,
+      "elapsed_ms": 0.937,
+      "body": {
+        "detail": "Not Found"
+      }
+    }
+  ]
+}
