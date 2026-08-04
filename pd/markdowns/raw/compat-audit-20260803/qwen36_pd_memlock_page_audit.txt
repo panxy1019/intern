@@ -1,0 +1,39 @@
+captured_at_utc=2026-08-03T02:42:00+00:00
+CALLER_MEMLOCK_KB
+65536
+K3S_AGENT
+MainPID=29539
+ControlGroup=/system.slice/k3s-agent.service
+LimitMEMLOCK=67108864
+ActiveState=active
+Max locked memory         67108864             67108864             bytes     
+EXISTING_VLLM_RUNTIME_SAMPLES
+PID=1902723
+Max open files            1048576              1048576              files     
+Max locked memory         67108864             67108864             bytes     
+Max address space         unlimited            unlimited            bytes     
+PID=1902724
+Max open files            1048576              1048576              files     
+Max locked memory         67108864             67108864             bytes     
+Max address space         unlimited            unlimited            bytes     
+PID=3192286
+Max open files            1048576              1048576              files     
+Max locked memory         67108864             67108864             bytes     
+Max address space         unlimited            unlimited            bytes     
+SYSCTL
+vm.max_map_count = 65530
+vm.overcommit_memory = 1
+vm.overcommit_ratio = 50
+THP
+[always] madvise never
+MEMINFO
+Mlocked:               0 kB
+AnonHugePages:  193556480 kB
+ShmemHugePages:        0 kB
+FileHugePages:  364832768 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB

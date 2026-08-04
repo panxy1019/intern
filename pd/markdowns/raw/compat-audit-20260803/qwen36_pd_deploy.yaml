@@ -1,0 +1,173 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"ray-vllm-pd-worker-qwen36-27b"},"name":"ray-vllm-pd-worker-qwen36-27b","namespace":"infra-learning"},"spec":{"replicas":0,"selector":{"matchLabels":{"app":"ray-vllm-pd-worker-qwen36-27b"}},"strategy":{"type":"Recreate"},"template":{"metadata":{"annotations":{"huawei.com/Ascend910":"Ascend910-2,Ascend910-3,Ascend910-4,Ascend910-5,Ascend910-6,Ascend910-7","predicate-time":"1"},"labels":{"app":"ray-vllm-pd-worker-qwen36-27b"}},"spec":{"containers":[{"args":["exec /opt/qwen36-pd/pd-worker-entrypoint.sh"],"command":["/bin/bash","-lc","--"],"env":[{"name":"PHYSICAL_IDS","value":"2,3,4,5,6,7"},{"name":"MODEL_PATH","value":"/models/Qwen3.6-27B-w8a8"},{"name":"MODEL_NAME","value":"qwen36-27b-w8a8"},{"name":"RAY_ADDRESS","value":"ray-vllm-lab-head.infra-learning.svc.cluster.local:6379"},{"name":"POD_IP","valueFrom":{"fieldRef":{"fieldPath":"status.podIP"}}},{"name":"NO_PROXY","value":"localhost,127.0.0.1,::1,.svc,.svc.cluster.local,.cluster.local,110.120.0.3,110.123.0.3,10.0.0.0/8"}],"image":"110.120.0.3:8889/infra/qwen36-pd-worker:v0.22.1rc1-a3-ray248-20260730","imagePullPolicy":"IfNotPresent","name":"pd-worker","readinessProbe":{"exec":{"command":["/bin/bash","-lc","test -f /var/run/qwen36-pd/READY \u0026\u0026 curl --noproxy '*' -fsS http://127.0.0.1:8080/health \u003e/dev/null"]},"failureThreshold":120,"initialDelaySeconds":30,"periodSeconds":10,"timeoutSeconds":5},"resources":{"limits":{"cpu":"64","huawei.com/Ascend910":"6","memory":"256Gi"},"requests":{"cpu":"64","huawei.com/Ascend910":"6","memory":"256Gi"}},"securityContext":{"privileged":true},"volumeMounts":[{"mountPath":"/models/Qwen3.6-27B-w8a8","name":"model","readOnly":true},{"mountPath":"/opt/qwen36-pd","name":"scripts","readOnly":true},{"mountPath":"/var/run/qwen36-pd","name":"state"},{"mountPath":"/var/log/qwen36-pd","name":"logs"},{"mountPath":"/dev/shm","name":"shm"},{"mountPath":"/usr/local/Ascend/driver","name":"driver","readOnly":true},{"mountPath":"/usr/local/dcmi","name":"dcmi","readOnly":true},{"mountPath":"/usr/local/bin/npu-smi","name":"npu-smi","readOnly":true},{"mountPath":"/usr/local/Ascend/driver/tools/hccn_tool","name":"hccn-tool","readOnly":true},{"mountPath":"/etc/hccn.conf","name":"hccn-conf","readOnly":true}]}],"nodeSelector":{"kubernetes.io/arch":"arm64","kubernetes.io/hostname":"a3-server-00","node.kubernetes.io/npu.chip.name":"Ascend910"},"schedulerName":"default-scheduler","volumes":[{"hostPath":{"path":"/home/admin/models/Qwen3.6-27B-w8a8","type":"Directory"},"name":"model"},{"configMap":{"defaultMode":365,"name":"qwen36-pd-worker-scripts"},"name":"scripts"},{"emptyDir":{},"name":"state"},{"emptyDir":{},"name":"logs"},{"emptyDir":{"medium":"Memory","sizeLimit":"64Gi"},"name":"shm"},{"hostPath":{"path":"/usr/local/Ascend/driver"},"name":"driver"},{"hostPath":{"path":"/usr/local/dcmi"},"name":"dcmi"},{"hostPath":{"path":"/usr/local/bin/npu-smi","type":"File"},"name":"npu-smi"},{"hostPath":{"path":"/usr/local/Ascend/driver/tools/hccn_tool","type":"File"},"name":"hccn-tool"},{"hostPath":{"path":"/etc/hccn.conf","type":"File"},"name":"hccn-conf"}]}}}}
+  creationTimestamp: "2026-07-30T10:25:17Z"
+  generation: 5
+  labels:
+    app: ray-vllm-pd-worker-qwen36-27b
+  name: ray-vllm-pd-worker-qwen36-27b
+  namespace: infra-learning
+  resourceVersion: "13617675"
+  uid: b13fb087-caff-454a-916a-3220526221dc
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 0
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: ray-vllm-pd-worker-qwen36-27b
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        huawei.com/Ascend910: Ascend910-2,Ascend910-3,Ascend910-4,Ascend910-5,Ascend910-6,Ascend910-7
+        predicate-time: "1"
+      labels:
+        app: ray-vllm-pd-worker-qwen36-27b
+    spec:
+      containers:
+      - args:
+        - exec /opt/qwen36-pd/pd-worker-entrypoint.sh
+        command:
+        - /bin/bash
+        - -lc
+        - --
+        env:
+        - name: PHYSICAL_IDS
+          value: 2,3,4,5,6,7
+        - name: MODEL_PATH
+          value: /models/Qwen3.6-27B-w8a8
+        - name: MODEL_NAME
+          value: qwen36-27b-w8a8
+        - name: RAY_ADDRESS
+          value: ray-vllm-lab-head.infra-learning.svc.cluster.local:6379
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        - name: NO_PROXY
+          value: localhost,127.0.0.1,::1,.svc,.svc.cluster.local,.cluster.local,110.120.0.3,110.123.0.3,10.0.0.0/8
+        image: 110.120.0.3:8889/infra/qwen36-pd-worker:v0.22.1rc1-a3-ray248-20260730
+        imagePullPolicy: IfNotPresent
+        name: pd-worker
+        readinessProbe:
+          exec:
+            command:
+            - /bin/bash
+            - -lc
+            - test -f /var/run/qwen36-pd/READY && curl --noproxy '*' -fsS http://127.0.0.1:8080/health
+              >/dev/null
+          failureThreshold: 120
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: "64"
+            huawei.com/Ascend910: "6"
+            memory: 256Gi
+          requests:
+            cpu: "64"
+            huawei.com/Ascend910: "6"
+            memory: 256Gi
+        securityContext:
+          privileged: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /models/Qwen3.6-27B-w8a8
+          name: model
+          readOnly: true
+        - mountPath: /opt/qwen36-pd
+          name: scripts
+          readOnly: true
+        - mountPath: /var/run/qwen36-pd
+          name: state
+        - mountPath: /var/log/qwen36-pd
+          name: logs
+        - mountPath: /dev/shm
+          name: shm
+        - mountPath: /usr/local/Ascend/driver
+          name: driver
+          readOnly: true
+        - mountPath: /usr/local/dcmi
+          name: dcmi
+          readOnly: true
+        - mountPath: /usr/local/bin/npu-smi
+          name: npu-smi
+          readOnly: true
+        - mountPath: /usr/local/Ascend/driver/tools/hccn_tool
+          name: hccn-tool
+          readOnly: true
+        - mountPath: /etc/hccn.conf
+          name: hccn-conf
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        kubernetes.io/arch: arm64
+        kubernetes.io/hostname: a3-server-00
+        node.kubernetes.io/npu.chip.name: Ascend910
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /home/admin/models/Qwen3.6-27B-w8a8
+          type: Directory
+        name: model
+      - configMap:
+          defaultMode: 365
+          name: qwen36-pd-worker-scripts
+        name: scripts
+      - emptyDir: {}
+        name: state
+      - emptyDir: {}
+        name: logs
+      - emptyDir:
+          medium: Memory
+          sizeLimit: 64Gi
+        name: shm
+      - hostPath:
+          path: /usr/local/Ascend/driver
+          type: ""
+        name: driver
+      - hostPath:
+          path: /usr/local/dcmi
+          type: ""
+        name: dcmi
+      - hostPath:
+          path: /usr/local/bin/npu-smi
+          type: File
+        name: npu-smi
+      - hostPath:
+          path: /usr/local/Ascend/driver/tools/hccn_tool
+          type: File
+        name: hccn-tool
+      - hostPath:
+          path: /etc/hccn.conf
+          type: File
+        name: hccn-conf
+status:
+  conditions:
+  - lastTransitionTime: "2026-07-30T10:25:17Z"
+    lastUpdateTime: "2026-07-30T10:25:17Z"
+    message: ReplicaSet "ray-vllm-pd-worker-qwen36-27b-799b795bd9" has successfully
+      progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2026-08-03T01:29:32Z"
+    lastUpdateTime: "2026-08-03T01:29:32Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 5

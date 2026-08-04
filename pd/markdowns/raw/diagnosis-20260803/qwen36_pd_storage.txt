@@ -1,0 +1,15 @@
+captured_at_utc=2026-08-03T02:16:20+00:00
+host_timezone=Asia/Shanghai
+=== findmnt host ===
+TARGET SOURCE         FSTYPE OPTIONS
+/home  /dev/nvme0n1p5 ext4   rw,relatime,seclabel,stripe=32
+=== model size ===
+34G	/home/admin/models/Qwen3.6-27B-w8a8
+=== df host shm ===
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs          1007G  3.9M 1007G   1% /dev/shm
+=== findmnt and shm in intended pod layout ===
+TARGET                   SOURCE                                         FSTYPE OPTIONS
+/models/Qwen3.6-27B-w8a8 /dev/nvme0n1p5[/admin/models/Qwen3.6-27B-w8a8] ext4   ro,relatime,seclabel,stripe=32
+Filesystem      Size  Used Avail Use% Mounted on
+shm              64G     0   64G   0% /dev/shm

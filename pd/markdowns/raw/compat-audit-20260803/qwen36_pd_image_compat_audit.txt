@@ -1,0 +1,444 @@
+captured_at_utc=2026-08-03T02:39:36+00:00
+image=110.120.0.3:8889/infra/qwen36-pd-worker:v0.22.1rc1-a3-ray248-20260730
+=== IMAGE INSPECT ===
+Id=sha256:6d454e6d5715ac8792868408e57f9287aa0444867db23747b797ddaae5ff924a RepoDigests=[] Labels={"org.opencontainers.image.description":"vLLM-Ascend 0.22.1rc1 A3, Mooncake, Ray 2.48.0","org.opencontainers.image.title":"Qwen3.6-27B W8A8 PD learning worker","org.opencontainers.image.version":"22.04"}
+
+=== PACKAGE METADATA ===
+torch: 2.10.0+cpu
+  location: /usr/local/python3.12.13/lib/python3.12/site-packages
+  direct_url: None
+torch-npu: 2.10.0
+  location: /usr/local/python3.12.13/lib/python3.12/site-packages
+  direct_url: None
+vllm: 0.22.1+empty
+  location: /usr/local/python3.12.13/lib/python3.12/site-packages
+  direct_url: {"dir_info": {"editable": true}, "url": "file:///vllm-workspace/vllm"}
+vllm-ascend: 0.22.1rc1
+  location: /usr/local/python3.12.13/lib/python3.12/site-packages
+  direct_url: {"dir_info": {"editable": true}, "url": "file:///vllm-workspace/vllm-ascend"}
+safetensors: 0.8.0
+  location: /usr/local/python3.12.13/lib/python3.12/site-packages
+  direct_url: None
+transformers: 5.5.4
+  location: /usr/local/python3.12.13/lib/python3.12/site-packages
+  direct_url: None
+triton-ascend: 3.2.1
+  location: /usr/local/python3.12.13/lib/python3.12/site-packages
+  direct_url: None
+
+=== CANN LINKS AND VERSION FILES ===
+drwxr-xr-x. 2 root root 50 May 19 08:46 /usr/local/Ascend/ascend-toolkit
+lrwxrwxrwx. 1 root root 22 May 19 08:46 /usr/local/Ascend/ascend-toolkit/latest -> /usr/local/Ascend/cann
+/usr/local/Ascend/cann-9.0.0
+----- /usr/local/Ascend/cann-9.0.0/aarch64-linux/ascend_toolkit_install.info
+package_name=Ascend-cann-toolkit
+version=9.0.0
+innerversion=V100R001C10SPC001B250
+compatible_version=[V100R001C21],[V100R001C22],[V100R001C23],[V100R001C25],[V100R001C10]
+arch=aarch64
+os=linux
+path=/usr/local/Ascend/cann-9.0.0
+----- /usr/local/Ascend/cann-9.0.0/opp/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/opp/vendors/batch_invariant/version.info
+custom_opp_compiler_version=9.0.0
+----- /usr/local/Ascend/cann-9.0.0/opp/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version=">=8.5"
+required_package_ge-executor_version=">=8.5"
+required_package_metadef_version=">=8.5"
+required_package_asc-devkit_version=">=8.5"
+required_package_bisheng-compiler_version=">=8.5"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/acl_extend/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/acl_extend/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version="9.0"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/aoe/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/aoe/version.info
+Version=9.0.0
+version_dir=cann
+timestamp=20260428_134817545
+required_package_acl-extend_version="9.0"
+required_package_ge-compiler_version="9.0"
+required_package_ge-executor_version="9.0"
+required_package_metadef_version="9.0"
+required_package_ncs_version="9.0"
+required_package_opbase_version="9.0"
+required_package_runtime_version="9.0"
+required_package_tbe-tik_version="9.0"
+----- /usr/local/Ascend/cann-9.0.0/share/info/asc-devkit/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/asc-devkit/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version="9.0"
+required_package_ge-executor_version="9.0"
+required_package_metadef_version="9.0"
+required_package_opbase_version="9.0"
+required_package_bisheng-compiler_version="9.0"
+required_package_tbe-tik_version="9.0"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/asc-tools/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/asc-tools/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version="9.0"
+required_package_ge-executor_version="9.0"
+required_package_metadef_version="9.0"
+required_package_asc-devkit_version="9.0"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/ascendnpu-ir/scene.info
+os=linux
+arch=aarch64
+----- /usr/local/Ascend/cann-9.0.0/share/info/ascendnpu-ir/version.info
+Version=1.1.0
+----- /usr/local/Ascend/cann-9.0.0/share/info/bisheng-compiler/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/bisheng-compiler/version.info
+Version=9.0.0
+version_dir=cann
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/dflow-executor/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/dflow-executor/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version="9.0"
+required_package_metadef_version="9.0"
+required_package_hcomm_version="9.0"
+required_package_bisheng-compiler_version="9.0"
+required_package_ge-executor_version="9.0"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/dvpp/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/dvpp/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version="9.0"
+required_package_metadef_version="9.0"
+required_package_opbase_version="9.0"
+required_package_bisheng-compiler_version="9.0"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/ge-compiler/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/ge-compiler/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version="9.0"
+required_package_metadef_version="9.0"
+required_package_hcomm_version="9.0"
+required_package_asc-devkit_version="9.0"
+required_package_ge-executor_version="9.0"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/ge-executor/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/ge-executor/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version="9.0"
+required_package_metadef_version="9.0"
+required_package_hcomm_version="9.0"
+required_package_asc-devkit_version="9.0"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/graph_autofusion/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/graph_autofusion/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version="9.0"
+required_package_asc-devkit_version="9.0"
+required_package_ge-compiler_version="9.0"
+required_package_bisheng-compiler_version="9.0"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/hccl/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/hccl/version.info
+Version=9.0.0
+version_dir=cann
+required_package_hcomm_version=">=8.5"
+required_package_runtime_version=">=8.5"
+required_package_metadef_version=">=8.5"
+timestamp=20260428_134817545
+host_only=false
+----- /usr/local/Ascend/cann-9.0.0/share/info/hcomm/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/hcomm/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version="9.0"
+required_package_metadef_version="9.0"
+timestamp=20260428_134817545
+host_only=false
+----- /usr/local/Ascend/cann-9.0.0/share/info/hixl/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/hixl/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version=">=8.5"
+required_package_metadef_version=">=8.5"
+required_package_hcomm_version=">=8.5"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/metadef/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/metadef/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version="9.0"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/mindstudio-debugger/scene.info
+os=linux
+arch=aarch64
+----- /usr/local/Ascend/cann-9.0.0/share/info/mindstudio-debugger/version.info
+[PACKAGE]
+Name=mindstudio-debugger
+Version=26.0.0
+----- /usr/local/Ascend/cann-9.0.0/share/info/mindstudio-operator-tools/scene.info
+os=linux
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/mindstudio-operator-tools/version.info
+[PACKAGE]
+Name=mindstudio-operator-tools
+Version=26.0.0----- /usr/local/Ascend/cann-9.0.0/share/info/mindstudio-opprof/scene.info
+os=linux
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/mindstudio-opprof/version.info
+[PACKAGE]
+Name=mindstudio-opprof
+Version=26.0.0----- /usr/local/Ascend/cann-9.0.0/share/info/mindstudio-sanitizer/scene.info
+os=linux
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/mindstudio-sanitizer/version.info
+[PACKAGE]
+Name=mindstudio-sanitizer
+Version=26.0.0----- /usr/local/Ascend/cann-9.0.0/share/info/ms_fmk_transplt/version.info
+[PACKAGE]
+Name=mindstudio-transplt
+Version=26.0.0----- /usr/local/Ascend/cann-9.0.0/share/info/msmemscope/version.info
+[PACKAGE]
+Name=mindstudio-memscope
+Version=26.0.0
+----- /usr/local/Ascend/cann-9.0.0/share/info/msprof/version.info
+[PACKAGE]
+Name=mindstudio-profiler
+Version=26.0.0----- /usr/local/Ascend/cann-9.0.0/share/info/mspti/version.info
+[PACKAGE]
+Name=mindstudio-profiler-tools-interface
+Version=26.0.0----- /usr/local/Ascend/cann-9.0.0/share/info/msserviceprofiler/version.info
+[PACKAGE]
+Name=mindstudio-serviceprofiler
+Version=26.0.0----- /usr/local/Ascend/cann-9.0.0/share/info/mstx/version.info
+[PACKAGE]
+Name=mindstudio-TX
+Version=26.0.0
+----- /usr/local/Ascend/cann-9.0.0/share/info/ncs/version.info
+Version=9.0.0
+version_dir=cann
+timestamp=20260428_134817545
+required_package_acl-extend_version="9.0"
+required_package_aoe_version="9.0"
+required_package_ge-compiler_version="9.0"
+required_package_ge-executor_version="9.0"
+required_package_metadef_version="9.0"
+required_package_opbase_version="9.0"
+required_package_runtime_version="9.0"
+required_package_tbe-tik_version="9.0"
+----- /usr/local/Ascend/cann-9.0.0/share/info/oam_tools/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/oam_tools/version.info
+Version=9.0.0
+version_dir=cann
+required_package_metadef_version="9.0"
+required_package_runtime_version="9.0"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/opbase/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/opbase/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version=">=8.5"
+required_package_ge-executor_version=">=8.5"
+required_package_metadef_version=">=8.5"
+required_package_asc-devkit_version=">=8.5"
+required_package_bisheng-compiler_version=">=8.5"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/operator_cmp/version.info
+[PACKAGE]
+Name=mindstudio-accucmp
+Version=26.0.0----- /usr/local/Ascend/cann-9.0.0/share/info/ops_cv/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/ops_cv/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version=">=8.5"
+required_package_opbase_version=">=8.5"
+required_package_metadef_version=">=8.5"
+required_package_bisheng-compiler_version=">=8.5"
+required_package_asc-devkit_version=">=8.5"
+required_package_ge-executor_version=">=8.5"
+required_package_asc-tools_version=">=8.5"
+required_package_ps-legacy_version=">=8.5"
+required_package_ops-math_version=">=8.5"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/ops_legacy/scene.info
+os=linux
+os_version=
+version=9.0.0
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/ops_legacy/version.info
+Version=9.0.0
+version_dir=cann
+timestamp=20260428_134817545
+ops_version=9.0.0
+adk_version=9.0.0
+----- /usr/local/Ascend/cann-9.0.0/share/info/ops_math/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/ops_math/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version=">=8.5"
+required_package_opbase_version=">=8.5"
+required_package_metadef_version=">=8.5"
+required_package_bisheng-compiler_version=">=8.5"
+required_package_asc-devkit_version=">=8.5"
+required_package_ge-executor_version=">=8.5"
+required_package_asc-tools_version=">=8.5"
+required_package_ops-legacy_version=">=8.5"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/ops_nn/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/ops_nn/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version=">=8.5"
+required_package_opbase_version=">=8.5"
+required_package_bisheng-compiler_version=">=8.5"
+required_package_asc-devkit_version=">=8.5"
+required_package_asc-tools_version=">=8.5"
+required_package_metadef_version=">=8.5"
+required_package_ge-executor_version=">=8.5"
+required_package_ops_legacy_version=">=8.5"
+required_package_ops_math_version=">=8.5"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/ops_ras/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/ops_ras/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version=">=8.5"
+required_package_opbase_version=">=8.5"
+required_package_asc-devkit_version=">=8.5"
+required_package_ge-compiler_version=">=8.5"
+required_package_metadef_version=">=8.5"
+required_package_ge-executor_version=">=8.5"
+required_package_bisheng-compiler_version=">=8.5"
+required_package_tbe-tik_version=">=8.5"
+required_package_asc-tools_version=">=8.5"----- /usr/local/Ascend/cann-9.0.0/share/info/ops_transformer/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/ops_transformer/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version=">=8.5"
+required_package_opbase_version=">=8.5"
+required_package_hcomm_version=">=8.5"
+required_package_ge-executor_version=">=8.5"
+required_package_metadef_version=">=8.5"
+required_package_ge-compiler_version=">=8.5"
+required_package_bisheng-compiler_version=">=8.5"
+required_package_asc-tools_version=">=8.5"
+required_package_bisheng-compiler_version=">=8.5"
+required_package_ops-nn_version=">=8.5"
+required_package_hccl_version=">=8.5"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/pto_isa/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/pto_isa/version.info
+Version=9.0.0
+version_dir=cann
+required_package_runtime_version="9.0"
+required_package_opbase_version="9.0"
+required_package_asc-devkit_version="9.0"
+required_package_metadef_version="9.0"
+required_package_ge-executor_version="9.0"
+required_package_bisheng-compiler_version="9.0"
+required_package_asc-tools_version="9.0"
+required_package_ge-compiler_version="9.0"
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/pyACL/scene.info
+os=linux
+arch=aarch64
+----- /usr/local/Ascend/cann-9.0.0/share/info/pyACL/version.info
+Version=9.0.0
+----- /usr/local/Ascend/cann-9.0.0/share/info/runtime/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/runtime/version.info
+Version=9.0.0
+version_dir=cann
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/simulator/scene.info
+os=linux
+os_version=
+arch=aarch64----- /usr/local/Ascend/cann-9.0.0/share/info/simulator/version.info
+Version=9.0.0
+version_dir=cann
+timestamp=20260428_134817545
+----- /usr/local/Ascend/cann-9.0.0/share/info/tbe-tik/version.info
+Version=9.0.0
+version_dir=cann
+timestamp=20260428_134817545
+required_opp_abi_version=tbe-tik
+required_package_ge-compiler_version="9.0"
+required_package_ge-executor_version="9.0"
+required_package_metadef_version="9.0"
+required_package_runtime_version="9.0"
+----- /usr/local/Ascend/cann-9.0.0/share/info/test-ops/scene.info
+os=linux
+arch=aarch64
+----- /usr/local/Ascend/cann-9.0.0/share/info/test-ops/version.info
+Version=9.0.0
+----- /usr/local/Ascend/nnal/asdsip/9.0.0/version.info
+    Ascend-cann-asdsip : 9.0.0
+    Ascend-cann-asdsip Version : 9.0.0.B160
+    Platform : aarch64
+    branch : br_release_cann_9.0.0_20260928
+    commit id : 86198076ee291b6268f152d928a1781617d738a8
+----- /usr/local/Ascend/nnal/atb/9.0.0/version.info
+    Ascend-cann-atb : 9.0.0
+    Ascend-cann-atb Version : 9.0.0.B160
+    Platform : aarch64
+    branch : br_release_cann_9.0.0_20260928
+    commit id : 8bf8f4054d644f14d3924a7f0b4d0467ef5cfa52
+
+=== VLLM SOURCE REVISIONS ===
+DIR=/vllm-workspace/vllm
+0decac0d96c42b49572498019f0a0e3600f50398
+v0.22.1
+DIR=/vllm-workspace/vllm-ascend
+5f6faa0cb8830f667266f3b8121cd1383606f2a1
+v0.22.1rc1
