@@ -1,0 +1,8 @@
+FROM 110.120.0.3:8889/mineru/ray-data:py3.11.13-ray2.48.0-daft0.7.19-dagster1.13.13-s3-compress-20260716
+
+ARG PIP_INDEX_URL=https://pypi.org/simple
+
+RUN python -m pip install --no-cache-dir --no-deps "ray==2.49.0" \
+    && python -m pip check \
+    && python -c "import ray; assert ray.__version__ == '2.49.0'"
+

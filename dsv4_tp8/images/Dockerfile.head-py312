@@ -1,0 +1,7 @@
+FROM 110.120.0.3:8889/mineru/ray-data:py3.12.13-ray2.48.0-daft0.7.19-s3-wget-20260713
+
+ARG PIP_INDEX_URL=https://pypi.org/simple
+
+RUN python -m pip install --no-cache-dir --no-deps "ray==2.49.0" \
+    && python -m pip check \
+    && python -c "import platform, ray; assert platform.python_version().startswith('3.12.'); assert ray.__version__ == '2.49.0'"

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ds
+  labels:
+    app.kubernetes.io/part-of: dsv4-tp8-lab
+

@@ -1,0 +1,152 @@
+apiVersion: ray.io/v1
+kind: RayCluster
+metadata:
+  name: dsv4-tp8
+  namespace: ds
+  labels:
+    app.kubernetes.io/name: dsv4-tp8
+    app.kubernetes.io/part-of: dsv4-tp8-lab
+spec:
+  rayVersion: "2.49.0"
+  enableInTreeAutoscaling: false
+  headGroupSpec:
+    serviceType: ClusterIP
+    rayStartParams:
+      dashboard-host: "0.0.0.0"
+      num-cpus: "0"
+    template:
+      metadata:
+        labels:
+          app.kubernetes.io/name: dsv4-tp8-head
+          app.kubernetes.io/part-of: dsv4-tp8-lab
+      spec:
+        nodeSelector:
+          kubernetes.io/arch: amd64
+          kubernetes.io/hostname: server-00
+        containers:
+          - name: ray-head
+            image: 110.120.0.3:8889/ds/ray-head@sha256:4a4788e419952373e42e0dc104fea5238d8c7ec353c9c4f72fdb707967769cb2
+            imagePullPolicy: IfNotPresent
+            resources:
+              requests:
+                cpu: "4"
+                memory: 8Gi
+              limits:
+                cpu: "8"
+                memory: 16Gi
+            volumeMounts:
+              - name: ray-logs
+                mountPath: /tmp/ray
+              - name: shared-mem
+                mountPath: /dev/shm
+        volumes:
+          - name: ray-logs
+            emptyDir: {}
+          - name: shared-mem
+            emptyDir:
+              medium: Memory
+              sizeLimit: 4Gi
+  workerGroupSpecs:
+    - groupName: dsv4-tp8
+      # Fail-closed default. Scale to one only after the host NPU gate passes.
+      replicas: 0
+      minReplicas: 0
+      maxReplicas: 1
+      rayStartParams:
+        num-cpus: "192"
+        resources: '"{\"dsv4_worker\": 1, \"NPU\": 8}"'
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: dsv4-tp8-worker
+            app.kubernetes.io/part-of: dsv4-tp8-lab
+          annotations:
+            huawei.com/Ascend910: Ascend910-2,Ascend910-3,Ascend910-4,Ascend910-5,Ascend910-6,Ascend910-7,Ascend910-8,Ascend910-9
+            predicate-time: "1"
+            ray.io/overwrite-container-cmd: "true"
+        spec:
+          nodeSelector:
+            kubernetes.io/arch: arm64
+            kubernetes.io/hostname: a3-server-00
+            node.kubernetes.io/npu.chip.name: Ascend910
+          containers:
+            - name: ray-worker
+              image: 110.120.0.3:8889/ds/dsv4-vllm-ascend@sha256:e29d1493cbe3571f1200c8b99778ab533f8396eb447a0acf78f742c0a53fc008
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/bash", "-lc", "--"]
+              args:
+                - |
+                  source /opt/dsv4/scripts/preflight-worker.sh
+                  eval "$KUBERAY_GEN_RAY_START_CMD"
+              env:
+                - name: EXPECTED_NPU_IDS
+                  value: "2,3,4,5,6,7,8,9"
+                - name: DSV4_STATE_DIR
+                  value: /cache/vllm/state
+                - name: NO_PROXY
+                  value: localhost,127.0.0.1,::1,.svc,.svc.cluster.local,.cluster.local,10.0.0.0/8,100.64.0.0/10,110.120.0.0/16,110.123.0.0/16
+                - name: no_proxy
+                  value: localhost,127.0.0.1,::1,.svc,.svc.cluster.local,.cluster.local,10.0.0.0/8,100.64.0.0/10,110.120.0.0/16,110.123.0.0/16
+              resources:
+                requests:
+                  cpu: "192"
+                  memory: 768Gi
+                  huawei.com/Ascend910: "8"
+                limits:
+                  cpu: "256"
+                  memory: 1Ti
+                  huawei.com/Ascend910: "8"
+              volumeMounts:
+                - name: model-weights
+                  mountPath: /models/DeepSeek-V4-Flash-0731-w8a8
+                  readOnly: true
+                - name: vllm-cache
+                  mountPath: /cache/vllm
+                - name: shared-mem
+                  mountPath: /dev/shm
+                - name: ray-logs
+                  mountPath: /tmp/ray
+                - name: runtime-config
+                  mountPath: /opt/dsv4/scripts/preflight-worker.sh
+                  subPath: preflight-worker.sh
+                  readOnly: true
+                - name: ascend-driver
+                  mountPath: /usr/local/Ascend/driver
+                  readOnly: true
+                - name: ascend-dcmi
+                  mountPath: /usr/local/dcmi
+                  readOnly: true
+                - name: npu-smi
+                  mountPath: /usr/local/bin/npu-smi
+                  readOnly: true
+          volumes:
+            - name: model-weights
+              hostPath:
+                path: /home/admin/models/DeepSeek-V4-Flash-0731-w8a8
+                type: Directory
+            - name: vllm-cache
+              hostPath:
+                path: /home/admin/cache/dsv4-vllm
+                type: Directory
+            - name: shared-mem
+              emptyDir:
+                medium: Memory
+                sizeLimit: 128Gi
+            - name: ray-logs
+              emptyDir: {}
+            - name: runtime-config
+              configMap:
+                name: dsv4-tp8-runtime
+                defaultMode: 365
+            - name: ascend-driver
+              hostPath:
+                path: /usr/local/Ascend/driver
+                type: Directory
+            - name: ascend-dcmi
+              hostPath:
+                path: /usr/local/dcmi
+                type: Directory
+            - name: npu-smi
+              hostPath:
+                path: /usr/local/bin/npu-smi
+                type: File

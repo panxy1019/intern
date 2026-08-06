@@ -1,0 +1,8 @@
+FROM 110.120.0.3:8889/infra/qwen36-pd-worker:v0.22.1rc1-a3-ray248-20260730
+
+ARG PIP_INDEX_URL=https://pypi.org/simple
+
+# Preserve the validated vLLM-Ascend/CANN/PyTorch stack and replace Ray only.
+RUN python -m pip install --no-cache-dir --no-deps "ray==2.49.0" \
+    && python -c "from importlib.metadata import version; assert version('ray') == '2.49.0'; assert version('vllm').startswith('0.22.1'); assert version('vllm-ascend') == '0.22.1rc1'; assert version('torch').startswith('2.10.0'); assert version('torch-npu').startswith('2.10.0')" \
+    && TORCH_DEVICE_BACKEND_AUTOLOAD=0 python -c "import ray; assert ray.__version__ == '2.49.0'"

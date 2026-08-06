@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dsv4-vllm
+  namespace: ds
+  labels:
+    app.kubernetes.io/part-of: dsv4-tp8-lab
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: dsv4-tp8-worker
+  ports:
+    - name: http
+      port: 8900
+      targetPort: 8900
+      protocol: TCP
+

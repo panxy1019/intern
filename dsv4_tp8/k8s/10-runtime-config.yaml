@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dsv4-tp8-runtime
+  namespace: ds
+  labels:
+    app.kubernetes.io/part-of: dsv4-tp8-lab
+data:
+  preflight-worker.sh: |
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    EXPECTED_IDS="${EXPECTED_NPU_IDS:-2,3,4,5,6,7,8,9}"
+    STATE_DIR="${DSV4_STATE_DIR:-/cache/vllm/state}"
+    mkdir -p "${STATE_DIR}"
+
+    mapfile -t DEVICE_IDS < <(
+      find /dev -maxdepth 1 -type c -name 'davinci[0-9]*' -printf '%f\n' \
+        | sed 's/^davinci//' \
+        | sort -n
+    )
+    ACTUAL_IDS="$(IFS=,; echo "${DEVICE_IDS[*]}")"
+
+    if [[ "${ACTUAL_IDS}" != "${EXPECTED_IDS}" ]]; then
+      echo "NPU device gate failed: expected=${EXPECTED_IDS} actual=${ACTUAL_IDS}" >&2
+      exit 40
+    fi
+
+    for required in /dev/davinci_manager /dev/devmm_svm; do
+      if [[ ! -e "${required}" ]]; then
+        echo "NPU device gate failed: missing ${required}" >&2
+        exit 41
+      fi
+    done
+
+    # The device plugin exposes the selected physical device nodes. CANN then
+    # assigns container-local runtime IDs; physical IDs must not be reused as
+    # ASCEND_RT_VISIBLE_DEVICES.
+    unset ASCEND_VISIBLE_DEVICES ASCEND_RT_VISIBLE_DEVICES
+    export PYTORCH_NPU_ALLOC_CONF="expandable_segments:True"
+
+    python - <<'PY'
+    import json
+    import os
+    from pathlib import Path
+
+    import torch
+    import torch_npu  # noqa: F401
+
+    expected = [int(item) for item in os.environ["EXPECTED_NPU_IDS"].split(",")]
+    count = torch.npu.device_count()
+    if count != len(expected):
+        raise SystemExit(
+            f"torch NPU gate failed: expected={len(expected)} actual={count}"
+        )
+
+    state_dir = Path(os.environ.get("DSV4_STATE_DIR", "/cache/vllm/state"))
+    state_dir.mkdir(parents=True, exist_ok=True)
+    (state_dir / "device-mapping.json").write_text(
+        json.dumps(
+            {
+                "expected_physical_ids": expected,
+                "container_davinci_ids": expected,
+                "container_runtime_ids": list(range(count)),
+                "torch_npu_device_count": count,
+            },
+            indent=2,
+        )
+        + "\n"
+    )
+    print(f"NPU device gate passed: ids={expected} torch_count={count}")
+    PY
+
+    npu-smi info -m >"${STATE_DIR}/npu-smi-map.txt"
+    npu-smi info >"${STATE_DIR}/npu-smi-before-ray.txt"
+
+    if [[ -f /usr/local/Ascend/driver/bin/setenv.bash ]]; then
+      source /usr/local/Ascend/driver/bin/setenv.bash
+    fi
+    if [[ -f /usr/local/Ascend/ascend-toolkit/set_env.sh ]]; then
+      source /usr/local/Ascend/ascend-toolkit/set_env.sh
+    fi
+
+    ulimit -n 65536
+    export LD_LIBRARY_PATH="/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:${LD_LIBRARY_PATH:-}"

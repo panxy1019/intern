@@ -1,0 +1,137 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dsv4-tp8-vllm-control
+  namespace: ds
+  labels:
+    app.kubernetes.io/part-of: dsv4-tp8-lab
+data:
+  vllm-tp8.args: |
+    --host
+    0.0.0.0
+    --port
+    8900
+    --served-model-name
+    DeepSeek-V4-Flash-0731-w8a8
+    --distributed-executor-backend
+    mp
+    --tensor-parallel-size
+    8
+    --data-parallel-size
+    1
+    --enable-expert-parallel
+    --quantization
+    ascend
+    --max-model-len
+    131072
+    --max-num-seqs
+    1
+    --max-num-batched-tokens
+    4096
+    --gpu-memory-utilization
+    0.88
+    --block-size
+    128
+    --tokenizer-mode
+    deepseek_v4
+    --reasoning-parser
+    deepseek_v4
+    --tool-call-parser
+    deepseek_v4
+    --enable-auto-tool-choice
+    --no-enable-prefix-caching
+    --enforce-eager
+    --safetensors-load-strategy
+    prefetch
+    --model-loader-extra-config
+    {"enable_multithread_load":true,"num_threads":64}
+    --trust-remote-code
+  start-vllm.sh: |
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    MODEL_DIR=/models/DeepSeek-V4-Flash-0731-w8a8
+    STATE_DIR=/cache/vllm
+    PID_FILE=${STATE_DIR}/run/vllm-tp8.pid
+    LOG_FILE=${STATE_DIR}/logs/vllm-tp8.log
+    ARGS_FILE=/opt/dsv4-vllm/config/vllm-tp8.args
+
+    mkdir -p "$(dirname "${PID_FILE}")" "$(dirname "${LOG_FILE}")"
+    if [[ -f "${PID_FILE}" ]]; then
+      PID="$(cat "${PID_FILE}")"
+      if [[ -r "/proc/${PID}/cmdline" ]] && tr '\0' ' ' <"/proc/${PID}/cmdline" | grep -q '[v]llm'; then
+        echo "vLLM is already running with PID ${PID}."
+        exit 0
+      fi
+      rm -f "${PID_FILE}"
+    fi
+
+    [[ -f "${MODEL_DIR}/quant_model_weights.safetensors.index.json" ]] || {
+      echo "Model index is missing: ${MODEL_DIR}" >&2
+      exit 70
+    }
+    [[ -f "${ARGS_FILE}" ]] || { echo "Missing argument file: ${ARGS_FILE}" >&2; exit 71; }
+
+    if [[ -f /usr/local/Ascend/driver/bin/setenv.bash ]]; then
+      source /usr/local/Ascend/driver/bin/setenv.bash
+    fi
+    if [[ -f /usr/local/Ascend/ascend-toolkit/set_env.sh ]]; then
+      source /usr/local/Ascend/ascend-toolkit/set_env.sh
+    fi
+    export LD_LIBRARY_PATH="/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:${LD_LIBRARY_PATH:-}"
+    export HCCL_OP_EXPANSION_MODE=AIV
+    export OMP_PROC_BIND=false
+    export OMP_NUM_THREADS=10
+    export PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
+    export VLLM_ENGINE_READY_TIMEOUT_S=3600
+    export HCCL_CONNECT_TIMEOUT=7200
+    export ASCEND_CONNECT_TIMEOUT=10000
+    export ASCEND_TRANSFER_TIMEOUT=10000
+    export VLLM_RPC_TIMEOUT=1800000
+    unset ASCEND_VISIBLE_DEVICES ASCEND_RT_VISIBLE_DEVICES
+
+    mapfile -t VLLM_ARGS < <(sed -e '/^[[:space:]]*$/d' -e '/^[[:space:]]*#/d' "${ARGS_FILE}")
+    printf 'started_at=%s\nmodel=%s\nargs=%q\n' "$(date -Is)" "${MODEL_DIR}" "${VLLM_ARGS[*]}" \
+      >"${STATE_DIR}/run/vllm-tp8.launch"
+
+    nohup setsid vllm serve "${MODEL_DIR}" "${VLLM_ARGS[@]}" \
+      >>"${LOG_FILE}" 2>&1 </dev/null &
+    PID=$!
+    echo "${PID}" >"${PID_FILE}"
+    echo "Started vLLM TP8 PID ${PID}; log=${LOG_FILE}"
+  stop-vllm.sh: |
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    PID_FILE=/cache/vllm/run/vllm-tp8.pid
+    [[ -f "${PID_FILE}" ]] || { echo "vLLM PID file is absent."; exit 0; }
+    PID="$(cat "${PID_FILE}")"
+    if [[ ! -r "/proc/${PID}/cmdline" ]] || ! tr '\0' ' ' <"/proc/${PID}/cmdline" | grep -q '[v]llm'; then
+      echo "Stale or unsafe PID file: ${PID}" >&2
+      rm -f "${PID_FILE}"
+      exit 0
+    fi
+
+    kill -TERM -- "-${PID}"
+    for _ in $(seq 1 60); do
+      [[ -d "/proc/${PID}" ]] || { rm -f "${PID_FILE}"; echo "vLLM stopped."; exit 0; }
+      sleep 2
+    done
+    echo "vLLM did not stop within 120 seconds; sending SIGKILL to its process group." >&2
+    kill -KILL -- "-${PID}"
+    rm -f "${PID_FILE}"
+  status-vllm.sh: |
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    PID_FILE=/cache/vllm/run/vllm-tp8.pid
+    LOG_FILE=/cache/vllm/logs/vllm-tp8.log
+    if [[ -f "${PID_FILE}" ]]; then
+      PID="$(cat "${PID_FILE}")"
+      echo "pid=${PID}"
+      [[ -r "/proc/${PID}/cmdline" ]] && tr '\0' ' ' <"/proc/${PID}/cmdline" && echo
+    else
+      echo "pid=absent"
+    fi
+    curl -sS --max-time 3 -w '\nhealth_http=%{http_code}\n' http://127.0.0.1:8900/health || true
+    [[ -f "${LOG_FILE}" ]] && tail -n 80 "${LOG_FILE}" || true
