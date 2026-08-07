@@ -4,7 +4,10 @@ metadata:
   name: dsv4-tp8-vllm-control
   namespace: ds
   labels:
+    app.kubernetes.io/name: dsv4-tp8-vllm
     app.kubernetes.io/part-of: dsv4-tp8-lab
+    app.kubernetes.io/component: inference-control
+    dsv4.experiment.phase: d2-dspark-1m-isolated
 data:
   vllm-tp8.args: |
     --host
@@ -23,15 +26,17 @@ data:
     --quantization
     ascend
     --max-model-len
-    131072
+    1048576
     --max-num-seqs
-    1
+    4
     --max-num-batched-tokens
     4096
     --gpu-memory-utilization
     0.88
     --block-size
-    128
+    32
+    --enable-chunked-prefill
+    --async-scheduling
     --tokenizer-mode
     deepseek_v4
     --reasoning-parser
@@ -40,98 +45,246 @@ data:
     deepseek_v4
     --enable-auto-tool-choice
     --no-enable-prefix-caching
-    --enforce-eager
+    --generation-config
+    vllm
+    --additional-config
+    {"enable_cpu_binding":true,"multistream_overlap_shared_expert":false,"enable_flashcomm1":false}
+    --compilation-config
+    {"cudagraph_mode":"FULL_DECODE_ONLY"}
     --safetensors-load-strategy
     prefetch
     --model-loader-extra-config
     {"enable_multithread_load":true,"num_threads":64}
     --trust-remote-code
+
   start-vllm.sh: |
     #!/usr/bin/env bash
     set -euo pipefail
 
     MODEL_DIR=/models/DeepSeek-V4-Flash-0731-w8a8
     STATE_DIR=/cache/vllm
-    PID_FILE=${STATE_DIR}/run/vllm-tp8.pid
-    LOG_FILE=${STATE_DIR}/logs/vllm-tp8.log
+    RUN_DIR=${STATE_DIR}/run
+    LOG_DIR=${STATE_DIR}/logs
+
+    PID_FILE=${RUN_DIR}/vllm-tp8.pid
+    LOG_FILE=${LOG_DIR}/vllm-tp8.log
+    LAUNCH_FILE=${RUN_DIR}/vllm-tp8.launch
     ARGS_FILE=/opt/dsv4-vllm/config/vllm-tp8.args
 
-    mkdir -p "$(dirname "${PID_FILE}")" "$(dirname "${LOG_FILE}")"
+    mkdir -p "${RUN_DIR}" "${LOG_DIR}"
+
     if [[ -f "${PID_FILE}" ]]; then
       PID="$(cat "${PID_FILE}")"
-      if [[ -r "/proc/${PID}/cmdline" ]] && tr '\0' ' ' <"/proc/${PID}/cmdline" | grep -q '[v]llm'; then
+      if [[ -r "/proc/${PID}/cmdline" ]] && \
+         tr '\0' ' ' <"/proc/${PID}/cmdline" | grep -q '[v]llm'; then
         echo "vLLM is already running with PID ${PID}."
         exit 0
       fi
+      echo "Removing stale PID file: ${PID_FILE}"
       rm -f "${PID_FILE}"
     fi
 
+    [[ -d "${MODEL_DIR}" ]] || {
+      echo "Model directory is missing: ${MODEL_DIR}" >&2
+      exit 69
+    }
+
     [[ -f "${MODEL_DIR}/quant_model_weights.safetensors.index.json" ]] || {
-      echo "Model index is missing: ${MODEL_DIR}" >&2
+      echo "Model index is missing: ${MODEL_DIR}/quant_model_weights.safetensors.index.json" >&2
       exit 70
     }
-    [[ -f "${ARGS_FILE}" ]] || { echo "Missing argument file: ${ARGS_FILE}" >&2; exit 71; }
+
+    [[ -f "${ARGS_FILE}" ]] || {
+      echo "Missing argument file: ${ARGS_FILE}" >&2
+      exit 71
+    }
 
     if [[ -f /usr/local/Ascend/driver/bin/setenv.bash ]]; then
       source /usr/local/Ascend/driver/bin/setenv.bash
     fi
+
     if [[ -f /usr/local/Ascend/ascend-toolkit/set_env.sh ]]; then
       source /usr/local/Ascend/ascend-toolkit/set_env.sh
     fi
+
     export LD_LIBRARY_PATH="/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:${LD_LIBRARY_PATH:-}"
+
+    export ACL_OP_INIT_MODE=1
+    export ASCEND_A3_ENABLE=1
+    export TASK_QUEUE_ENABLE=1
+
     export HCCL_OP_EXPANSION_MODE=AIV
+    export HCCL_BUFFSIZE=1024
+    export HCCL_CONNECT_TIMEOUT=7200
+
+    # Isolated DSpark + 1M test: keep FlashComm1 disabled.
+    unset VLLM_ASCEND_ENABLE_FLASHCOMM1
+    export USE_MULTI_GROUPS_KV_CACHE=1
+
     export OMP_PROC_BIND=false
     export OMP_NUM_THREADS=10
     export PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
-    export VLLM_ENGINE_READY_TIMEOUT_S=3600
-    export HCCL_CONNECT_TIMEOUT=7200
+
+    export VLLM_ENGINE_READY_TIMEOUT_S=7200
     export ASCEND_CONNECT_TIMEOUT=10000
     export ASCEND_TRANSFER_TIMEOUT=10000
-    export VLLM_RPC_TIMEOUT=1800000
-    unset ASCEND_VISIBLE_DEVICES ASCEND_RT_VISIBLE_DEVICES
+    export VLLM_RPC_TIMEOUT=3600000
 
-    mapfile -t VLLM_ARGS < <(sed -e '/^[[:space:]]*$/d' -e '/^[[:space:]]*#/d' "${ARGS_FILE}")
-    printf 'started_at=%s\nmodel=%s\nargs=%q\n' "$(date -Is)" "${MODEL_DIR}" "${VLLM_ARGS[*]}" \
-      >"${STATE_DIR}/run/vllm-tp8.launch"
+    export TORCHINDUCTOR_CACHE_DIR=${STATE_DIR}/torchinductor
+    mkdir -p "${TORCHINDUCTOR_CACHE_DIR}"
 
-    nohup setsid vllm serve "${MODEL_DIR}" "${VLLM_ARGS[@]}" \
+    unset ASCEND_VISIBLE_DEVICES
+    unset ASCEND_RT_VISIBLE_DEVICES
+
+    mapfile -t VLLM_ARGS < <(
+      sed \
+        -e '/^[[:space:]]*$/d' \
+        -e '/^[[:space:]]*#/d' \
+        "${ARGS_FILE}"
+    )
+
+    {
+      printf 'experiment=D2-DSPARK-1M-ISOLATED\n'
+      printf 'started_at=%s\n' "$(date -Is)"
+      printf 'hostname=%s\n' "$(hostname)"
+      printf 'model=%s\n' "${MODEL_DIR}"
+      printf 'args='
+      printf '%q ' "${VLLM_ARGS[@]}"
+      printf '\n'
+      printf 'TASK_QUEUE_ENABLE=%s\n' "${TASK_QUEUE_ENABLE}"
+      printf 'HCCL_OP_EXPANSION_MODE=%s\n' "${HCCL_OP_EXPANSION_MODE}"
+      printf 'HCCL_BUFFSIZE=%s\n' "${HCCL_BUFFSIZE}"
+      printf 'ENABLE_FLASHCOMM1=false\n'
+      printf 'TORCHINDUCTOR_CACHE_DIR=%s\n' "${TORCHINDUCTOR_CACHE_DIR}"
+    } >"${LAUNCH_FILE}"
+
+    echo "Starting DeepSeek-V4-Flash-0731 isolated DSpark + 1M configuration."
+    echo "Model: ${MODEL_DIR}"
+    echo "Arguments:"
+    printf '  %q\n' "${VLLM_ARGS[@]}"
+
+    nohup setsid \
+      vllm serve "${MODEL_DIR}" "${VLLM_ARGS[@]}" \
       >>"${LOG_FILE}" 2>&1 </dev/null &
+
     PID=$!
     echo "${PID}" >"${PID_FILE}"
-    echo "Started vLLM TP8 PID ${PID}; log=${LOG_FILE}"
+
+    echo "Started vLLM TP8 PID ${PID}"
+    echo "Log: ${LOG_FILE}"
+    echo "Launch metadata: ${LAUNCH_FILE}"
+
   stop-vllm.sh: |
     #!/usr/bin/env bash
     set -euo pipefail
 
     PID_FILE=/cache/vllm/run/vllm-tp8.pid
-    [[ -f "${PID_FILE}" ]] || { echo "vLLM PID file is absent."; exit 0; }
+
+    if [[ ! -f "${PID_FILE}" ]]; then
+      echo "vLLM PID file is absent."
+      exit 0
+    fi
+
     PID="$(cat "${PID_FILE}")"
-    if [[ ! -r "/proc/${PID}/cmdline" ]] || ! tr '\0' ' ' <"/proc/${PID}/cmdline" | grep -q '[v]llm'; then
+
+    if [[ ! -r "/proc/${PID}/cmdline" ]] || \
+       ! tr '\0' ' ' <"/proc/${PID}/cmdline" | grep -q '[v]llm'; then
       echo "Stale or unsafe PID file: ${PID}" >&2
       rm -f "${PID_FILE}"
       exit 0
     fi
 
-    kill -TERM -- "-${PID}"
+    echo "Sending SIGTERM to vLLM process group ${PID}."
+    kill -TERM -- "-${PID}" 2>/dev/null || true
+
     for _ in $(seq 1 60); do
-      [[ -d "/proc/${PID}" ]] || { rm -f "${PID_FILE}"; echo "vLLM stopped."; exit 0; }
+      if [[ ! -d "/proc/${PID}" ]]; then
+        rm -f "${PID_FILE}"
+        echo "vLLM stopped."
+        exit 0
+      fi
       sleep 2
     done
-    echo "vLLM did not stop within 120 seconds; sending SIGKILL to its process group." >&2
-    kill -KILL -- "-${PID}"
+
+    echo "vLLM did not stop within 120 seconds; sending SIGKILL." >&2
+    kill -KILL -- "-${PID}" 2>/dev/null || true
+
+    for _ in $(seq 1 10); do
+      [[ -d "/proc/${PID}" ]] || break
+      sleep 1
+    done
+
     rm -f "${PID_FILE}"
+
+    if [[ -d "/proc/${PID}" ]]; then
+      echo "Warning: process ${PID} still exists after SIGKILL." >&2
+      exit 1
+    fi
+
+    echo "vLLM process group stopped."
+
   status-vllm.sh: |
     #!/usr/bin/env bash
     set -euo pipefail
 
     PID_FILE=/cache/vllm/run/vllm-tp8.pid
     LOG_FILE=/cache/vllm/logs/vllm-tp8.log
+    LAUNCH_FILE=/cache/vllm/run/vllm-tp8.launch
+
+    echo "=== process ==="
+
     if [[ -f "${PID_FILE}" ]]; then
       PID="$(cat "${PID_FILE}")"
       echo "pid=${PID}"
-      [[ -r "/proc/${PID}/cmdline" ]] && tr '\0' ' ' <"/proc/${PID}/cmdline" && echo
+
+      if [[ -r "/proc/${PID}/cmdline" ]]; then
+        printf 'cmdline='
+        tr '\0' ' ' <"/proc/${PID}/cmdline"
+        echo
+      else
+        echo "process_state=missing"
+      fi
     else
       echo "pid=absent"
     fi
-    curl -sS --max-time 3 -w '\nhealth_http=%{http_code}\n' http://127.0.0.1:8900/health || true
-    [[ -f "${LOG_FILE}" ]] && tail -n 80 "${LOG_FILE}" || true
+
+    echo
+    echo "=== launch metadata ==="
+
+    if [[ -f "${LAUNCH_FILE}" ]]; then
+      cat "${LAUNCH_FILE}"
+    else
+      echo "launch_metadata=absent"
+    fi
+
+    echo
+    echo "=== vLLM processes ==="
+    pgrep -af 'vllm serve|EngineCore|Worker_TP' || true
+
+    echo
+    echo "=== health ==="
+    curl \
+      -sS \
+      --max-time 3 \
+      -o /dev/null \
+      -w 'health_http=%{http_code}\n' \
+      http://127.0.0.1:8900/health || true
+
+    echo
+    echo "=== model endpoint ==="
+    curl \
+      -sS \
+      --max-time 5 \
+      -o /dev/null \
+      -w 'models_http=%{http_code}\n' \
+      http://127.0.0.1:8900/v1/models || true
+
+    echo
+    echo "=== recent log ==="
+
+    if [[ -f "${LOG_FILE}" ]]; then
+      tail -n 120 "${LOG_FILE}"
+    else
+      echo "log=absent"
+    fi
+
