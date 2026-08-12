@@ -1,0 +1,25 @@
+{
+  "model_prepare": {
+    "downloaded_bytes": 0,
+    "prepare_seconds": 0.477,
+    "file_count": 11
+  },
+  "runtime": {
+    "installed": false,
+    "runtime_dir": "/cache/models/lighteval-runtime-0.9.2"
+  },
+  "generation_smoke": {
+    "device": "npu:0",
+    "load_seconds": 2.872,
+    "generate_seconds": 2.059,
+    "output": "The capital of France is the capital of France.\n\n\n\n\n\n\n\n\n\n\n",
+    "hbm_allocated_bytes": 286299136
+  },
+  "lighteval": {
+    "tasks": "custom|arc_easy_offline|0|0",
+    "max_samples": 16,
+    "elapsed_seconds": 35.245,
+    "result_json_files": []
+  },
+  "overall_seconds": 58.967
+}

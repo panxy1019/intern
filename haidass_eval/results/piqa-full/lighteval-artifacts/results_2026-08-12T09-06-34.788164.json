@@ -1,0 +1,130 @@
+{
+  "config_general": {
+    "lighteval_sha": "?",
+    "num_fewshot_seeds": 1,
+    "max_samples": null,
+    "job_id": 0,
+    "start_time": 3975220.469143089,
+    "end_time": 3975244.702503872,
+    "total_evaluation_time_secondes": "24.233360783196986",
+    "model_name": "/cache/models/Haidass-143M-v1",
+    "model_sha": "",
+    "model_dtype": "bfloat16",
+    "model_size": "272.89 MB",
+    "generation_parameters": {
+      "early_stopping": null,
+      "repetition_penalty": null,
+      "frequency_penalty": null,
+      "length_penalty": null,
+      "presence_penalty": null,
+      "max_new_tokens": null,
+      "min_new_tokens": null,
+      "seed": null,
+      "stop_tokens": null,
+      "temperature": null,
+      "top_k": null,
+      "min_p": null,
+      "top_p": null,
+      "truncate_prompt": null,
+      "response_format": null
+    }
+  },
+  "results": {
+    "lighteval|piqa|0": {
+      "acc": 0.6708378672470077,
+      "acc_stderr": 0.010963750414134702,
+      "acc_norm": 0.6741022850924918,
+      "acc_norm_stderr": 0.010935760218903951
+    },
+    "all": {
+      "acc": 0.6708378672470077,
+      "acc_stderr": 0.010963750414134702,
+      "acc_norm": 0.6741022850924918,
+      "acc_norm_stderr": 0.010935760218903951
+    }
+  },
+  "versions": {
+    "lighteval|piqa|0": 0
+  },
+  "config_tasks": {
+    "lighteval|piqa": {
+      "name": "piqa",
+      "prompt_function": "piqa_harness",
+      "hf_repo": "ybisk/piqa",
+      "hf_subset": "plain_text",
+      "metric": [
+        {
+          "metric_name": "acc",
+          "higher_is_better": true,
+          "category": "8",
+          "use_case": "1",
+          "sample_level_fn": "compute",
+          "corpus_level_fn": "mean"
+        },
+        {
+          "metric_name": "acc_norm",
+          "higher_is_better": true,
+          "category": "8",
+          "use_case": "1",
+          "sample_level_fn": "compute",
+          "corpus_level_fn": "mean"
+        }
+      ],
+      "hf_revision": null,
+      "hf_filter": null,
+      "hf_avail_splits": [
+        "train",
+        "test",
+        "validation"
+      ],
+      "trust_dataset": true,
+      "evaluation_splits": [
+        "validation"
+      ],
+      "few_shots_split": null,
+      "few_shots_select": null,
+      "generation_size": -1,
+      "generation_grammar": null,
+      "stop_sequence": [
+        "\n"
+      ],
+      "num_samples": null,
+      "suite": [
+        "lighteval"
+      ],
+      "original_num_docs": 1838,
+      "effective_num_docs": 1838,
+      "must_remove_duplicate_docs": false,
+      "version": 0
+    }
+  },
+  "summary_tasks": {
+    "lighteval|piqa|0": {
+      "hashes": {
+        "hash_examples": "f7e288a8894cd149",
+        "hash_full_prompts": "f7e288a8894cd149",
+        "hash_input_tokens": "6048f6b88a66a4ae",
+        "hash_cont_tokens": "5a2018db361e5e49"
+      },
+      "truncated": 0,
+      "non_truncated": 1838,
+      "padded": 3557,
+      "non_padded": 119,
+      "effective_few_shots": 0.0,
+      "num_truncated_few_shots": 0
+    }
+  },
+  "summary_general": {
+    "hashes": {
+      "hash_examples": "2fc1c7280f197acf",
+      "hash_full_prompts": "2fc1c7280f197acf",
+      "hash_input_tokens": "72cbbc385c5d39e3",
+      "hash_cont_tokens": "c62e300cdad95b77"
+    },
+    "truncated": 0,
+    "non_truncated": 1838,
+    "padded": 3557,
+    "non_padded": 119,
+    "num_truncated_few_shots": 0
+  }
+}
