@@ -1,0 +1,157 @@
+apiVersion: ray.io/v1
+kind: RayCluster
+metadata:
+  name: raycluster-haidass-910b
+  namespace: haidass-eval
+  labels:
+    app.kubernetes.io/name: haidass-raycluster
+    app.kubernetes.io/part-of: haidass-evaluation
+spec:
+  rayVersion: "2.10.0"
+  enableInTreeAutoscaling: false
+  headGroupSpec:
+    serviceType: ClusterIP
+    rayStartParams:
+      dashboard-host: "0.0.0.0"
+      num-cpus: "0"
+    template:
+      metadata:
+        labels:
+          app.kubernetes.io/component: ray-head
+        annotations:
+          ray.io/overwrite-container-cmd: "true"
+      spec:
+        nodeSelector:
+          kubernetes.io/hostname: server-00
+        tolerations:
+          - key: node-role.kubernetes.io/control-plane
+            operator: Exists
+            effect: NoSchedule
+        containers:
+          - name: ray-head
+            image: crpi-gcyqahoi1kzpijkb.cn-hangzhou.personal.cr.aliyuncs.com/panxy1019/panxy:ray-2.10.0-py3100-amd64
+            imagePullPolicy: IfNotPresent
+            command: ["/bin/bash", "-lc", "--"]
+            args:
+              - |
+                set -e
+                python -m http.server 8081 --bind 0.0.0.0 --directory /models/Haidass-143M-v1 >/tmp/model-cache-http.log 2>&1 &
+                eval "$KUBERAY_GEN_RAY_START_CMD"
+            env: &proxy-env
+              - {name: HTTP_PROXY, value: "http://110.120.0.3:18080"}
+              - {name: HTTPS_PROXY, value: "http://110.120.0.3:18080"}
+              - {name: ALL_PROXY, value: "socks5h://110.120.0.3:18081"}
+              - {name: NO_PROXY, value: "localhost,127.0.0.1,::1,.svc,.svc.cluster.local,.cluster.local,kubernetes.default.svc,haidass-model-cache,raycluster-haidass-910b-head-svc,10.0.0.0/8,100.64.0.0/10,110.120.0.0/16,110.129.0.0/16"}
+              - {name: http_proxy, value: "http://110.120.0.3:18080"}
+              - {name: https_proxy, value: "http://110.120.0.3:18080"}
+              - {name: all_proxy, value: "socks5h://110.120.0.3:18081"}
+              - {name: no_proxy, value: "localhost,127.0.0.1,::1,.svc,.svc.cluster.local,.cluster.local,kubernetes.default.svc,haidass-model-cache,raycluster-haidass-910b-head-svc,10.0.0.0/8,100.64.0.0/10,110.120.0.0/16,110.129.0.0/16"}
+            ports:
+              - name: gcs
+                containerPort: 6379
+              - name: dashboard
+                containerPort: 8265
+              - name: client
+                containerPort: 10001
+              - name: metrics
+                containerPort: 8080
+              - name: serve
+                containerPort: 8000
+              - name: model-cache
+                containerPort: 8081
+            resources:
+              requests: {cpu: "2", memory: 8Gi}
+              limits: {cpu: "4", memory: 16Gi}
+            volumeMounts:
+              - {name: ray-logs, mountPath: /tmp/ray}
+              - {name: model-store, mountPath: /models/Haidass-143M-v1, readOnly: true}
+        volumes:
+          - name: ray-logs
+            emptyDir: {}
+          - name: model-store
+            hostPath:
+              path: /home/admin/models/Haidass-143M-v1
+              type: Directory
+  workerGroupSpecs:
+    - groupName: npu-910b-workers
+      replicas: 1
+      minReplicas: 0
+      maxReplicas: 8
+      numOfHosts: 1
+      rayStartParams:
+        num-cpus: "12"
+        resources: '"{\"NPU\":1,\"HAIDASS_EVAL\":1}"'
+      template:
+        metadata:
+          annotations:
+            ray.io/overwrite-container-cmd: "true"
+            volcano.sh/network-topology-mode: hard
+            volcano.sh/network-topology-highest-tier: "1"
+        spec:
+          nodeSelector:
+            kubernetes.io/hostname: gpu-server-00
+            node.kubernetes.io/npu.chip.name: 910B3
+          containers:
+            - name: ray-worker
+              image: 110.120.0.3:8889/demo:v2
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/bash", "-lc", "--"]
+              args:
+                - |
+                  set -e
+                  source /root/miniconda3/etc/profile.d/conda.sh
+                  conda activate ms
+                  if [ -f /usr/local/Ascend/driver/bin/setenv.bash ]; then
+                    source /usr/local/Ascend/driver/bin/setenv.bash
+                  fi
+                  source /usr/local/Ascend/cann/ascend-toolkit/set_env.sh
+                  if [ -f /usr/local/Ascend/cann/nnal/atb/set_env.sh ]; then
+                    source /usr/local/Ascend/cann/nnal/atb/set_env.sh
+                  fi
+                  export LD_LIBRARY_PATH="/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:${LD_LIBRARY_PATH:-}"
+                  ulimit -n 65536
+                  eval "$KUBERAY_GEN_RAY_START_CMD"
+              env: *proxy-env
+              resources:
+                requests:
+                  cpu: "12"
+                  memory: 32Gi
+                  huawei.com/Ascend910: "1"
+                limits:
+                  cpu: "16"
+                  memory: 64Gi
+                  huawei.com/Ascend910: "1"
+              volumeMounts:
+                - {name: ray-logs, mountPath: /tmp/ray}
+                - {name: model-cache, mountPath: /cache/models}
+                - {name: dshm, mountPath: /dev/shm}
+                - {name: ascend-driver, mountPath: /usr/local/Ascend/driver, readOnly: true}
+                - {name: ascend-dcmi, mountPath: /usr/local/dcmi, readOnly: true}
+          volumes:
+            - name: ray-logs
+              emptyDir: {}
+            - name: model-cache
+              emptyDir: {}
+            - name: dshm
+              emptyDir:
+                medium: Memory
+                sizeLimit: 8Gi
+            - name: ascend-driver
+              hostPath: {path: /usr/local/Ascend/driver, type: Directory}
+            - name: ascend-dcmi
+              hostPath: {path: /usr/local/dcmi, type: Directory}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: haidass-model-cache
+  namespace: haidass-eval
+spec:
+  type: ClusterIP
+  selector:
+    ray.io/cluster: raycluster-haidass-910b
+    ray.io/node-type: head
+  ports:
+    - name: http
+      port: 8081
+      targetPort: model-cache
