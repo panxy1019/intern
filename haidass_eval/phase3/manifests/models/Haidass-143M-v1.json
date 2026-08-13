@@ -1,0 +1,70 @@
+{
+  "name": "Haidass-143M-v1",
+  "source": "DALabCommunity/Haidass-143M-v1",
+  "revision": "6f668e57712b756024425dff07c931b55636091f",
+  "cached_at": "2026-08-13T01:44:58.765202+00:00",
+  "sha256": "0db103ef0a33d2ff7feced63bd2f3f3a0f981fc1bcc26489217bd130d6960ced",
+  "file_count": 12,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "size": 1564,
+      "sha256": "046c0b948f897b5c8f97eff2a5e8ff75c61cfaf1896ba06ead39903464080bae"
+    },
+    {
+      "path": "MODEL_ID",
+      "size": 31,
+      "sha256": "a0390642b796cf3479eb21079d43a3c3f31b573adbf58246aa9c0c4e12d8e635"
+    },
+    {
+      "path": "README.md",
+      "size": 3646,
+      "sha256": "eb161f777fca6a55536ff31e3f5197545783f5185e1d6edd2d0852b2c58597d4"
+    },
+    {
+      "path": "README_ZH.md",
+      "size": 3132,
+      "sha256": "8ffb9dcaedad06c1a39e0b75068127240ec829a59788701dae54a5677aff3a20"
+    },
+    {
+      "path": "REVISION",
+      "size": 41,
+      "sha256": "c5d77d53d28c5e1a9c7367b3ea7f6c614b9513b32f3b769cb92486e4a5bbc463"
+    },
+    {
+      "path": "SHA256SUMS",
+      "size": 905,
+      "sha256": "e65230b996376da972337f4ea4b4cec11bf441611753e07411ca6641ded5b36e"
+    },
+    {
+      "path": "config.json",
+      "size": 711,
+      "sha256": "6a0a0f93c13da6808b485f7d77a576205f11b1337e9ce8b076edafc223c026c7"
+    },
+    {
+      "path": "logo.png",
+      "size": 688369,
+      "sha256": "73961221a08d6f366fafc40ad54d7ecd28e8dd76606e2cc46b2b28b13e71cfc3"
+    },
+    {
+      "path": "model.safetensors",
+      "size": 286179680,
+      "sha256": "c28738b1c14dc77891cd81160e7eec8d5b7b20f3f252364ce04bc642c20eefa2"
+    },
+    {
+      "path": "special_tokens_map.json",
+      "size": 666,
+      "sha256": "0a4718832938196b64a63318a9312119f97cd0bdbd6475b148a390c727d3dd3c"
+    },
+    {
+      "path": "tokenizer.model",
+      "size": 1298093,
+      "sha256": "dddb2e3e527f3ff79f3ee1e9c9282001c8c0505ef53107ba75126a26f9318c61"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "size": 9686,
+      "sha256": "90f8e716595d7295770a77ebc58e88844d0f01951877397c1d4672a761e4c04f"
+    }
+  ]
+}

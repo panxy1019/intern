@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-08-13T02:30:00Z",
+  "default_status": "KNOWN_GOOD_FALLBACK",
+  "final_worker_image": "110.120.0.3:8889/eval/lighteval-ascend-worker@sha256:c306886142f07d1de4e7df85be7239f88f26e2c26a9928077edf1ca0af52dd47",
+  "fallback_worker_image": "110.120.0.3:8889/eval/lighteval-ascend-worker@sha256:c306886142f07d1de4e7df85be7239f88f26e2c26a9928077edf1ca0af52dd47",
+  "candidate_status": "CANDIDATE_PASS_NOT_PROMOTED",
+  "candidate_worker_image": "110.120.0.3:8889/eval/lighteval-ascend-worker@sha256:6dad3c708cc42c9d1edc40c9188911b3db788c2f4d97e1492b9adedb75a013b6",
+  "stable_alias_created": false,
+  "promotion_reason": "Functional, regression, NPU, and RayJob integration gates passed, but the candidate is 17.55 GB versus 7.08 GB for demo-base and includes substantially more training runtime complexity."
+}

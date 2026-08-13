@@ -1,0 +1,69 @@
+{
+  "dataset": "PIQA",
+  "source": "ybisk/piqa revision 2e8ac2dffd59bac8c3c6714948f4c551a0848bb0",
+  "revision": "pinned-local-cache",
+  "cached_at": "2026-08-13T01:44:59.424802+00:00",
+  "splits": {
+    "train": 16113,
+    "validation": 1838
+  },
+  "sample_count": 17951,
+  "sha256": "b21a986fbd9a393434934cc383e7611798e124f57a684b5dca28d2e8ed39aac4",
+  "files": [
+    {
+      "path": "SHA256SUMS",
+      "size": 395,
+      "sha256": "f5fd40641f15565bc26a31be093963db7e8ae9e7ab348290bda77b50031b6d78"
+    },
+    {
+      "path": "SOURCE",
+      "size": 61,
+      "sha256": "df45f2b94a614dfb84e7701da7c5298944c0c6acc0d4ffcf1b962d8bdb7cb3f4"
+    },
+    {
+      "path": "raw/__MACOSX/physicaliqa-train-dev/._.DS_Store",
+      "size": 120,
+      "sha256": "2f380f4a3d05a8d90c2106f50da75064e9ce57a598599dc5404f8f69a0223aa9"
+    },
+    {
+      "path": "raw/physicaliqa-train-dev/.DS_Store",
+      "size": 6148,
+      "sha256": "d65165279105ca6773180500688df4bdc69a2c7b771752f0a46ef120b7fd8ec3"
+    },
+    {
+      "path": "raw/physicaliqa-train-dev/dev-labels.lst",
+      "size": 3676,
+      "sha256": "b4192dc3a2a0363d9d60ccf79800cbbe2f32ebb17726efdde6970e0b8131bceb"
+    },
+    {
+      "path": "raw/physicaliqa-train-dev/dev.jsonl",
+      "size": 580477,
+      "sha256": "a73f46cb5d72b2cc399522a79f27728a429d9b89d9a236243fcfda8c02588d54"
+    },
+    {
+      "path": "raw/physicaliqa-train-dev/train-labels.lst",
+      "size": 32226,
+      "sha256": "df8ae080c41f02f88e81f6932d425f4b7ee72f433ad552e6a30d45e358e8f8bb"
+    },
+    {
+      "path": "raw/physicaliqa-train-dev/train.jsonl",
+      "size": 5123360,
+      "sha256": "f55986008cf9f1a336854936b82cec4ccba6fb5c698d221861299fb508840a8c"
+    },
+    {
+      "path": "raw/physicaliqa-train-dev.zip",
+      "size": 1824009,
+      "sha256": "54d32a04f59a7e354396f321723c8d7ec35cc6b08506563d8d1ffcc15ce98ddd"
+    },
+    {
+      "path": "train.jsonl",
+      "size": 5313194,
+      "sha256": "5d7ccb2761e9ab17fa8c0672011d3e564cf9ef4bcf9a70090c95d553ccddbe3b"
+    },
+    {
+      "path": "validation.jsonl",
+      "size": 602237,
+      "sha256": "a574189accfc2ce3ddf797a491540afbe7543b0b70411c798d5fabffcf14bb58"
+    }
+  ]
+}

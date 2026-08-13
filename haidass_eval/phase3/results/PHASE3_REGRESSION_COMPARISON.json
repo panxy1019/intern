@@ -1,0 +1,89 @@
+{
+  "demo_piqa": {
+    "run_id": "20260813T020536Z_Haidass-143M-v1_piqa_1528a9",
+    "task_key": "lighteval|piqa|0",
+    "acc": 0.6708378672470077,
+    "acc_norm": 0.6741022850924918,
+    "sample_count": 1838,
+    "details_schema": "choices: list<element: string>\n  child 0, element: string\ncont_tokens: list<element: list<element: int64>>\n  child 0, element: list<element: int64>\n      child 0, element: int64\nexample: string\nfull_prompt: string\ngold: list<element: null>\n  child 0, element: null\ngold_index: list<element: int64>\n  child 0, element: int64\ninput_tokens: list<element: list<element: int64>>\n  child 0, element: list<element: int64>\n      child 0, element: int64\ninstruction: string\nmetrics: struct<acc: int64, acc_norm: int64>\n  child 0, acc: int64\n  child 1, acc_norm: int64\nnum_asked_few_shots: int64\nnum_effective_few_shots: int64\npadded: list<element: int64>\n  child 0, element: int64\npred_logits: list<element: null>\n  child 0, element: null\nprediction_logits: list<element: null>\n  child 0, element: null\npredictions: list<element: list<element: double>>\n  child 0, element: list<element: double>\n      child 0, element: double\nspecifics: null\ntruncated: list<element: int64>\n  child 0, element: int64\n-- schema metadata --\nhuggingface: '{\"info\": {\"features\": {\"choices\": {\"feature\": {\"dtype\": \"st' + 1367",
+    "bad_cases": {
+      "sample_count": 1838,
+      "bad_case_union_count": 787,
+      "raw_bad_case_count": 605,
+      "normalized_bad_case_count": 599,
+      "normalization_fixed_count": 188,
+      "normalization_hurt_count": 182,
+      "metric_mismatch_count": 0
+    },
+    "elapsed_seconds": 49.404
+  },
+  "demo_hellaswag": {
+    "run_id": "20260813T020537Z_Haidass-143M-v1_hellaswag_438b6b",
+    "task_key": "leaderboard|hellaswag|0",
+    "acc": 0.32354112726548495,
+    "acc_norm": 0.3799044015136427,
+    "sample_count": 10042,
+    "details_schema": "choices: list<element: string>\n  child 0, element: string\ncont_tokens: list<element: list<element: int64>>\n  child 0, element: list<element: int64>\n      child 0, element: int64\nexample: string\nfull_prompt: string\ngold: list<element: null>\n  child 0, element: null\ngold_index: list<element: int64>\n  child 0, element: int64\ninput_tokens: list<element: list<element: int64>>\n  child 0, element: list<element: int64>\n      child 0, element: int64\ninstruction: string\nmetrics: struct<acc: int64, acc_norm: int64>\n  child 0, acc: int64\n  child 1, acc_norm: int64\nnum_asked_few_shots: int64\nnum_effective_few_shots: int64\npadded: list<element: int64>\n  child 0, element: int64\npred_logits: list<element: null>\n  child 0, element: null\nprediction_logits: list<element: null>\n  child 0, element: null\npredictions: list<element: list<element: double>>\n  child 0, element: list<element: double>\n      child 0, element: double\nspecifics: null\ntruncated: list<element: int64>\n  child 0, element: int64\n-- schema metadata --\nhuggingface: '{\"info\": {\"features\": {\"choices\": {\"feature\": {\"dtype\": \"st' + 1367",
+    "bad_cases": {
+      "sample_count": 10042,
+      "bad_case_union_count": 8106,
+      "raw_bad_case_count": 6793,
+      "normalized_bad_case_count": 6227,
+      "normalization_fixed_count": 1879,
+      "normalization_hurt_count": 1313,
+      "metric_mismatch_count": 0
+    },
+    "elapsed_seconds": 328.643
+  },
+  "candidate_piqa": {
+    "run_id": "20260813T022117Z_candidate_Haidass-143M-v1_piqa_full",
+    "task_key": "lighteval|piqa|0",
+    "acc": 0.6708378672470077,
+    "acc_norm": 0.6741022850924918,
+    "sample_count": 1838,
+    "details_schema": "choices: list<element: string>\n  child 0, element: string\ncont_tokens: list<element: list<element: int64>>\n  child 0, element: list<element: int64>\n      child 0, element: int64\nexample: string\nfull_prompt: string\ngold: list<element: null>\n  child 0, element: null\ngold_index: list<element: int64>\n  child 0, element: int64\ninput_tokens: list<element: list<element: int64>>\n  child 0, element: list<element: int64>\n      child 0, element: int64\ninstruction: string\nmetrics: struct<acc: int64, acc_norm: int64>\n  child 0, acc: int64\n  child 1, acc_norm: int64\nnum_asked_few_shots: int64\nnum_effective_few_shots: int64\npadded: list<element: int64>\n  child 0, element: int64\npred_logits: list<element: null>\n  child 0, element: null\nprediction_logits: list<element: null>\n  child 0, element: null\npredictions: list<element: list<element: double>>\n  child 0, element: list<element: double>\n      child 0, element: double\nspecifics: null\ntruncated: list<element: int64>\n  child 0, element: int64\n-- schema metadata --\nhuggingface: '{\"info\": {\"features\": {\"choices\": {\"feature\": {\"dtype\": \"st' + 1367",
+    "bad_cases": {
+      "sample_count": 1838,
+      "bad_case_union_count": 787,
+      "raw_bad_case_count": 605,
+      "normalized_bad_case_count": 599,
+      "normalization_fixed_count": 188,
+      "normalization_hurt_count": 182,
+      "metric_mismatch_count": 0
+    },
+    "elapsed_seconds": 45.761
+  },
+  "candidate_hellaswag": {
+    "run_id": "20260813T022117Z_candidate_Haidass-143M-v1_hellaswag_full",
+    "task_key": "leaderboard|hellaswag|0",
+    "acc": 0.32354112726548495,
+    "acc_norm": 0.3799044015136427,
+    "sample_count": 10042,
+    "details_schema": "choices: list<element: string>\n  child 0, element: string\ncont_tokens: list<element: list<element: int64>>\n  child 0, element: list<element: int64>\n      child 0, element: int64\nexample: string\nfull_prompt: string\ngold: list<element: null>\n  child 0, element: null\ngold_index: list<element: int64>\n  child 0, element: int64\ninput_tokens: list<element: list<element: int64>>\n  child 0, element: list<element: int64>\n      child 0, element: int64\ninstruction: string\nmetrics: struct<acc: int64, acc_norm: int64>\n  child 0, acc: int64\n  child 1, acc_norm: int64\nnum_asked_few_shots: int64\nnum_effective_few_shots: int64\npadded: list<element: int64>\n  child 0, element: int64\npred_logits: list<element: null>\n  child 0, element: null\nprediction_logits: list<element: null>\n  child 0, element: null\npredictions: list<element: list<element: double>>\n  child 0, element: list<element: double>\n      child 0, element: double\nspecifics: null\ntruncated: list<element: int64>\n  child 0, element: int64\n-- schema metadata --\nhuggingface: '{\"info\": {\"features\": {\"choices\": {\"feature\": {\"dtype\": \"st' + 1367",
+    "bad_cases": {
+      "sample_count": 10042,
+      "bad_case_union_count": 8106,
+      "raw_bad_case_count": 6793,
+      "normalized_bad_case_count": 6227,
+      "normalization_fixed_count": 1879,
+      "normalization_hurt_count": 1313,
+      "metric_mismatch_count": 0
+    },
+    "elapsed_seconds": 331.856
+  },
+  "checks": {
+    "piqa": {
+      "metrics_equal": true,
+      "sample_count_equal": true,
+      "details_schema_equal": true,
+      "bad_case_counts_equal": true
+    },
+    "hellaswag": {
+      "metrics_equal": true,
+      "sample_count_equal": true,
+      "details_schema_equal": true,
+      "bad_case_counts_equal": true
+    }
+  },
+  "regression_pass": true
+}

@@ -1,0 +1,25 @@
+FROM swr.cn-south-1.myhuaweicloud.com/ascendhub/verl_pt27_25rc3:a2-arm@sha256:4bd09b37b843d2f7a415cc35a06888e99e6165fb529a6e90731ed86278ab160a
+
+USER root
+SHELL ["/bin/bash", "-lc"]
+COPY wheelhouse/ /opt/lighteval-wheelhouse/
+RUN source /root/miniconda3/etc/profile.d/conda.sh && \
+    conda activate verl_pt27_25rc3 && \
+    python -m venv --system-site-packages /opt/venvs/lighteval092 && \
+    source /opt/venvs/lighteval092/bin/activate && \
+    python -m pip install --no-index --no-deps /opt/lighteval-wheelhouse/*.whl && \
+    TORCH_DEVICE_BACKEND_AUTOLOAD=0 python -m lighteval --help >/dev/null
+
+ENV PATH="/opt/venvs/lighteval092/bin:/root/miniconda3/envs/verl_pt27_25rc3/bin:/root/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+COPY task_catalog.py offline_dataset_router.py bad_case_analyzer.py worker_eval.py run_eval_job.py /opt/haidass-eval/
+COPY verl-entrypoint.sh /usr/local/bin/haidass-eval-entrypoint
+RUN chmod 0755 /usr/local/bin/haidass-eval-entrypoint && \
+    source /root/miniconda3/etc/profile.d/conda.sh && \
+    conda activate verl_pt27_25rc3 && \
+    source /opt/venvs/lighteval092/bin/activate && \
+    python -m py_compile /opt/haidass-eval/*.py
+
+WORKDIR /opt/haidass-eval
+ENTRYPOINT ["/usr/local/bin/haidass-eval-entrypoint"]
+CMD ["bash"]

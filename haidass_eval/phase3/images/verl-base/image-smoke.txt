@@ -1,0 +1,1 @@
+FINAL_CANDIDATE_IMAGE_PASS ray=2.10.0 lighteval=0.9.2 torch=2.7.1 torch_npu=2.7.1 device=npu:0

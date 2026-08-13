@@ -1,0 +1,71 @@
+[
+    {
+        "Id": "sha256:c306886142f07d1de4e7df85be7239f88f26e2c26a9928077edf1ca0af52dd47",
+        "RepoTags": [
+            "110.120.0.3:8889/eval/lighteval-ascend-worker:demo-ray2.10-py310-torch2.7.1-cann8.3-lighteval0.9.2"
+        ],
+        "RepoDigests": [
+            "110.120.0.3:8889/eval/lighteval-ascend-worker@sha256:c306886142f07d1de4e7df85be7239f88f26e2c26a9928077edf1ca0af52dd47"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-08-13T10:01:25.715492584+08:00",
+        "Config": {
+            "User": "root",
+            "Env": [
+                "PATH=/root/miniconda3/envs/ms/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "MS_VENV=/root/miniconda3/envs/ms"
+            ],
+            "Entrypoint": [
+                "/usr/local/bin/haidass-eval-entrypoint"
+            ],
+            "Cmd": [
+                "bash"
+            ],
+            "WorkingDir": "/opt/haidass-eval",
+            "ArgsEscaped": true,
+            "Shell": [
+                "/bin/bash",
+                "-lc"
+            ]
+        },
+        "Architecture": "arm64",
+        "Os": "linux",
+        "Size": 7082662557,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:d60308531c8e948838d02a6348aa95c3a9a72db1aff8df5e68da31408c90cf71",
+                "sha256:ad21501e06b6ba294b3f342bf31466e9d9091777cfa852ccaeaf0221d0adee29",
+                "sha256:5ba9e8857b0ed1968d30fe044ee057d7daf824f27fbb039d50ca047e2b5ad40b",
+                "sha256:893c09df3db47342e221c19716128f0ac782a483b58f2d7115a8c517db335613",
+                "sha256:65f21f78db18eb35a2886789e65f41dd41b7c69a383abca1576533fafdb4e19f",
+                "sha256:6b78c6c6d65e113b48aba456da969ccfb84b7c17680d0fb3d572218b494749b6",
+                "sha256:14b3b319e0f1b7adeccd2e229f984ab4a07e097d43fea16858f2fc58cf8c0197",
+                "sha256:f183df0388c3bedeef8315ef377fbd6c9bb60f7f6cb4e53454554345d556475b",
+                "sha256:4e4ec30e78b3299ad835841c1091934613ae7fb058b706f937428ff229a88b98",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-08-13T02:01:25.844993145Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.index.v1+json",
+            "digest": "sha256:c306886142f07d1de4e7df85be7239f88f26e2c26a9928077edf1ca0af52dd47",
+            "size": 856
+        },
+        "Identity": {
+            "Pull": [
+                {
+                    "Repository": "110.120.0.3/eval/lighteval-ascend-worker"
+                }
+            ],
+            "Build": [
+                {
+                    "Ref": "ph5sgcvsk0wts9e807b45kxko",
+                    "CreatedAt": "2026-08-13T10:01:26.292366997+08:00"
+                }
+            ]
+        }
+    }
+]

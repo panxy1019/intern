@@ -1,0 +1,30 @@
+{
+  "dataset": "ARC-Easy",
+  "source": "ARC-Easy",
+  "revision": "pinned-local-cache",
+  "cached_at": "2026-08-13T01:44:59.356117+00:00",
+  "splits": {
+    "test": 2376,
+    "train": 2251,
+    "validation": 570
+  },
+  "sample_count": 5197,
+  "sha256": "56d7ccce859c2386ab616f7d4674fa2a12bf04128d8d7e166159a9efa73832a6",
+  "files": [
+    {
+      "path": "test.parquet",
+      "size": 346257,
+      "sha256": "4160597d618ae851c7eb04e281574f3f654776216ac6b6641588d64527b47177"
+    },
+    {
+      "path": "train.parquet",
+      "size": 330598,
+      "sha256": "b315db8a4be597dc7daa50a4e70d48dd7c990c32085629e6ccd8c926beaa80b5"
+    },
+    {
+      "path": "validation.parquet",
+      "size": 86080,
+      "sha256": "ed890ff1e4cef7a7140d3a30dcea3ed2c9d467c6458f447ad9ef0176d8dcbb74"
+    }
+  ]
+}

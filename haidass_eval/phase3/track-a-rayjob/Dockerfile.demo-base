@@ -1,0 +1,19 @@
+FROM 110.120.0.3:8889/demo:v2@sha256:1ec90a9d8202cceb0f89b575b0d9773b3e18a92bdb00a855a6a2fc375f0dcee3
+
+USER root
+SHELL ["/bin/bash", "-lc"]
+COPY wheelhouse/ /opt/lighteval-wheelhouse/
+RUN source /root/miniconda3/etc/profile.d/conda.sh && \
+    conda activate ms && \
+    python -m pip install --no-index --no-deps /opt/lighteval-wheelhouse/*.whl && \
+    TORCH_DEVICE_BACKEND_AUTOLOAD=0 python -m lighteval --help >/dev/null
+
+COPY task_catalog.py offline_dataset_router.py bad_case_analyzer.py worker_eval.py run_eval_job.py /opt/haidass-eval/
+COPY container-entrypoint.sh /usr/local/bin/haidass-eval-entrypoint
+RUN chmod 0755 /usr/local/bin/haidass-eval-entrypoint && \
+    source /root/miniconda3/etc/profile.d/conda.sh && conda activate ms && \
+    python -m py_compile /opt/haidass-eval/*.py
+
+WORKDIR /opt/haidass-eval
+ENTRYPOINT ["/usr/local/bin/haidass-eval-entrypoint"]
+CMD ["bash"]

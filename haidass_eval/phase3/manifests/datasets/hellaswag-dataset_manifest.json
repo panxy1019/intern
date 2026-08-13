@@ -1,0 +1,34 @@
+{
+  "dataset": "HellaSwag",
+  "source": "Rowan/hellaswag refs/convert/parquet fetched 2026-08-12",
+  "revision": "pinned-local-cache",
+  "cached_at": "2026-08-13T01:44:59.401928+00:00",
+  "splits": {
+    "train": 39905,
+    "validation": 10042
+  },
+  "sample_count": 49947,
+  "sha256": "58c4f782b0772dcd5fbb6e0d02b3e6e0568fc157c643c0e5c3cb217f82501b3f",
+  "files": [
+    {
+      "path": "SHA256SUMS",
+      "size": 267,
+      "sha256": "21a62e3896bd5aa4b5d9a5663706420cc50ec14cf23f7c0e4dfadce4a6ae98a1"
+    },
+    {
+      "path": "SOURCE",
+      "size": 56,
+      "sha256": "7c8bebcc8360d6fd6f19598aba625817e3dbd5461b61132a8a635928a1828d1d"
+    },
+    {
+      "path": "train.parquet",
+      "size": 24365524,
+      "sha256": "cacb12587faa63d7f723a72d61d12bfa94b140446f5a6a0a2e1c6906ab88bf02"
+    },
+    {
+      "path": "validation.parquet",
+      "size": 6315951,
+      "sha256": "899813071e1e95efafec90f856e1987d2150fa4d020fc005df6962c259f660cd"
+    }
+  ]
+}

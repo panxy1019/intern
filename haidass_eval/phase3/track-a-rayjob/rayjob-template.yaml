@@ -1,0 +1,109 @@
+apiVersion: ray.io/v1
+kind: RayJob
+metadata:
+  name: __RAYJOB_NAME__
+  namespace: haidass-eval
+  labels:
+    app.kubernetes.io/name: haidass-lighteval
+    app.kubernetes.io/part-of: haidass-evaluation-phase3
+spec:
+  entrypoint: >-
+    python /opt/haidass-eval/run_eval_job.py
+    --model __MODEL__
+    --task __TASK__
+    --batch-size __BATCH_SIZE__
+    --max-samples __MAX_SAMPLES__
+    --run-id __RUN_ID__
+  shutdownAfterJobFinishes: true
+  ttlSecondsAfterFinished: 300
+  submissionMode: HTTPMode
+  rayClusterSpec:
+    rayVersion: "2.10.0"
+    enableInTreeAutoscaling: false
+    headGroupSpec:
+      serviceType: ClusterIP
+      rayStartParams:
+        dashboard-host: "0.0.0.0"
+        num-cpus: "0"
+      template:
+        metadata:
+          annotations:
+            ray.io/overwrite-container-cmd: "true"
+        spec:
+          nodeSelector:
+            kubernetes.io/hostname: server-00
+          tolerations:
+            - key: node-role.kubernetes.io/control-plane
+              operator: Exists
+              effect: NoSchedule
+          containers:
+            - name: ray-head
+              image: crpi-gcyqahoi1kzpijkb.cn-hangzhou.personal.cr.aliyuncs.com/panxy1019/panxy:ray-2.10.0-py3100-amd64
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/bash", "-lc", "--"]
+              args: ["eval \"$KUBERAY_GEN_RAY_START_CMD\""]
+              env: &proxy-env
+                - {name: HTTP_PROXY, value: "http://110.120.0.3:18080"}
+                - {name: HTTPS_PROXY, value: "http://110.120.0.3:18080"}
+                - {name: ALL_PROXY, value: "socks5h://110.120.0.3:18081"}
+                - {name: NO_PROXY, value: "localhost,127.0.0.1,::1,.svc,.svc.cluster.local,.cluster.local,kubernetes.default.svc,10.0.0.0/8,100.64.0.0/10,110.120.0.0/16,110.129.0.0/16"}
+              resources:
+                requests: {cpu: "2", memory: 8Gi}
+                limits: {cpu: "4", memory: 16Gi}
+              volumeMounts:
+                - {name: driver-code, mountPath: /opt/haidass-eval, readOnly: true}
+          volumes:
+            - name: driver-code
+              configMap:
+                name: haidass-phase3-driver-code
+    workerGroupSpecs:
+      - groupName: npu-910b-workers
+        replicas: 1
+        minReplicas: 0
+        maxReplicas: 1
+        numOfHosts: 1
+        rayStartParams:
+          num-cpus: "12"
+          resources: '"{\"NPU\":1,\"HAIDASS_EVAL\":1}"'
+        template:
+          metadata:
+            annotations:
+              ray.io/overwrite-container-cmd: "true"
+              volcano.sh/network-topology-highest-tier: "1"
+              volcano.sh/network-topology-mode: hard
+          spec:
+            nodeSelector:
+              kubernetes.io/hostname: gpu-server-00
+              node.kubernetes.io/npu.chip.name: 910B3
+            containers:
+              - name: ray-worker
+                image: __WORKER_IMAGE__
+                imagePullPolicy: IfNotPresent
+                command: ["/usr/local/bin/haidass-eval-entrypoint", "/bin/bash", "-lc", "--"]
+                args: ["eval \"$KUBERAY_GEN_RAY_START_CMD\""]
+                env: *proxy-env
+                resources:
+                  requests:
+                    cpu: "12"
+                    memory: 32Gi
+                    huawei.com/Ascend910: "1"
+                  limits:
+                    cpu: "16"
+                    memory: 64Gi
+                    huawei.com/Ascend910: "1"
+                volumeMounts:
+                  - {name: ray-logs, mountPath: /tmp/ray}
+                  - {name: model-cache, mountPath: /cache/models, readOnly: true}
+                  - {name: dataset-cache, mountPath: /cache/datasets, readOnly: true}
+                  - {name: result-store, mountPath: /results}
+                  - {name: dshm, mountPath: /dev/shm}
+                  - {name: ascend-driver, mountPath: /usr/local/Ascend/driver, readOnly: true}
+                  - {name: ascend-dcmi, mountPath: /usr/local/dcmi, readOnly: true}
+            volumes:
+              - {name: ray-logs, emptyDir: {}}
+              - {name: model-cache, hostPath: {path: /data/haidass-eval/models, type: Directory}}
+              - {name: dataset-cache, hostPath: {path: /data/haidass-eval/datasets, type: Directory}}
+              - {name: result-store, hostPath: {path: /data/haidass-eval/results, type: Directory}}
+              - {name: dshm, emptyDir: {medium: Memory, sizeLimit: 8Gi}}
+              - {name: ascend-driver, hostPath: {path: /usr/local/Ascend/driver, type: Directory}}
+              - {name: ascend-dcmi, hostPath: {path: /usr/local/dcmi, type: Directory}}
