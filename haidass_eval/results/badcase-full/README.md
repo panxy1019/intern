@@ -4,6 +4,8 @@
 
 - [PIQA_BAD_CASES_ALL.md](PIQA_BAD_CASES_ALL.md)：PIQA 全量 bad case 表，共 787 条。
 - [HELLASWAG_BAD_CASES_ALL.md](HELLASWAG_BAD_CASES_ALL.md)：HellaSwag 全量 bad case 表，共 8106 条。
+- [PIQA_BAD_CASES_ALL.xlsx](PIQA_BAD_CASES_ALL.xlsx)：PIQA Excel 版本。
+- [HELLASWAG_BAD_CASES_ALL.xlsx](HELLASWAG_BAD_CASES_ALL.xlsx)：HellaSwag Excel 版本。
 - `*.summary.json`：便于程序读取的计数和一致性校验结果。
 
 ## 口径
