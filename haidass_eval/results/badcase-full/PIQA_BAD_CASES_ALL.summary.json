@@ -1,0 +1,24 @@
+{
+  "dataset": "piqa",
+  "sample_count": 1838,
+  "bad_case_union_count": 787,
+  "type_counts": {
+    "N2 归一化伤害": 182,
+    "P7 日常物理常识": 121,
+    "P3 容器/流体/混合": 64,
+    "P2 操作步骤/先后顺序": 36,
+    "P1 工具/材料可供性": 74,
+    "N1 归一化修正": 188,
+    "P4 热力/烹饪/状态变化": 70,
+    "P6 安全/风险规避": 25,
+    "P5 清洁/去除/修复": 27
+  },
+  "status_counts": {
+    "仅 acc_norm 错（归一化伤害）": 182,
+    "acc 与 acc_norm 均错": 417,
+    "仅 acc 错（acc_norm 修正）": 188
+  },
+  "skipped_rows": 0,
+  "metric_mismatch_count": 0,
+  "output": "/tmp/badcase-full/PIQA_BAD_CASES_ALL.md"
+}

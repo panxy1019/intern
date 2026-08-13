@@ -1,0 +1,23 @@
+{
+  "dataset": "hellaswag",
+  "sample_count": 10042,
+  "bad_case_union_count": 8106,
+  "type_counts": {
+    "H2 人物意图/社会互动": 2141,
+    "N1 归一化修正": 1879,
+    "N2 归一化伤害": 1313,
+    "H1 程序性步骤延续": 1281,
+    "H6 噪声/异常文本干扰": 1396,
+    "H4 动作/场景连续性": 46,
+    "H5 叙事语义连贯性": 20,
+    "H3 时间/因果连续性": 30
+  },
+  "status_counts": {
+    "acc 与 acc_norm 均错": 4914,
+    "仅 acc 错（acc_norm 修正）": 1879,
+    "仅 acc_norm 错（归一化伤害）": 1313
+  },
+  "skipped_rows": 0,
+  "metric_mismatch_count": 0,
+  "output": "/tmp/badcase-full/HELLASWAG_BAD_CASES_ALL.md"
+}
