@@ -1,0 +1,35 @@
+{
+  "status": "valid",
+  "errors": [],
+  "seed_count": 40,
+  "plan_count": 2000,
+  "prompt_count": 2000,
+  "duplicate_axis_combinations": 0,
+  "axis_combination_repeat_rate": 0.0,
+  "expected_independent_scenarios": 8000,
+  "expected_multi_view_examples": 10000,
+  "report": "/home/admin/Desktop/sql/haidass_eval/phase3/lighteval-mindspeed/badcase_synthesis/stage2/reports/generation_planner_v0.1.md",
+  "seed_selection_audit": {
+    "input_seed_count": 1227,
+    "qualified_candidate_count": 174,
+    "selected_seed_count": 40,
+    "rejection_reasons": {
+      "excluded_failure_family_or_artifact": 26,
+      "unreliable_or_specific_invariant": 47,
+      "empty_or_other_sub_capability": 84,
+      "low_confidence": 13,
+      "capability_not_supported_in_pilot": 106,
+      "insufficient_support": 763,
+      "noncanonical_label": 14
+    },
+    "capability_quotas": {
+      "procedural_reasoning": 9,
+      "discourse_coherence": 6,
+      "semantic_reasoning": 6,
+      "narrative_reasoning": 6,
+      "physical_reasoning": 6,
+      "state_tracking": 5,
+      "temporal_reasoning": 2
+    }
+  }
+}

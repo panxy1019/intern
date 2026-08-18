@@ -1,0 +1,69 @@
+You are a structured training-scenario generator. Generate exactly $scenario_count semantically independent scenarios for plan $plan_id.
+
+LATENT WEAKNESS CONTRACT
+- weakness_id: $weakness_id
+- capability: $capability
+- sub_capability: $sub_capability
+- reasoning_operation: $reasoning_operation
+- failure_mechanism: $failure_mechanism
+- distractor_type: $distractor_type
+- semantic_invariant: $semantic_invariant
+
+SAMPLED CONTENT AXES
+$content_axes
+
+SAMPLED REASONING AXES
+$reasoning_axes
+
+HARD-NEGATIVE AXES
+$negative_axes
+
+SUPERVISION POLICY
+- Every scenario must include one `$primary_view` primary view.
+- Exactly one of the $scenario_count scenarios must additionally include one `$secondary_view` secondary view.
+- A view changes only the supervision representation. It must not change the scenario's latent state, goal, valid transition, invalid transition, or weakness.
+- Do not render any scenario into additional views.
+
+INDEPENDENCE REQUIREMENTS
+- The scenarios must differ in causal structure, state transitions, goals, and surface setting.
+- Entity replacement, number replacement, paraphrase-only rewrites, and a shared fill-in template do not count as independent scenarios.
+- Apply the same semantic invariant in every scenario without copying a concrete situation from prior data.
+- The invalid transition must instantiate the configured failure mechanism and hard-negative strategy while remaining superficially plausible.
+
+CONTAMINATION PROHIBITIONS
+- Do not quote, reconstruct, translate, paraphrase, or imitate any source evaluation item.
+- Do not reuse source contexts, choices, answers, identifiers, named entities, distinctive numbers, or source-specific phrasing.
+- Do not mention evaluation datasets, source collections, sample identifiers, attribution records, or evaluation labels.
+- Create all content from the abstract contract and sampled axes only.
+
+Return one JSON object and no surrounding prose:
+{
+  "plan_id": "$plan_id",
+  "scenarios": [
+    {
+      "scenario_id": "scenario-01",
+      "latent_structure": {
+        "weakness_id": "$weakness_id",
+        "semantic_invariant_realization": "abstract explanation",
+        "reasoning_constraints": ["constraint"],
+        "hard_negative_mechanism": "mechanism"
+      },
+      "context": "original scenario context",
+      "current_state": "state before the decision or transition",
+      "goal": "goal that determines correctness",
+      "valid_transition": "correct action, continuation, ordering, or judgment",
+      "invalid_transition": "plausible hard negative violating the latent constraint",
+      "views": [
+        {
+          "view_type": "$primary_view",
+          "instruction": "view-specific task",
+          "input": "view-specific input",
+          "target": "view-specific target",
+          "options_or_pairs": []
+        }
+      ]
+    }
+  ]
+}
+
+The `scenarios` array must contain exactly $scenario_count objects with IDs scenario-01 through scenario-04. Exactly one object must contain a second view whose `view_type` is `$secondary_view`.

@@ -1,0 +1,171 @@
+version: '0.1'
+sampling:
+  method: deterministic_balanced_coprime_rotation
+  random_seed: 20260818
+  plans_per_seed: 50
+global_axes:
+  domain:
+  - household_maintenance
+  - workplace_operations
+  - public_services
+  - education_and_training
+  - community_events
+  - retail_and_inventory
+  - travel_and_navigation
+  - outdoor_activities
+  - digital_workflows
+  - crafts_and_fabrication
+  - food_service
+  - logistics_and_delivery
+  scenario_family:
+  - task_completion
+  - troubleshooting
+  - resource_selection
+  - sequence_recovery
+  - plan_revision
+  - event_continuation
+  - state_transition
+  - instruction_following
+  - comparison_decision
+  - anomaly_diagnosis
+  persona:
+  - novice_operator
+  - experienced_worker
+  - student
+  - team_lead
+  - customer
+  - technician
+  - volunteer
+  - independent_creator
+  narrative_style:
+  - concise_observation
+  - stepwise_account
+  - dialogue_fragment
+  - incident_report
+  - instructional_note
+  - reflective_narration
+  difficulty:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  context_length:
+  - short
+  - medium
+  - long
+  state_explicitness:
+  - explicit
+  - partially_implicit
+  - implicit
+  answer_length_profile:
+  - balanced
+  - valid_shorter
+  - valid_longer
+  - matched_structure
+  noise_profile:
+  - none
+  - mild_lexical_distractors
+  - irrelevant_tail
+  - paraphrastic_overlap
+  - benign_typo
+weakness_specific_axes:
+  procedural:
+    dependency_depth:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    completed_step_count:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    action_distance:
+    - adjacent
+    - near
+    - distant
+  temporal:
+    event_count:
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    temporal_distance:
+    - adjacent
+    - short_gap
+    - long_gap
+    temporal_cue_explicitness:
+    - explicit
+    - mixed
+    - implicit
+  physical:
+    affordance_type:
+    - tool
+    - object
+    - material
+    - spatial_access
+    material_constraint:
+    - none
+    - fragile
+    - rigid
+    - flexible
+    - heat_sensitive
+    tool_constraint:
+    - none
+    - fit
+    - reach
+    - force
+    - orientation
+  causal_state:
+    dependency_depth:
+    - 1
+    - 2
+    - 3
+    - 4
+    hidden_state:
+    - none
+    - single_hidden_fact
+    - multiple_hidden_facts
+    counterfactual_condition:
+    - absent
+    - single_change
+    - competing_change
+  discourse_narrative:
+    coherence_scope:
+    - local
+    - multi_sentence
+    - global
+    topic_shift_strength:
+    - subtle
+    - moderate
+    - strong
+    event_completion_state:
+    - mid_event
+    - near_completion
+    - post_completion
+  semantic_goal:
+    constraint_count:
+    - 1
+    - 2
+    - 3
+    - 4
+    goal_explicitness:
+    - explicit
+    - partially_implicit
+    - implicit
+    competing_goal:
+    - absent
+    - weak
+    - strong
+views:
+- continuation
+- multiple_choice
+- pairwise_preference
+- error_detection
+- ordering
+- counterfactual
