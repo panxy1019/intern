@@ -1,0 +1,28 @@
+{
+  "renderer_version": "p0_light_renderer_v1",
+  "input_records": 10000,
+  "passed_records": 9990,
+  "rejected_records": 10,
+  "messages_records": 9990,
+  "prompt_text_records": 9990,
+  "unique_example_ids": 9990,
+  "unique_weaknesses": 40,
+  "primary_count": 7994,
+  "secondary_count": 1996,
+  "view_type_counts": {
+    "continuation": 1698,
+    "counterfactual": 1691,
+    "error_detection": 2092,
+    "multiple_choice": 2073,
+    "ordering": 1026,
+    "pairwise_preference": 1410
+  },
+  "deterministic_rerender": true,
+  "input_sha256": "eeac13a15512af4a9fd60b51cbbf6cf51f1da619a1406a641fb7dbed12db83d7",
+  "messages_sha256": "f09c48a9b896fef3346c217f06a316a10fb54b612694e4db2f83fa19bd6d4271",
+  "prompt_text_sha256": "4de3ab21ef8d8e9455c74ab16bfab63ede765f594a72e5a26b2a04b8194c1bc6",
+  "rendered_validation": {
+    "status": "valid",
+    "errors": []
+  }
+}
